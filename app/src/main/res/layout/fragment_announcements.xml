@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Post a new announcement"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -60,8 +60,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reach all organizations or a specific one"
-                    android:textColor="#CADAFA"
-                    android:textSize="11sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -81,8 +81,8 @@
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="3dp"
                 android:text="ALL ORGANIZATIONS"
-                android:textColor="@color/mid_blue"
-                android:textSize="9sp"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
 
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="All recognized organizations must submit their accomplishment reports and updated roster of officers on or before September 15."
                 android:textColor="@color/text_gray"
-                android:textSize="11.5sp"
+                android:textSize="12sp"
                 android:lineSpacingExtra="2dp"
                 android:layout_marginBottom="10dp" />
 
@@ -108,8 +108,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Posted Aug 27"
-                android:textColor="#9BA9C2"
-                android:textSize="10.5sp"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -129,7 +129,7 @@
                 android:paddingVertical="3dp"
                 android:text="RED CROSS YOUTH"
                 android:textColor="@color/teal_deep"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
 
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:text="Final schedule and assignments for the September blood donation activity are now posted."
                 android:textColor="@color/text_gray"
-                android:textSize="11.5sp"
+                android:textSize="12sp"
                 android:lineSpacingExtra="2dp"
                 android:layout_marginBottom="10dp" />
 
@@ -155,8 +155,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Posted Aug 25"
-                android:textColor="#9BA9C2"
-                android:textSize="10.5sp"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

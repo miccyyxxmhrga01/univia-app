@@ -8,8 +8,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
 
 class AcademicYearFragment : Fragment() {
 
@@ -20,7 +20,7 @@ class AcademicYearFragment : Fragment() {
     private lateinit var etEndDate: EditText
     private lateinit var btnSaveAcademicYear: TextView
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="18dp">
+        android:padding="@dimen/ui_space_20">
 
         <!-- ORGANIZATIONS HEADING -->
 
@@ -29,7 +29,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/ui_touch_target"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:background="@drawable/bg_search"
@@ -50,14 +51,17 @@
                 android:layout_marginStart="9dp"
                 android:background="@null"
                 android:hint="Search organizations..."
-                android:textSize="13sp"
+                android:minHeight="@dimen/ui_touch_target"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/ui_text_body"
                 android:inputType="text" />
 
         </LinearLayout>
 
         <!-- AI MATCHER CARD -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:id="@+id/btnSmartMatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,149 +69,126 @@
             android:clickable="true"
             android:focusable="true"
             android:contentDescription="Find My Organization with AI"
-            app:cardBackgroundColor="#E5F9F8"
+            app:cardBackgroundColor="@color/surface"
             app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#B8E5E5"
-            app:strokeWidth="1dp">
+            app:cardElevation="0dp"
+            app:strokeColor="@color/outline"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="12dp">
-
-                <!-- AI ICON -->
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:clickable="false"
-                    android:focusable="false"
-                    app:cardBackgroundColor="#159D96"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="✦"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- AI TITLE AND DESCRIPTION -->
+                android:orientation="vertical"
+                android:padding="@dimen/ui_space_20"
+                android:importantForAccessibility="noHideDescendants">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="7dp"
-                    android:orientation="vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="@dimen/ui_space_12"
+                        android:src="@drawable/ic_interest"
+                        android:contentDescription="@null"
+                        app:tint="@color/text_primary" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="Find your organization with AI"
-                        android:textColor="#14527C"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Discover groups that match your interests."
-                        android:textColor="#5E8292"
-                        android:textSize="10.5sp" />
-
+                        android:textAppearance="@style/TextAppearance.Univia.Action" />
                 </LinearLayout>
 
-                <!-- FIND MY MATCH BUTTON -->
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-                    app:cardBackgroundColor="#0DAEA5"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp">
+                    android:layout_marginTop="@dimen/ui_space_8"
+                    android:text="Discover groups that match your interests."
+                    android:textAppearance="@style/TextAppearance.Univia.Body"
+                    android:textColor="@color/text_secondary" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="12dp"
-                        android:gravity="center"
-                        android:text="Find My Match →"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                </com.google.android.material.card.MaterialCardView>
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/ui_touch_target"
+                    android:layout_marginTop="@dimen/ui_space_8"
+                    android:gravity="center_vertical"
+                    android:text="Find My Match &#8594;"
+                    android:textAppearance="@style/TextAppearance.Univia.Action" />
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
         <!-- EXISTING FILTERS -->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:id="@+id/chipAllStudentOrgs"
+            android:layout_marginBottom="@dimen/ui_space_16"
+            android:scrollbars="none">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_chip_active"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="7dp"
-                android:text="All (2)"
-                android:textColor="@color/white"
-                android:textSize="11.5sp"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                android:focusable="true" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="0dp">
 
-            <TextView
-                android:id="@+id/chipJoined"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_chip"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="7dp"
-                android:text="Joined (1)"
-                android:textColor="@color/text_gray"
-                android:textSize="11.5sp"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                android:focusable="true" />
+                <TextView
+                    android:id="@+id/chipAllStudentOrgs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip_active"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="7dp"
+                    android:text="All (2)"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/ui_text_body"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:minHeight="@dimen/ui_touch_target"
+                    android:gravity="center" />
 
-            <TextView
-                android:id="@+id/chipPendingOrgs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_chip"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="7dp"
-                android:text="Pending (0)"
-                android:textColor="@color/text_gray"
-                android:textSize="11.5sp"
-                android:textStyle="bold"
-                android:clickable="true"
-                android:focusable="true" />
+                <TextView
+                    android:id="@+id/chipJoined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="7dp"
+                    android:text="Joined (1)"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/ui_text_body"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:minHeight="@dimen/ui_touch_target"
+                    android:gravity="center" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/chipPendingOrgs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="7dp"
+                    android:text="Pending (0)"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/ui_text_body"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:minHeight="@dimen/ui_touch_target"
+                    android:gravity="center" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <!-- EXISTING ORGANIZATION LIST -->
 

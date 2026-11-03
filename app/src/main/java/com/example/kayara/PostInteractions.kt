@@ -22,9 +22,9 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.Query
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -32,10 +32,10 @@ import java.util.Locale
 
 object PostInteractions {
 
-    private const val NAVY = "#0B2E6B"
-    private const val GRAY = "#6B7A90"
-    private const val BLUE = "#1E5FD9"
-    private const val RED = "#D32F2F"
+    private const val NAVY = "#3B176A"
+    private const val GRAY = "#6B5C7B"
+    private const val BLUE = "#7C3AED"
+    private const val RED = "#AC3C4E"
 
     private fun Context.dp(value: Int): Int =
         (value * resources.displayMetrics.density).toInt()
@@ -95,7 +95,7 @@ object PostInteractions {
         params.bottomMargin = context.dp(10)
 
         bar.layoutParams = params
-        bar.background = rounded(Color.parseColor("#D0D7E2"), 100f)
+        bar.background = rounded(Color.parseColor("#D6C6E7"), 100f)
 
         return bar
     }
@@ -173,7 +173,7 @@ object PostInteractions {
             android.R.drawable.ic_menu_edit,
             "Edit post",
             Color.parseColor(BLUE),
-            Color.parseColor("#E8F0FE"),
+            Color.parseColor("#F1ECF8"),
             onEdit
         )
 
@@ -181,7 +181,7 @@ object PostInteractions {
             android.R.drawable.ic_menu_delete,
             "Delete post",
             Color.parseColor(RED),
-            Color.parseColor("#FDECEA"),
+            Color.parseColor("#F4E1E5"),
             onDelete
         )
 
@@ -212,7 +212,7 @@ object PostInteractions {
         input.gravity = Gravity.TOP or Gravity.START
         input.setTextColor(Color.parseColor(NAVY))
         input.textSize = 14f
-        input.background = rounded(Color.parseColor("#F3F7FC"), context.dp(14).toFloat())
+        input.background = rounded(Color.parseColor("#F1ECF8"), context.dp(14).toFloat())
         input.setPadding(context.dp(14), context.dp(12), context.dp(14), context.dp(12))
 
         val container = FrameLayout(context)
@@ -238,7 +238,7 @@ object PostInteractions {
 
                 val field = if (isPhoto) "caption" else "textContent"
 
-                FirebaseFirestore.getInstance()
+                SupabaseDatabase.getInstance()
                     .collection("posts")
                     .document(post.postId)
                     .update(
@@ -280,7 +280,7 @@ object PostInteractions {
 
         var items: List<CommentItem> = emptyList()
 
-        private val db = FirebaseFirestore.getInstance()
+        private val db = SupabaseDatabase.getInstance()
         private val avatarCache = mutableMapOf<String, String>()
         private val requested = mutableSetOf<String>()
 
@@ -359,7 +359,7 @@ object PostInteractions {
             initialsView.setTypeface(null, Typeface.BOLD)
             initialsView.background = GradientDrawable().apply {
                 shape = GradientDrawable.OVAL
-                setColor(Color.parseColor("#1FA898"))
+                setColor(Color.parseColor("#3B176A"))
             }
 
             val avatarImage = ImageView(context)
@@ -383,7 +383,7 @@ object PostInteractions {
 
             val bubble = LinearLayout(context)
             bubble.orientation = LinearLayout.VERTICAL
-            bubble.background = rounded(Color.parseColor("#F1F5FB"), context.dp(16).toFloat())
+            bubble.background = rounded(Color.parseColor("#F1ECF8"), context.dp(16).toFloat())
             bubble.setPadding(context.dp(12), context.dp(8), context.dp(12), context.dp(8))
             bubble.layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -396,7 +396,7 @@ object PostInteractions {
             author.setTypeface(null, Typeface.BOLD)
 
             val text = TextView(context)
-            text.setTextColor(Color.parseColor("#26344A"))
+            text.setTextColor(Color.parseColor("#3B176A"))
             text.textSize = 13f
 
             bubble.addView(author)
@@ -504,7 +504,7 @@ object PostInteractions {
 
         if (post.postId.isBlank()) return
 
-        val db = FirebaseFirestore.getInstance()
+        val db = SupabaseDatabase.getInstance()
         val postRef = db.collection("posts").document(post.postId)
 
         val dialog = BottomSheetDialog(context)
@@ -525,7 +525,7 @@ object PostInteractions {
         root.addView(title)
 
         val divider = View(context)
-        divider.setBackgroundColor(Color.parseColor("#E6ECF5"))
+        divider.setBackgroundColor(Color.parseColor("#E1E8F2"))
         divider.layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, context.dp(1)
         )
@@ -573,7 +573,7 @@ object PostInteractions {
 
         val input = EditText(context)
         input.hint = "Write a comment..."
-        input.setHintTextColor(Color.parseColor("#9AA7BA"))
+        input.setHintTextColor(Color.parseColor("#6B5C7B"))
         input.setTextColor(Color.parseColor(NAVY))
         input.textSize = 13f
         input.maxLines = 4
@@ -581,7 +581,7 @@ object PostInteractions {
             InputType.TYPE_CLASS_TEXT or
                     InputType.TYPE_TEXT_FLAG_MULTI_LINE or
                     InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
-        input.background = rounded(Color.parseColor("#F1F5FB"), context.dp(22).toFloat())
+        input.background = rounded(Color.parseColor("#F1ECF8"), context.dp(22).toFloat())
         input.setPadding(context.dp(16), context.dp(10), context.dp(16), context.dp(10))
         input.layoutParams = LinearLayout.LayoutParams(
             0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f

@@ -8,9 +8,9 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.DocumentReference
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.SupabaseDatabase
 
 /**
  * Mga folder nga gihimo sa admin.
@@ -30,7 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 object FolderOps {
 
     fun createFolder(
-        db: FirebaseFirestore,
+        db: SupabaseDatabase,
         organizationId: String,
         name: String,
         parentId: String,
@@ -55,7 +55,7 @@ object FolderOps {
     }
 
     fun renameFolder(
-        db: FirebaseFirestore,
+        db: SupabaseDatabase,
         folderId: String,
         newName: String,
         onSuccess: () -> Unit,
@@ -87,7 +87,7 @@ object FolderOps {
 
     // I-delete ang folder ug TANANG naa sa sulod niini (subfolders + files)
     fun deleteFolderTree(
-        db: FirebaseFirestore,
+        db: SupabaseDatabase,
         organizationId: String,
         folderId: String,
         onSuccess: () -> Unit,

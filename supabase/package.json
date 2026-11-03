@@ -1,0 +1,8 @@
+{
+  "name": "univia-database-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test functions/bbco-data/handler.test.ts"
+  }
+}

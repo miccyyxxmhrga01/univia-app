@@ -14,8 +14,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
 
 class RenewalReviewActivity : AppCompatActivity() {
 
@@ -37,7 +37,7 @@ class RenewalReviewActivity : AppCompatActivity() {
     private lateinit var layoutRenewalRequirements: LinearLayout
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private var renewalId: String = ""
     private var organizationId: String = ""
@@ -535,16 +535,16 @@ class RenewalReviewActivity : AppCompatActivity() {
             getColor(R.color.admin_end)
 
         val darkBlue =
-            Color.parseColor("#0B2E6B")
+            Color.parseColor("#3B176A")
 
         val softBlue =
-            Color.parseColor("#EFF7FF")
+            Color.parseColor("#F1ECF8")
 
         val grayText =
-            Color.parseColor("#6B7A90")
+            Color.parseColor("#6B5C7B")
 
         val strokeBlue =
-            Color.parseColor("#D7E9F8")
+            Color.parseColor("#E1E8F2")
 
 
         // ========================================================
@@ -855,7 +855,7 @@ class RenewalReviewActivity : AppCompatActivity() {
 
         text.setTextColor(
             Color.parseColor(
-                "#65729A"
+                "#6B5C7B"
             )
         )
 
@@ -1608,7 +1608,7 @@ class RenewalReviewActivity : AppCompatActivity() {
 
                 tvStatus.setTextColor(
                     Color.parseColor(
-                        "#258A5B"
+                        "#276653"
                     )
                 )
             }
@@ -1617,7 +1617,7 @@ class RenewalReviewActivity : AppCompatActivity() {
 
                 tvStatus.setTextColor(
                     Color.parseColor(
-                        "#D45D45"
+                        "#AC3C4E"
                     )
                 )
             }

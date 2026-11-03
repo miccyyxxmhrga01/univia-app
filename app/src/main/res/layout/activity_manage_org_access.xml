@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/bg_light">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:minHeight="48dp" android:text="Back" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="@string/manage_org_access"
+            android:textColor="@color/text_primary" android:fontFamily="@font/poppins_semibold" android:textSize="24sp" />
+        <TextView style="@style/RegistrationBody" android:layout_marginTop="8dp" android:text="@string/access_description" />
+        <TextView style="@style/RegistrationLabel" android:text="@string/organization_label" android:labelFor="@id/organizationSpinner" />
+        <Spinner android:id="@+id/organizationSpinner" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="54dp" android:background="@drawable/neo_inset" />
+        <TextView android:id="@+id/currentManager" style="@style/RegistrationBody"
+            android:layout_marginTop="16dp" android:text="Loading organizations…" android:accessibilityLiveRegion="polite" />
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnRemoveManager" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="48dp" android:text="@string/remove_manager" android:visibility="gone" />
+        <TextView style="@style/RegistrationLabel" android:text="@string/manager_search_hint" android:labelFor="@id/managerSearch" />
+        <EditText android:id="@+id/managerSearch" style="@style/RegistrationInput"
+            android:hint="@string/manager_search_hint" android:inputType="text" android:imeOptions="actionSearch" />
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnFindManager" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="48dp" android:text="@string/manager_search" />
+        <TextView android:id="@+id/managerResult" style="@style/RegistrationBody"
+            android:layout_marginTop="12dp" android:accessibilityLiveRegion="polite" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnAssignManager"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
+            android:text="@string/assign_manager" android:visibility="gone" />
+        <TextView android:id="@+id/accessError" style="@style/RegistrationBody"
+            android:layout_marginTop="12dp" android:textColor="@color/error" android:visibility="gone"
+            android:accessibilityLiveRegion="polite" />
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnRetryAccess" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="48dp" android:text="@string/access_retry" android:visibility="gone" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

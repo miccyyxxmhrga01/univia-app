@@ -145,7 +145,7 @@ class MemberAdapter(
 
             holder.tvAvatar.background.setTint(
                 Color.parseColor(
-                    "#0B2E6B"
+                    "#3B176A"
                 )
             )
         }

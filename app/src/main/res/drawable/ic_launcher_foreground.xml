@@ -18,7 +18,7 @@
     android:height="108dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="#1E5FD9">
+    android:tint="@color/brand_blue">
   <group android:scaleX="0.58"
       android:scaleY="0.58"
       android:translateX="5.04"

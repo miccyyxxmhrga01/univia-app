@@ -25,11 +25,11 @@ import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.SetOptions
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.SetOptions
 import java.io.File
 import java.io.FileOutputStream
 import androidx.appcompat.app.AlertDialog
@@ -84,6 +84,7 @@ class OrganizationProfileFragment : Fragment() {
         mutableListOf<FeedPostModel>()
 
     private var postsListener: ListenerRegistration? = null
+    private var permissionListener: ListenerRegistration? = null
 
     // Organization profile pictures (organizationId -> avatarUrl)
     private var orgAvatarListener: ListenerRegistration? = null
@@ -135,7 +136,7 @@ class OrganizationProfileFragment : Fragment() {
     // =========================================================
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private val auth =
         FirebaseAuth.getInstance()
@@ -751,252 +752,84 @@ class OrganizationProfileFragment : Fragment() {
     // aron mausab dayon ang ngalan, course, year level.
     // =========================================================
 
-    private fun checkEditPermission() {
-
-        val currentUser =
-            auth.currentUser
-
-        if (currentUser == null) {
-            btnEditProfile?.visibility = View.GONE
-            btnEditProfile?.isClickable = false
-            return
-        }
-
-        db.collection("users")
-            .document(currentUser.uid)
-            .get()
-            .addOnSuccessListener { document ->
-
-                if (!isAdded) {
-                    return@addOnSuccessListener
-                }
-
-                val role =
-                    document.getString("role")
-                        ?.trim()
-                        ?.lowercase()
-                        ?: ""
-
-                val userOrganizationId =
-                    document.getString("organizationId")
-                        ?.trim()
-                        ?: ""
-
-                val isOwnerAdmin =
-                    role == "admin" &&
-                            userOrganizationId.isNotBlank() &&
-                            organizationId.isNotBlank() &&
-                            userOrganizationId == organizationId
-
-                if (isOwnerAdmin) {
-
-                    btnEditProfile?.visibility =
-                        View.VISIBLE
-
-                    btnEditProfile?.isClickable =
-                        true
-
-                } else {
-
-                    btnEditProfile?.visibility =
-                        View.GONE
-
-                    btnEditProfile?.isClickable =
-                        false
-                }
-            }
-            .addOnFailureListener {
-
-                // If permission cannot be verified,
-                // do not allow editing.
-                btnEditProfile?.visibility =
-                    View.GONE
-
-                btnEditProfile?.isClickable =
-                    false
-            }
-    }
-
     private fun listenToMembers() {
-
         membersListener?.remove()
         clearMemberUserListeners()
-
-        if (organizationId.isBlank()) {
-            return
-        }
-
-        membersListener =
-            db.collection("memberships")
-                .whereEqualTo("organizationId", organizationId)
-                .whereEqualTo("status", "approved")
-                .addSnapshotListener { snapshot, error ->
-
-                    if (!isAdded) {
-                        return@addSnapshotListener
-                    }
-
-                    if (error != null) {
-                        Log.e("OrgProfile", "Members error", error)
-                        return@addSnapshotListener
-                    }
-
-                    if (snapshot == null) {
-                        return@addSnapshotListener
-                    }
-
-                    memberDocs = snapshot.documents
-
-                    val ids =
-                        memberDocs
-                            .mapNotNull {
-                                it.getString("studentId")
-                                    ?.takeIf { id -> id.isNotBlank() }
-                            }
-                            .toSet()
-
-                    // Tangtangon ang listener sa mga wala na nga member
-                    memberUserListeners.keys
-                        .filter { it !in ids }
-                        .forEach { staleId ->
-                            memberUserListeners.remove(staleId)?.remove()
-                            memberUsers.remove(staleId)
-                        }
-
-                    // Butangan og listener ang bag-ong member
-                    ids.forEach { studentId ->
-
-                        if (!memberUserListeners.containsKey(studentId)) {
-
-                            memberUserListeners[studentId] =
-                                db.collection("users")
-                                    .document(studentId)
-                                    .addSnapshotListener { userDoc, userError ->
-
-                                        if (
-                                            !isAdded ||
-                                            userError != null ||
-                                            userDoc == null
-                                        ) {
-                                            return@addSnapshotListener
-                                        }
-
-                                        memberUsers[studentId] = userDoc
-
-                                        rebuildMembers()
-                                    }
-                        }
-                    }
-
-                    rebuildMembers()
+        memberDocs = emptyList()
+        if (organizationId.isBlank()) return
+        membersListener = db.collection("memberships")
+            .whereEqualTo("organizationId", organizationId)
+            .whereEqualTo("status", "approved")
+            .addSnapshotListener members@{ snapshot, error ->
+                if (view == null) return@members
+                if (error != null) {
+                    Log.e("OrgProfile", "Unable to load members", error)
+                    return@members
                 }
+                memberDocs = snapshot?.documents ?: return@members
+                val ids = memberDocs.mapNotNull { it.getString("studentId")?.takeIf(String::isNotBlank) }.toSet()
+                memberUserListeners.keys.filter { it !in ids }.forEach { id ->
+                    memberUserListeners.remove(id)?.remove()
+                    memberUsers.remove(id)
+                }
+                ids.filter { it !in memberUserListeners }.forEach { id ->
+                    memberUserListeners[id] = db.collection("users").document(id)
+                        .addSnapshotListener profile@{ profile, profileError ->
+                            if (view == null || id !in memberUserListeners) return@profile
+                            if (profileError != null || profile == null || !profile.exists()) memberUsers.remove(id)
+                            else memberUsers[id] = profile
+                            rebuildMembers()
+                        }
+                }
+                rebuildMembers()
+            }
     }
 
-    // NEW: i-tukod balik ang listahan gikan sa memberships + karon nga users
-    // i-tukod balik ang listahan gikan sa memberships + karon nga users
     private fun rebuildMembers() {
-
-        if (!isAdded) {
-            return
-        }
-
-        val items =
-            memberDocs.map { membership ->
-
-                val studentId =
-                    membership.getString("studentId") ?: ""
-
-                val user =
-                    memberUsers[studentId]
-
-                val name =
-                    user?.getString("fullName")
-                        ?.takeIf { it.isNotBlank() }
-                        ?: membership.getString("fullName")
-                        ?: "Student"
-
-                val info =
-                    listOfNotNull(
-                        user?.getString("course")
-                            ?.takeIf { it.isNotBlank() },
-                        user?.getString("yearLevel")
-                            ?.takeIf { it.isNotBlank() }
-                    ).joinToString(" · ")
-
-                val position =
-                    membership.getString("position")?.trim() ?: ""
-
-                val isOfficer =
-                    membership.getString("role")
-                        .equals("officer", ignoreCase = true) ||
-                            position.isNotBlank()
-
-                val label =
-                    if (isOfficer) {
-                        if (position.isNotBlank()) position else "Officer"
-                    } else {
-                        "Member"
-                    }
-
-                val subtitle =
-                    if (info.isNotBlank()) "$info - $label" else label
-
-                OrgMemberItem(
-                    name = name,
-                    subtitle = subtitle,
-                    isOfficer = isOfficer,
-                    photoUrl = user?.getString("profileImageUrl") ?: "",
-                    rank = officerRank(position, isOfficer),
-                    position = position
-                )
-            }
-
-        renderMembers(items)
+        if (view == null) return
+        val items = memberDocs.map { membership ->
+            val user = memberUsers[membership.getString("studentId")]
+            val position = membership.getString("position").orEmpty().trim()
+            val officer = membership.getString("role").equals("officer", ignoreCase = true) || position.isNotBlank()
+            val label = if (officer) position.ifBlank { "Officer" } else "Member"
+            val info = listOfNotNull(user?.getString("course")?.takeIf(String::isNotBlank),
+                user?.getString("yearLevel")?.takeIf(String::isNotBlank)).joinToString(" · ")
+            OrgMemberItem(
+                name = user?.getString("fullName")?.takeIf(String::isNotBlank)
+                    ?: membership.getString("fullName") ?: "Student",
+                subtitle = if (info.isBlank()) label else "$info - $label",
+                isOfficer = officer,
+                photoUrl = user?.getString("profileImageUrl").orEmpty(),
+                rank = officerRank(position, officer), position = position)
+        }.sortedWith(compareBy<OrgMemberItem> { it.rank }.thenBy { it.name.lowercase() })
+        orgMembers.clear()
+        orgMembers.addAll(items)
+        memberAdapter.notifyDataSetChanged()
+        val officers = items.count { it.isOfficer }
+        tvMembersSummary?.text = "Members (${items.size})" + if (officers == 0) ""
+            else " · $officers " + if (officers == 1) "officer" else "officers"
+        view?.findViewById<TextView>(R.id.tvStatMembers)?.text = items.size.toString()
     }
 
     private fun clearMemberUserListeners() {
-
         memberUserListeners.values.forEach { it.remove() }
         memberUserListeners.clear()
         memberUsers.clear()
     }
 
-    private fun renderMembers(
-        items: List<OrgMemberItem>
-    ) {
-
-        if (!isAdded) {
-            return
+    private fun checkEditPermission() {
+        permissionListener?.remove()
+        btnEditProfile?.visibility = View.GONE
+        btnEditProfile?.isClickable = false
+        if (auth.currentUser == null) return
+        permissionListener = db.watchAccountAccess { access, _ ->
+            if (view == null) return@watchAccountAccess
+            val allowed = access?.organizations?.any { it.id == organizationId } == true
+            btnEditProfile?.visibility = if (allowed) View.VISIBLE else View.GONE
+            btnEditProfile?.isClickable = allowed
         }
-
-        // President una, unya ang ubang officers, unya ang members
-        val sorted =
-            items.sortedWith(
-                compareBy<OrgMemberItem> { it.rank }
-                    .thenBy { it.name.lowercase() }
-            )
-
-        orgMembers.clear()
-        orgMembers.addAll(sorted)
-
-        memberAdapter.notifyDataSetChanged()
-
-        val officerCount =
-            sorted.count { it.isOfficer }
-
-        tvMembersSummary?.text =
-            if (officerCount > 0) {
-                "Members (${sorted.size}) · $officerCount " +
-                        if (officerCount == 1) "officer" else "officers"
-            } else {
-                "Members (${sorted.size})"
-            }
-
-        view?.findViewById<TextView>(
-            R.id.tvStatMembers
-        )?.text =
-            sorted.size.toString()
     }
+
 
     // =========================================================
     // LOAD ORGANIZATION (real-time)
@@ -1026,7 +859,7 @@ class OrganizationProfileFragment : Fragment() {
 
                         Log.e(
                             "OrgProfile",
-                            "Firestore organization error",
+                            "Organization database error",
                             error
                         )
 
@@ -1418,11 +1251,11 @@ class OrganizationProfileFragment : Fragment() {
 
                                 avatarColorStart =
                                     document.getString("avatarColorStart")
-                                        ?: "#0B2E6B",
+                                        ?: "#3B176A",
 
                                 avatarColorEnd =
                                     document.getString("avatarColorEnd")
-                                        ?: "#1E5FD9",
+                                        ?: "#7C3AED",
 
                                 audience =
                                     document.getString("audience") ?: "everyone",
@@ -2581,6 +2414,8 @@ class OrganizationProfileFragment : Fragment() {
 // =========================================================
 
     override fun onDestroyView() {
+        permissionListener?.remove()
+        permissionListener = null
 
         postsListener?.remove()
 

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/surface_card"
     android:orientation="vertical">
 
     <!-- BOTTOM SHEET HANDLE -->
@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:gravity="center"
-        android:background="#FFFFFF">
+        android:background="@color/surface_card">
 
         <View
             android:layout_width="45dp"
             android:layout_height="5dp"
-            android:background="#E3EAF2" />
+            android:background="@color/surface_muted" />
 
     </LinearLayout>
 
@@ -28,7 +28,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true"
-        android:background="#FFFFFF">
+        android:background="@color/surface_card">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,19 +51,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Find My Organization"
-                    android:textColor="#153667"
+                    android:textColor="@color/brand_navy"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/smartmatchBack"
                     android:layout_width="42dp"
-                    android:layout_height="42dp"
+                    android:layout_height="48dp"
                     android:gravity="center"
                     android:text="×"
                     android:textSize="27sp"
-                    android:textColor="#627789"
-                    android:background="#F1F5F8"
+                    android:textColor="@color/text_secondary"
+                    android:background="@color/surface"
                     android:contentDescription="Close"
                     android:clickable="true"
                     android:focusable="true" />
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Discover campus organizations that match your interests, skills, and goals."
-                android:textColor="#8491A0"
+                android:textColor="@color/text_primary"
                 android:textSize="13sp"
                 android:lineSpacingExtra="3dp" />
 
@@ -89,7 +89,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="13dp"
                 android:text="SELECT YOUR INTERESTS"
-                android:textColor="#78909E"
+                android:textColor="@color/text_primary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="10dp"
                 android:text="OTHER INTERESTS (OPTIONAL)"
-                android:textColor="#78909E"
+                android:textColor="@color/text_primary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -117,12 +117,12 @@
                 android:id="@+id/smartmatchOtherInterest"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:background="#F8FBFF"
+                android:background="@color/surface"
                 android:gravity="top"
                 android:padding="14dp"
                 android:hint="Tell us what you enjoy doing..."
-                android:textColor="#234E65"
-                android:textColorHint="#99A8B6"
+                android:textColor="@color/brand_navy"
+                android:textColorHint="@color/text_hint"
                 android:textSize="13sp"
                 android:inputType="textCapSentences|textMultiLine"
                 android:maxLength="100" />
@@ -135,9 +135,9 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="22dp"
                 android:gravity="center"
-                android:background="#0DAEA5"
+                android:background="@color/surface"
                 android:text="✦  Find My Match"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:clickable="true"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
                 android:text="Select your interests to get started."
-                android:textColor="#64798C"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
             <LinearLayout

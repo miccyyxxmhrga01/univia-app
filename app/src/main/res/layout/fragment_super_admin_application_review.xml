@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F8FD"
+    android:background="@color/surface"
     android:fillViewport="true"
     android:clipToPadding="false"
     android:overScrollMode="never"
@@ -37,13 +37,13 @@
             <TextView
                 android:id="@+id/btnBack"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_application_back"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
                 android:text="‹"
-                android:textColor="#0B2E6B"
+                android:textColor="@color/brand_navy"
                 android:textSize="29sp"
                 android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Review Application"
-                    android:textColor="#0B2E6B"
+                    android:textColor="@color/brand_navy"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -70,8 +70,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Review the submitted organization information."
-                    android:textColor="#7C8CA5"
-                    android:textSize="11sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -89,8 +89,8 @@
                 android:paddingEnd="11dp"
                 android:paddingBottom="6dp"
                 android:text="PENDING"
-                android:textColor="#3568A8"
-                android:textSize="9sp"
+                android:textColor="@color/brand_blue"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -100,15 +100,15 @@
         <!-- ORGANIZATION CARD                                     -->
         <!-- ===================================================== -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#E5EDF8"
-            app:strokeWidth="1dp">
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/surface_muted"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,8 +121,8 @@
                     android:layout_height="wrap_content"
                     android:letterSpacing="0.08"
                     android:text="ORGANIZATION"
-                    android:textColor="#8A98AD"
-                    android:textSize="9sp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:text="Organization Name"
-                    android:textColor="#0B2E6B"
+                    android:textColor="@color/brand_navy"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -142,27 +142,27 @@
                     android:layout_marginTop="5dp"
                     android:lineSpacingExtra="1dp"
                     android:text="Organization description"
-                    android:textColor="#718096"
-                    android:textSize="11.5sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ===================================================== -->
         <!-- APPLICANT CARD                                        -->
         <!-- ===================================================== -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#E5EDF8"
-            app:strokeWidth="1dp">
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/surface_muted"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,8 +175,8 @@
                     android:layout_height="wrap_content"
                     android:letterSpacing="0.08"
                     android:text="APPLICANT INFORMATION"
-                    android:textColor="#8A98AD"
-                    android:textSize="9sp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -185,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:text="Applicant Name"
-                    android:textColor="#17345F"
+                    android:textColor="@color/brand_navy"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -195,8 +195,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Username"
-                    android:textColor="#718096"
-                    android:textSize="11.5sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvEmail"
@@ -204,27 +204,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Email"
-                    android:textColor="#718096"
-                    android:textSize="11.5sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ===================================================== -->
         <!-- VERIFICATION DOCUMENTS                                -->
         <!-- ===================================================== -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#E5EDF8"
-            app:strokeWidth="1dp">
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/surface_muted"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -252,8 +252,8 @@
                             android:layout_height="wrap_content"
                             android:letterSpacing="0.08"
                             android:text="VERIFICATION DOCUMENTS"
-                            android:textColor="#8A98AD"
-                            android:textSize="9sp"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -262,8 +262,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="0 of 5 documents submitted"
-                            android:textColor="#64748B"
-                            android:textSize="11sp" />
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -276,8 +276,8 @@
                         android:paddingEnd="9dp"
                         android:paddingBottom="5dp"
                         android:text="5 REQUIRED"
-                        android:textColor="#3568A8"
-                        android:textSize="8.5sp"
+                        android:textColor="@color/brand_blue"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -291,7 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
-                    android:background="#F7FAFE"
+                    android:background="@color/surface"
                     android:orientation="vertical"
                     android:padding="12dp">
 
@@ -300,7 +300,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Police Clearance of Lead Organizer"
-                        android:textColor="#17345F"
+                        android:textColor="@color/brand_navy"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -310,21 +310,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:text="Not submitted"
-                        android:textColor="#8A94A6"
-                        android:textSize="10sp" />
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/btnViewDocument1"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="7dp"
                         android:background="@drawable/bg_application_document_button"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
                         android:text="View Police Clearance"
-                        android:textColor="#0B2E6B"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -338,7 +338,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#F7FAFE"
+                    android:background="@color/surface"
                     android:orientation="vertical"
                     android:padding="12dp">
 
@@ -347,7 +347,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Proposed Constitution and By-Laws"
-                        android:textColor="#17345F"
+                        android:textColor="@color/brand_navy"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -357,21 +357,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:text="Not submitted"
-                        android:textColor="#8A94A6"
-                        android:textSize="10sp" />
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/btnViewDocument2"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="7dp"
                         android:background="@drawable/bg_application_document_button"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
                         android:text="View Constitution &amp; By-Laws"
-                        android:textColor="#0B2E6B"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -385,7 +385,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#F7FAFE"
+                    android:background="@color/surface"
                     android:orientation="vertical"
                     android:padding="12dp">
 
@@ -394,7 +394,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="List of Members (Minimum of 30 Members)"
-                        android:textColor="#17345F"
+                        android:textColor="@color/brand_navy"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -404,21 +404,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:text="Not submitted"
-                        android:textColor="#8A94A6"
-                        android:textSize="10sp" />
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/btnViewDocument3"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="7dp"
                         android:background="@drawable/bg_application_document_button"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
                         android:text="View List of Members"
-                        android:textColor="#0B2E6B"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -432,7 +432,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#F7FAFE"
+                    android:background="@color/surface"
                     android:orientation="vertical"
                     android:padding="12dp">
 
@@ -441,7 +441,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Names of Two (2) Nominees for Organization Adviser"
-                        android:textColor="#17345F"
+                        android:textColor="@color/brand_navy"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -451,21 +451,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:text="Not submitted"
-                        android:textColor="#8A94A6"
-                        android:textSize="10sp" />
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/btnViewDocument4"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="7dp"
                         android:background="@drawable/bg_application_document_button"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
                         android:text="View Adviser Nominees"
-                        android:textColor="#0B2E6B"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -479,7 +479,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#F7FAFE"
+                    android:background="@color/surface"
                     android:orientation="vertical"
                     android:padding="12dp">
 
@@ -488,7 +488,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Annual Work Plan of Activities"
-                        android:textColor="#17345F"
+                        android:textColor="@color/brand_navy"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -498,28 +498,28 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:text="Not submitted"
-                        android:textColor="#8A94A6"
-                        android:textSize="10sp" />
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/btnViewDocument5"
                         android:layout_width="match_parent"
-                        android:layout_height="36dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="7dp"
                         android:background="@drawable/bg_application_document_button"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
                         android:text="View Annual Work Plan"
-                        android:textColor="#0B2E6B"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/brand_navy"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ===================================================== -->
@@ -532,8 +532,8 @@
             android:layout_marginStart="3dp"
             android:layout_marginTop="17dp"
             android:text="APPLICATION DECISION"
-            android:textColor="#8A98AD"
-            android:textSize="9sp"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:letterSpacing="0.08" />
 
@@ -543,14 +543,14 @@
         <TextView
             android:id="@+id/btnApprove"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="48dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/bg_v2_btn_blue"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
             android:text="Approve Application"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/surface_card"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -560,7 +560,7 @@
         <TextView
             android:id="@+id/btnReject"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="48dp"
             android:layout_marginTop="9dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/bg_application_reject"
@@ -568,7 +568,7 @@
             android:focusable="true"
             android:gravity="center"
             android:text="Reject Application"
-            android:textColor="#A83A4A"
+            android:textColor="@color/error"
             android:textSize="12sp"
             android:textStyle="bold" />
 

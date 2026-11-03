@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.Query
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -26,7 +26,7 @@ class NotificationsFragment : Fragment() {
     // =========================================================
 
     private val db by lazy {
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
     }
 
     private val auth by lazy {
@@ -245,7 +245,7 @@ class NotificationsFragment : Fragment() {
                 "Delete notification?"
             )
             .setMessage(
-                "This removes the notification from your Super Admin list only. The original post, chat, or renewal request will not be deleted."
+                "This removes the notification from your Coordinator list only. The original post, chat, or renewal request will not be deleted."
             )
             .setNegativeButton(
                 "Cancel",
@@ -681,7 +681,7 @@ class NotificationsFragment : Fragment() {
                                 "admins_all"
                             ) {
 
-                                "Admins Group Chat"
+                                "Org Managers Group Chat"
 
                             } else {
 
@@ -1024,7 +1024,7 @@ class NotificationsFragment : Fragment() {
                             organizationId ==
                             "admins_all"
                         ) {
-                            "Admins Group Chat"
+                            "Org Managers Group Chat"
                         } else {
                             "Organization Group Chat"
                         }

@@ -35,7 +35,7 @@
     <TextView
         android:id="@+id/btnRemoveFile"
         android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_height="48dp"
         android:gravity="center"
         android:text="✕"
         android:textColor="@color/coral_text"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in_identity">Email or username</string>
+    <string name="sign_in_identity_hint">Enter your email or username</string>
+    <string name="sign_in_identity_required">Please enter your email or username.</string>
+    <string name="manage_organization">Manage organization</string>
+    <string name="manage_org_access">Manage organization access</string>
+    <string name="manager_access_missing">You do not currently have Org Manager access. Contact your coordinator.</string>
+    <string name="access_load_failed">Unable to load access. Check your connection and try again.</string>
+    <string name="student_view">Student view</string>
+    <string name="organization_application">Organization applications</string>
+    <string name="assign_manager">Assign manager</string>
+    <string name="replace_manager">Replace manager</string>
+    <string name="remove_manager">Remove access</string>
+    <string name="manager_search_hint">Student school ID or email</string>
+    <string name="manager_search">Find student</string>
+    <string name="access_description">Choose an organization, then assign an existing account. Student features stay available.</string>
+    <string name="organization_label">Organization</string>
+    <string name="current_manager">Current manager: %1$s</string>
+    <string name="no_manager">No manager assigned</string>
+    <string name="no_organizations_access">No organizations yet. Approve an organization application first.</string>
+    <string name="access_retry">Retry loading access</string>
+</resources>

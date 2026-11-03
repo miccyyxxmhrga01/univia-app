@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,7 +25,7 @@ class StudentNotificationsFragment : Fragment() {
         FirebaseAuth.getInstance()
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private val notifications =
         mutableListOf<NotificationModel>()

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.SupabaseDatabase
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -24,7 +24,7 @@ class ChatAdapter(
 
     private val items = mutableListOf<ChatMessageModel>()
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
 
     // senderId -> karon nga profile picture
     private val avatarCache = mutableMapOf<String, String>()

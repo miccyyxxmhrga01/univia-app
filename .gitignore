@@ -13,3 +13,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+.kotlin/
+.idea.backup/
+supabase/.temp/
+supabase/.branches/
+
+# Edge Function npm dependencies are restored from deno.lock.
+supabase/functions/**/node_modules/

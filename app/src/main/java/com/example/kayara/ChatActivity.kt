@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.Query
 
 class ChatActivity : AppCompatActivity() {
 
@@ -36,7 +36,7 @@ class ChatActivity : AppCompatActivity() {
         FirebaseAuth.getInstance()
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private var messagesListener:
             ListenerRegistration? = null
@@ -205,7 +205,7 @@ class ChatActivity : AppCompatActivity() {
             findViewById<TextView>(
                 R.id.tvChatTitle
             ).text =
-                "Admins Group Chat"
+                "Org Managers Group Chat"
 
             findViewById<TextView>(
                 R.id.tvChatOrgAvatar
@@ -215,7 +215,7 @@ class ChatActivity : AppCompatActivity() {
             findViewById<TextView>(
                 R.id.tvChatSubtitle
             ).text =
-                "Super Admin + all organization admins"
+                "Coordinator + all organization admins"
 
             etMessage.hint =
                 "Message all admins..."
@@ -336,281 +336,47 @@ class ChatActivity : AppCompatActivity() {
     // =========================================================
 
     private fun verifyAccessAndStart() {
-
-        db.collection(
-            "users"
-        )
-            .document(
-                currentUid
-            )
-            .get()
-            .addOnSuccessListener { userDoc ->
-
-                if (
-                    isDestroyed
-                ) {
-
-                    return@addOnSuccessListener
-                }
-
-                senderPhotoUrl =
-                    userDoc.getString(
-                        "profileImageUrl"
-                    )
-                        ?: ""
-
-                // =================================================
-                // SUPER ADMIN
-                // =================================================
-
-                if (
-                    asSuperAdmin
-                ) {
-
-                    senderName =
-                        "Super Admin"
-
-                    senderRole =
-                        "Super Admin"
-
-                    startChat()
-
-                    return@addOnSuccessListener
-                }
-
-                // =================================================
-                // ORGANIZATION ADMIN
-                // =================================================
-
-                if (
-                    asAdmin
-                ) {
-
-                    val isApprovedAdmin =
-                        userDoc.getString(
-                            "role"
-                        ) == "admin" &&
-                                userDoc.getString(
-                                    "status"
-                                ) == "approved"
-
-                    if (
-                        !isApprovedAdmin
-                    ) {
-
-                        Toast.makeText(
-                            this,
-                            "Only approved admins can join this chat.",
-                            Toast.LENGTH_LONG
-                        ).show()
-
-                        finish()
-
-                        return@addOnSuccessListener
-                    }
-
-                    val adminOrganizationId =
-                        userDoc.getString(
-                            "organizationId"
-                        )
-                            ?.trim()
-                            ?: ""
-
-                    val savedOrganizationName =
-                        userDoc.getString(
-                            "organizationName"
-                        )
-                            ?.trim()
-                            ?: ""
-
-                    // =================================================
-                    // FALLBACK IF NO ORG ID
-                    // =================================================
-
-                    if (
-                        adminOrganizationId.isBlank()
-                    ) {
-
-                        senderName =
-                            savedOrganizationName
-                                .ifBlank {
-                                    "Organization"
-                                }
-
-                        senderRole =
-                            "ADMIN"
-
-                        startChat()
-
-                        return@addOnSuccessListener
-                    }
-
-                    // =================================================
-                    // GET ORGANIZATION NAME
-                    // =================================================
-
-                    db.collection(
-                        "organizations"
-                    )
-                        .document(
-                            adminOrganizationId
-                        )
-                        .get()
-                        .addOnSuccessListener { orgDocument ->
-
-                            if (
-                                isDestroyed
-                            ) {
-
-                                return@addOnSuccessListener
-                            }
-
-                            val realOrganizationName =
-                                orgDocument
-                                    .getString(
-                                        "orgName"
-                                    )
-                                    ?.takeIf {
-                                        it.isNotBlank()
-                                    }
-                                    ?: orgDocument
-                                        .getString(
-                                            "organizationName"
-                                        )
-                                        ?.takeIf {
-                                            it.isNotBlank()
-                                        }
-                                    ?: savedOrganizationName
-                                        .takeIf {
-                                            it.isNotBlank()
-                                        }
-                                    ?: "Organization"
-
-                            // =========================================
-                            // IMPORTANT:
-                            // USE ORGANIZATION NAME, NOT ADMIN NAME
-                            // =========================================
-
-                            senderName =
-                                realOrganizationName
-
-                            senderRole =
-                                "ADMIN"
-
-                            startChat()
-                        }
-                        .addOnFailureListener {
-
-                            senderName =
-                                savedOrganizationName
-                                    .ifBlank {
-                                        "Organization"
-                                    }
-
-                            senderRole =
-                                "ADMIN"
-
-                            startChat()
-                        }
-
-                    return@addOnSuccessListener
-                }
-
-                // =================================================
-                // STUDENT / MEMBER
-                // =================================================
-
-                senderName =
-                    userDoc.getString(
-                        "fullName"
-                    )
-                        ?: auth
-                            .currentUser
-                            ?.displayName
-                                ?: "Member"
-
-                db.collection(
-                    "memberships"
-                )
-                    .document(
-                        "${currentUid}_$organizationId"
-                    )
-                    .get()
-                    .addOnSuccessListener { membership ->
-
-                        if (
-                            isDestroyed
-                        ) {
-
-                            return@addOnSuccessListener
-                        }
-
-                        val approved =
-                            membership.exists() &&
-                                    membership.getString(
-                                        "status"
-                                    ) == "approved"
-
-                        if (
-                            !approved
-                        ) {
-
-                            Toast.makeText(
-                                this,
-                                "Only approved members can join this chat.",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                            finish()
-
-                            return@addOnSuccessListener
-                        }
-
-                        senderRole =
-                            if (
-                                membership.getString(
-                                    "role"
-                                ) == "officer"
-                            ) {
-
-                                membership.getString(
-                                    "position"
-                                )
-                                    ?: ""
-
-                            } else {
-
-                                ""
-                            }
-
-                        startChat()
-                    }
-                    .addOnFailureListener { error ->
-
-                        Toast.makeText(
-                            this,
-                            "Unable to open the chat: ${error.message}",
-                            Toast.LENGTH_LONG
-                        ).show()
-
-                        finish()
-                    }
-            }
-            .addOnFailureListener { error ->
-
-                Toast.makeText(
-                    this,
-                    "Unable to open the chat: ${error.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-
+        db.accountAccess().addOnSuccessListener(this) accessLoaded@{ access ->
+            val managed = access.organizations.firstOrNull { it.id == organizationId }
+            val managerRoom = organizationId == ADMINS_ROOM_ID
+            if ((asSuperAdmin && !access.coordinator) ||
+                (asAdmin && !access.coordinator && (if (managerRoom) access.organizations.isEmpty() else managed == null))) {
+                Toast.makeText(this, R.string.manager_access_missing, Toast.LENGTH_LONG).show()
                 finish()
+                return@accessLoaded
             }
+            if (asSuperAdmin || asAdmin) {
+                senderName = if (access.coordinator) "Coordinator" else managed?.name ?: "Org Manager"
+                senderRole = if (access.coordinator) "Coordinator" else "ADMIN"
+                AccountAccessGuard.attach(this) { latest ->
+                    if (asSuperAdmin) latest.coordinator
+                    else latest.coordinator || if (managerRoom) latest.organizations.isNotEmpty()
+                        else latest.organizations.any { it.id == organizationId }
+                }
+                startChat()
+                return@accessLoaded
+            }
+            db.collection("users").document(currentUid).get().addOnSuccessListener(this) { profile ->
+                senderPhotoUrl = profile.getString("profileImageUrl").orEmpty()
+                senderName = profile.getString("fullName") ?: "Student"
+                db.collection("memberships").document("${currentUid}_$organizationId").get()
+                    .addOnSuccessListener(this) { membership ->
+                        if (membership.getString("status") == "approved") {
+                            senderRole = if (membership.getString("role") == "officer") membership.getString("position").orEmpty() else ""
+                            startChat()
+                        } else {
+                            Toast.makeText(this, "Only approved members can join this chat.", Toast.LENGTH_LONG).show()
+                            finish()
+                        }
+                    }.addOnFailureListener(this) { chatAccessFailed(it) }
+            }.addOnFailureListener(this) { chatAccessFailed(it) }
+        }.addOnFailureListener(this) { chatAccessFailed(it) }
     }
 
-    // =========================================================
-    // START CHAT
-    // =========================================================
+    private fun chatAccessFailed(error: Exception) {
+        Toast.makeText(this, error.message ?: getString(R.string.access_load_failed), Toast.LENGTH_LONG).show()
+        finish()
+    }
 
     private fun startChat() {
 

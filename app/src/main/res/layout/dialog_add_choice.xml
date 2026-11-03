@@ -33,7 +33,7 @@
         android:paddingHorizontal="20dp"
         android:text="Choose what you want to create."
         android:textColor="@color/text_gray"
-        android:textSize="11.5sp" />
+        android:textSize="12sp" />
 
     <!-- ============================================= -->
     <!-- NEW FOLDER -->
@@ -89,7 +89,7 @@
                 android:layout_marginTop="2dp"
                 android:text="Organize files inside another folder"
                 android:textColor="@color/text_gray"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -157,7 +157,7 @@
                 android:layout_marginTop="2dp"
                 android:text="Upload a PDF, Word, Excel, or image file"
                 android:textColor="@color/text_gray"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

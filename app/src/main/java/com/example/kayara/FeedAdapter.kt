@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.SupabaseDatabase
 
 class FeedAdapter(
     private val posts: MutableList<FeedPostModel>,
@@ -44,7 +44,7 @@ class FeedAdapter(
         FirebaseAuth.getInstance()
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     // =========================================================
     // SEE MORE / SEE LESS STATE

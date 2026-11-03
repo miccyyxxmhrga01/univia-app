@@ -124,7 +124,7 @@ class BrowseOrgAdapter(
                 } catch (_: Exception) {
 
                     Color.parseColor(
-                        "#1E5FD9"
+                        "#7C3AED"
                     )
                 }
             )

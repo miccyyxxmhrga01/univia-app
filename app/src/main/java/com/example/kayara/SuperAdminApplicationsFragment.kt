@@ -9,13 +9,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.Query
 
 class SuperAdminApplicationsFragment : Fragment() {
 
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     private lateinit var recyclerApplications: RecyclerView
     private lateinit var tvPendingCount: TextView
@@ -31,7 +31,7 @@ class SuperAdminApplicationsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        db = FirebaseFirestore.getInstance()
+        db = SupabaseDatabase.getInstance()
     }
 
     override fun onCreateView(

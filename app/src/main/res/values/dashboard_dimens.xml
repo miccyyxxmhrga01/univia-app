@@ -1,0 +1,4 @@
+<resources>
+    <!-- Matches the drawable's reserved shadow area so feed content stays inside its surface. -->
+    <dimen name="feed_surface_inset">7dp</dimen>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <!-- XML visibility uses enum index 2 for gone, rather than View.GONE (8). -->
+    <integer name="dashboard_greeting_visibility">2</integer>
+</resources>

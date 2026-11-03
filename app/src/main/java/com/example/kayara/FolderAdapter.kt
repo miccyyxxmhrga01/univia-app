@@ -70,7 +70,7 @@ class FolderAdapter(
         } catch (_: Exception) {
 
             holder.imgIcon.setColorFilter(
-                Color.parseColor("#1E5FD9")
+                Color.parseColor("#7C3AED")
             )
         }
 

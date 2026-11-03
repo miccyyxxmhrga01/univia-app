@@ -25,9 +25,9 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -38,7 +38,9 @@ class ProfileFragment : Fragment() {
     // =========================================================
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
+
+    private var accessListener: ListenerRegistration? = null
 
     private var membershipsListener: ListenerRegistration? = null
     private var organizationsListener: ListenerRegistration? = null
@@ -161,7 +163,7 @@ class ProfileFragment : Fragment() {
         )
 
         auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        db = SupabaseDatabase.getInstance()
 
         ivProfile = view.findViewById(R.id.ivProfile)
         tvProfileInitials = view.findViewById(R.id.tvProfileInitials)
@@ -186,8 +188,8 @@ class ProfileFragment : Fragment() {
         val circle = GradientDrawable(
             GradientDrawable.Orientation.TL_BR,
             intArrayOf(
-                Color.parseColor("#2DD4BF"),
-                Color.parseColor("#1FA898")
+                Color.parseColor("#7C3AED"),
+                Color.parseColor("#3B176A")
             )
         )
 
@@ -214,6 +216,18 @@ class ProfileFragment : Fragment() {
             view.findViewById<LinearLayout>(
                 R.id.btnLogout
             )
+
+        val manage = view.findViewById<View>(R.id.btnManageOrganization)
+        val application = view.findViewById<View>(R.id.btnOrganizationApplication)
+        if (!viewOnly) {
+            application.visibility = View.VISIBLE
+            application.setOnClickListener { startActivity(Intent(requireContext(), AdminSignUpActivity::class.java)) }
+            manage.setOnClickListener { OrganizationAccess.show(requireActivity()) }
+            accessListener = db.watchAccountAccess { access, _ ->
+                if (this.view !== view) return@watchAccountAccess
+                manage.visibility = if (access?.organizations?.isNotEmpty() == true) View.VISIBLE else View.GONE
+            }
+        }
 
         if (viewOnly) {
 
@@ -1059,6 +1073,8 @@ class ProfileFragment : Fragment() {
     // =========================================================
 
     override fun onDestroyView() {
+        accessListener?.remove()
+        accessListener = null
 
         membershipsListener?.remove()
         membershipsListener = null

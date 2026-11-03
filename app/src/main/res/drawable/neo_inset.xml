@@ -1,0 +1,2 @@
+<drawable xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="com.example.kayara.NeumorphicDrawable" app:neoStyle="inset" app:neoRadius="18dp" />

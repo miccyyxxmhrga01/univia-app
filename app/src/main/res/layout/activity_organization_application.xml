@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/applicationScroll" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/bg_light">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp" android:focusableInTouchMode="true">
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:minHeight="48dp" android:text="Back" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="@string/organization_application"
+            android:textColor="@color/text_primary" android:fontFamily="@font/poppins_semibold" android:textSize="24sp" />
+        <TextView style="@style/RegistrationBody" android:layout_marginTop="8dp"
+            android:text="Submit your organization and its documents for review. Your account keeps Student access. A coordinator assigns management access separately." />
+        <LinearLayout android:id="@+id/applicationHistory" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="vertical" />
+        <TextView android:id="@+id/applicationFormTitle" style="@style/RegistrationLabel"
+            android:layout_marginTop="24dp" android:text="Request an organization" android:textSize="18sp" />
+        <TextView style="@style/RegistrationLabel" android:text="Organization name" android:labelFor="@id/etOrgName" />
+        <EditText android:id="@+id/etOrgName" style="@style/RegistrationInput"
+            android:hint="Organization name" android:inputType="textCapWords" />
+        <TextView style="@style/RegistrationLabel" android:text="Description" android:labelFor="@id/etDescription" />
+        <EditText android:id="@+id/etDescription" style="@style/RegistrationInput"
+            android:hint="Describe the organization and its purpose" android:inputType="textMultiLine|textCapSentences"
+            android:singleLine="false" android:minLines="3" android:gravity="top|start" />
+        <TextView style="@style/RegistrationLabel" android:text="Required documents" />
+        <LinearLayout android:id="@+id/applicationDocumentButtons" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" />
+        <TextView android:id="@+id/tvError" style="@style/RegistrationBody"
+            android:layout_marginTop="12dp" android:visibility="gone" android:accessibilityLiveRegion="polite" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnSignUp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="54dp" android:layout_marginTop="16dp" android:text="Submit organization application" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

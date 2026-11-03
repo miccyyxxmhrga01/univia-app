@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.SupabaseDatabase
 
 /**
  * Abli ang group chat sa usa ka organization.
@@ -50,7 +50,7 @@ fun openAdminsGroupChat(
     val intent = Intent(context, ChatActivity::class.java)
 
     intent.putExtra(ChatActivity.EXTRA_ORG_ID, ChatActivity.ADMINS_ROOM_ID)
-    intent.putExtra(ChatActivity.EXTRA_ORG_NAME, "Admins Group Chat")
+    intent.putExtra(ChatActivity.EXTRA_ORG_NAME, "Org Managers Group Chat")
     intent.putExtra(ChatActivity.EXTRA_AS_ADMIN, true)
     intent.putExtra(ChatActivity.EXTRA_AS_SUPER_ADMIN, asSuperAdmin)
 
@@ -126,8 +126,8 @@ private fun showChatPicker(
     orgs: List<ChatOrg>
 ) {
 
-    val navy = Color.parseColor("#0B2E6B")
-    val gray = Color.parseColor("#6B7A90")
+    val navy = Color.parseColor("#3B176A")
+    val gray = Color.parseColor("#6B5C7B")
 
     val dialog = BottomSheetDialog(activity)
 
@@ -148,7 +148,7 @@ private fun showChatPicker(
     handleParams.topMargin = activity.dpPx(10)
     handleParams.bottomMargin = activity.dpPx(12)
     handle.layoutParams = handleParams
-    handle.background = roundedBg(Color.parseColor("#D0D7E2"), 100f)
+    handle.background = roundedBg(Color.parseColor("#D6C6E7"), 100f)
     root.addView(handle)
 
     // Title
@@ -176,7 +176,7 @@ private fun showChatPicker(
         row.orientation = LinearLayout.HORIZONTAL
         row.gravity = Gravity.CENTER_VERTICAL
         row.background =
-            roundedBg(Color.parseColor("#F1F5FB"), activity.dpPx(16).toFloat())
+            roundedBg(Color.parseColor("#F1ECF8"), activity.dpPx(16).toFloat())
         row.setPadding(
             activity.dpPx(12), activity.dpPx(12),
             activity.dpPx(14), activity.dpPx(12)
@@ -210,8 +210,8 @@ private fun showChatPicker(
         val gradient = GradientDrawable(
             GradientDrawable.Orientation.TL_BR,
             intArrayOf(
-                safeColor(org.colorStart, "#1E5FD9"),
-                safeColor(org.colorEnd, "#3FA9F5")
+                safeColor(org.colorStart, "#7C3AED"),
+                safeColor(org.colorEnd, "#7C3AED")
             )
         )
         gradient.cornerRadius = activity.dpPx(14).toFloat()
@@ -268,7 +268,7 @@ private fun showChatPicker(
         // Arrow
         val arrow = TextView(activity)
         arrow.text = "›"
-        arrow.setTextColor(Color.parseColor("#1E5FD9"))
+        arrow.setTextColor(Color.parseColor("#7C3AED"))
         arrow.textSize = 24f
 
         row.addView(avatarBox)
@@ -293,7 +293,7 @@ private fun showChatPicker(
     // Cancel
     val cancel = TextView(activity)
     cancel.text = "Cancel"
-    cancel.setTextColor(Color.parseColor("#1E5FD9"))
+    cancel.setTextColor(Color.parseColor("#7C3AED"))
     cancel.textSize = 13f
     cancel.setTypeface(null, Typeface.BOLD)
     cancel.gravity = Gravity.CENTER
@@ -340,7 +340,7 @@ fun openStudentChat(activity: Activity) {
         return
     }
 
-    val db = FirebaseFirestore.getInstance()
+    val db = SupabaseDatabase.getInstance()
 
     // Kuhaon una ang tinuod nga organizations
     db.collection("organizations")
@@ -392,10 +392,10 @@ fun openStudentChat(activity: Activity) {
                                             orgDoc.getString("avatarUrl") ?: "",
                                         colorStart =
                                             orgDoc.getString("colorStart")
-                                                ?: "#1E5FD9",
+                                                ?: "#7C3AED",
                                         colorEnd =
                                             orgDoc.getString("colorEnd")
-                                                ?: "#3FA9F5"
+                                                ?: "#7C3AED"
                                     )
                                 }
                             }
@@ -471,7 +471,7 @@ private fun chooserRow(
     val row = LinearLayout(activity)
     row.orientation = LinearLayout.VERTICAL
     row.background =
-        roundedBg(Color.parseColor("#F1F5FB"), activity.dpPx(16).toFloat())
+        roundedBg(Color.parseColor("#F1ECF8"), activity.dpPx(16).toFloat())
     row.setPadding(
         activity.dpPx(16), activity.dpPx(14),
         activity.dpPx(16), activity.dpPx(14)
@@ -488,7 +488,7 @@ private fun chooserRow(
 
     val t = TextView(activity)
     t.text = titleText
-    t.setTextColor(Color.parseColor("#0B2E6B"))
+    t.setTextColor(Color.parseColor("#3B176A"))
     t.textSize = 14f
     t.maxLines = 1
     t.ellipsize = android.text.TextUtils.TruncateAt.END
@@ -496,7 +496,7 @@ private fun chooserRow(
 
     val s = TextView(activity)
     s.text = subText
-    s.setTextColor(Color.parseColor("#6B7A90"))
+    s.setTextColor(Color.parseColor("#6B5C7B"))
     s.textSize = 11f
 
     row.addView(t)
@@ -528,7 +528,7 @@ fun showAdminChatChooser(
 
     val title = TextView(activity)
     title.text = "Choose a group chat"
-    title.setTextColor(Color.parseColor("#0B2E6B"))
+    title.setTextColor(Color.parseColor("#3B176A"))
     title.textSize = 17f
     title.setTypeface(null, Typeface.BOLD)
     title.setPadding(activity.dpPx(4), 0, 0, activity.dpPx(12))
@@ -553,8 +553,8 @@ fun showAdminChatChooser(
     root.addView(
         chooserRow(
             activity,
-            "Admins Group Chat",
-            "Super Admin + all organization admins"
+            "Org Managers Group Chat",
+            "Coordinator + all organization admins"
         ) {
             dialog.dismiss()
             openAdminsGroupChat(activity, false)

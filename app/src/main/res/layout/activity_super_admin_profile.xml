@@ -28,10 +28,10 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_header_icon_btn"
-            android:padding="9dp"
+            android:padding="15dp"
             android:src="@drawable/ic_back_arrow"
             android:contentDescription="@string/back"
             android:clickable="true"
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:layout_marginStart="14dp"
             android:text="Profile"
-            android:textColor="@color/white"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -57,8 +57,8 @@
             android:paddingEnd="13dp"
             android:paddingBottom="8dp"
             android:text="Edit"
-            android:textColor="@color/blue_deep"
-            android:textSize="11sp"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:clickable="true"
             android:focusable="true" />
@@ -94,14 +94,14 @@
             <!-- PROFILE CARD -->
             <!-- ================================================= -->
 
-            <com.google.android.material.card.MaterialCardView
+            <com.example.kayara.NeoCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
                 app:strokeColor="@color/card_border"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,8 +147,8 @@
                             android:background="@drawable/bg_info_icon"
                             android:gravity="center"
                             android:text="Edit"
-                            android:textColor="@color/blue_deep"
-                            android:textSize="8sp"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                     </FrameLayout>
@@ -161,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Super Admin"
+                        android:text="Coordinator"
                         android:textColor="@color/dark_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -178,9 +178,9 @@
                         android:paddingTop="5dp"
                         android:paddingEnd="12dp"
                         android:paddingBottom="5dp"
-                        android:text="SUPER ADMIN"
+                        android:text="COORDINATOR"
                         android:textColor="@color/teal_deep"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
 
@@ -193,7 +193,7 @@
                         android:layout_marginTop="8dp"
                         android:text="superadmin"
                         android:textColor="@color/text_gray"
-                        android:textSize="11.5sp" />
+                        android:textSize="12sp" />
 
 
                     <!-- STATS -->
@@ -227,7 +227,7 @@
                                 android:layout_marginTop="2dp"
                                 android:text="Posts"
                                 android:textColor="@color/text_gray"
-                                android:textSize="10.5sp" />
+                                android:textSize="12sp" />
 
                         </LinearLayout>
 
@@ -259,7 +259,7 @@
                                 android:layout_marginTop="2dp"
                                 android:text="Account"
                                 android:textColor="@color/text_gray"
-                                android:textSize="10.5sp" />
+                                android:textSize="12sp" />
 
                         </LinearLayout>
 
@@ -267,7 +267,7 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.example.kayara.NeoCardView>
 
 
             <!-- ================================================= -->
@@ -296,7 +296,7 @@
                     android:layout_height="wrap_content"
                     android:text="Edit details"
                     android:textColor="@color/blue_deep"
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:clickable="true"
                     android:focusable="true" />
@@ -308,15 +308,15 @@
             <!-- ACCOUNT DETAILS CARD -->
             <!-- ================================================= -->
 
-            <com.google.android.material.card.MaterialCardView
+            <com.example.kayara.NeoCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/card_border"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -354,7 +354,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="EMAIL"
                                 android:textColor="@color/text_gray"
-                                android:textSize="9sp"
+                                android:textSize="12sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -408,7 +408,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="USERNAME"
                                 android:textColor="@color/text_gray"
-                                android:textSize="9sp"
+                                android:textSize="12sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -427,7 +427,7 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.example.kayara.NeoCardView>
 
 
             <!-- ================================================= -->
@@ -456,7 +456,7 @@
                     android:layout_height="wrap_content"
                     android:text="0 posts"
                     android:textColor="@color/text_gray"
-                    android:textSize="10.5sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

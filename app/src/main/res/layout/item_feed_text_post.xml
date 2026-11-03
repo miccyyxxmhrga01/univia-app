@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView
+<com.example.kayara.NeoCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="14dp"
-    app:cardBackgroundColor="#DFFFFFFF"
-    app:cardCornerRadius="22dp"
-    app:cardElevation="3dp"
-    app:strokeColor="#ECF2FB"
-    app:strokeWidth="1dp">
+    android:layout_marginStart="0dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginBottom="@dimen/ui_space_16"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/surface"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="14dp">
+        android:paddingTop="@dimen/ui_space_16"
+        android:paddingStart="@dimen/feed_surface_inset"
+        android:paddingEnd="@dimen/feed_surface_inset"
+        android:paddingBottom="@dimen/feed_surface_inset">
 
 
         <!-- ===================================================== -->
@@ -48,7 +51,7 @@
                     android:gravity="center"
                     android:text="ORG"
                     android:textColor="@color/white"
-                    android:textSize="11sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -76,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Organization"
-                    android:textColor="#0B2E6B"
+                    android:textColor="@color/brand_navy"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -85,8 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Just now"
-                    android:textColor="#7C8CA5"
-                    android:textSize="11sp" />
+                    android:textAppearance="@style/TextAppearance.Univia.Metadata" />
 
             </LinearLayout>
 
@@ -95,14 +97,14 @@
 
             <ImageView
                 android:id="@+id/btnPostMenu"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:clickable="true"
                 android:contentDescription="Post menu"
                 android:focusable="true"
-                android:padding="3dp"
+                android:padding="15dp"
                 android:src="@drawable/ic_more_vert"
-                app:tint="#7890AF" />
+                app:tint="@color/brand_blue" />
 
         </LinearLayout>
 
@@ -123,8 +125,8 @@
             android:paddingEnd="9dp"
             android:paddingBottom="4dp"
             android:text="EVERYONE"
-            android:textColor="#52627A"
-            android:textSize="9sp"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
 
@@ -143,8 +145,7 @@
             android:paddingStart="14dp"
             android:paddingEnd="14dp"
             android:text="Post content"
-            android:textColor="#0B2E6B"
-            android:textSize="14sp" />
+            android:textAppearance="@style/TextAppearance.Univia.Body" />
 
 
         <!-- SEE MORE / SEE LESS -->
@@ -159,10 +160,12 @@
             android:clickable="true"
             android:focusable="true"
             android:text="See more"
-            android:textColor="#2196D3"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.Univia.Action"
+            android:minHeight="@dimen/ui_touch_target"
+            android:minWidth="@dimen/ui_touch_target"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackground" />
 
 
         <!-- DIVIDER -->
@@ -170,7 +173,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#EAF0F8" />
+            android:background="@color/surface_muted" />
 
 
         <!-- ===================================================== -->
@@ -190,12 +193,18 @@
 
             <LinearLayout
                 android:id="@+id/btnLike"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:minWidth="@dimen/ui_touch_target"
+                android:minHeight="@dimen/ui_touch_target"
+                android:layout_marginStart="0dp"
+                android:background="?attr/selectableItemBackground"
+                android:screenReaderFocusable="true">
 
                 <ImageView
                     android:id="@+id/imgHeart"
@@ -203,7 +212,7 @@
                     android:layout_height="24dp"
                     android:contentDescription="Like"
                     android:src="@drawable/ic_heart"
-                    app:tint="#173F7A" />
+                    app:tint="@color/brand_navy" />
 
                 <TextView
                     android:id="@+id/tvLikeCount"
@@ -211,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="0"
-                    android:textColor="#0B2E6B"
+                    android:textColor="@color/brand_navy"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -222,20 +231,25 @@
 
             <LinearLayout
                 android:id="@+id/btnComment"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="0dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:minWidth="@dimen/ui_touch_target"
+                android:minHeight="@dimen/ui_touch_target"
+                android:background="?attr/selectableItemBackground"
+                android:screenReaderFocusable="true">
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:contentDescription="Comment"
                     android:src="@drawable/ic_comment"
-                    app:tint="#173F7A" />
+                    app:tint="@color/brand_navy" />
 
                 <TextView
                     android:id="@+id/tvCommentCount"
@@ -243,7 +257,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="0"
-                    android:textColor="#0B2E6B"
+                    android:textColor="@color/brand_navy"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -254,13 +268,18 @@
 
             <LinearLayout
                 android:id="@+id/btnShare"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="0dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:minWidth="@dimen/ui_touch_target"
+                android:minHeight="@dimen/ui_touch_target"
+                android:background="?attr/selectableItemBackground"
+                android:screenReaderFocusable="true">
 
                 <ImageView
                     android:id="@+id/imgShare"
@@ -268,7 +287,7 @@
                     android:layout_height="24dp"
                     android:contentDescription="Share"
                     android:src="@drawable/ic_share"
-                    app:tint="#173F7A" />
+                    app:tint="@color/brand_navy" />
 
                 <TextView
                     android:id="@+id/tvShareCount"
@@ -276,7 +295,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="0"
-                    android:textColor="#0B2E6B"
+                    android:textColor="@color/brand_navy"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -286,4 +305,4 @@
 
     </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</com.example.kayara.NeoCardView>

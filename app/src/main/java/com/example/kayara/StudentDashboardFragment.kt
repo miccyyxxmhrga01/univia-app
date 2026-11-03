@@ -19,10 +19,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 
 class StudentDashboardFragment : Fragment() {
 
@@ -31,7 +31,7 @@ class StudentDashboardFragment : Fragment() {
     // =========================================================
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     private var membershipListener: ListenerRegistration? = null
     private var postsListener: ListenerRegistration? = null
@@ -102,7 +102,7 @@ class StudentDashboardFragment : Fragment() {
             FirebaseAuth.getInstance()
 
         db =
-            FirebaseFirestore.getInstance()
+            SupabaseDatabase.getInstance()
     }
 
     // =========================================================
@@ -214,7 +214,7 @@ class StudentDashboardFragment : Fragment() {
             db.collection(
                 "organizations"
             )
-                .addSnapshotListener { snapshot, error ->
+                .addSnapshotListener(useCache = true) { snapshot, error ->
 
                     if (
                         !isAdded ||
@@ -291,7 +291,7 @@ class StudentDashboardFragment : Fragment() {
                     "status",
                     "approved"
                 )
-                .addSnapshotListener { snapshot, error ->
+                .addSnapshotListener(useCache = true) { snapshot, error ->
 
                     if (
                         !isAdded
@@ -664,7 +664,7 @@ class StudentDashboardFragment : Fragment() {
             db.collection(
                 "posts"
             )
-                .addSnapshotListener { snapshot, error ->
+                .addSnapshotListener(useCache = true) { snapshot, error ->
 
                     if (
                         !isAdded
@@ -959,13 +959,13 @@ class StudentDashboardFragment : Fragment() {
                 document.getString(
                     "avatarColorStart"
                 )
-                    ?: "#0B2E6B",
+                    ?: "#3B176A",
 
             avatarColorEnd =
                 document.getString(
                     "avatarColorEnd"
                 )
-                    ?: "#1E5FD9",
+                    ?: "#7C3AED",
 
             audience =
                 document.getString(

@@ -249,7 +249,7 @@ class OrgMemberAdapter(
 
         name.setTextColor(
             Color.parseColor(
-                "#0B2E6B"
+                "#3B176A"
             )
         )
 
@@ -272,7 +272,7 @@ class OrgMemberAdapter(
 
         subtitle.setTextColor(
             Color.parseColor(
-                "#6B7A90"
+                "#6B5C7B"
             )
         )
 
@@ -401,10 +401,10 @@ class OrgMemberAdapter(
 
                     intArrayOf(
                         Color.parseColor(
-                            "#2E9DF7"
+                            "#7C3AED"
                         ),
                         Color.parseColor(
-                            "#4FC3F7"
+                            "#7C3AED"
                         )
                     )
 
@@ -412,10 +412,10 @@ class OrgMemberAdapter(
 
                     intArrayOf(
                         Color.parseColor(
-                            "#0B2E6B"
+                            "#3B176A"
                         ),
                         Color.parseColor(
-                            "#2A4E92"
+                            "#3B176A"
                         )
                     )
                 }
@@ -502,13 +502,13 @@ class OrgMemberAdapter(
 
             holder.badge.setTextColor(
                 Color.parseColor(
-                    "#1E5FD9"
+                    "#7C3AED"
                 )
             )
 
             pill.setColor(
                 Color.parseColor(
-                    "#E8F0FE"
+                    "#F1ECF8"
                 )
             )
 
@@ -519,13 +519,13 @@ class OrgMemberAdapter(
 
             holder.badge.setTextColor(
                 Color.parseColor(
-                    "#5B6B80"
+                    "#6B5C7B"
                 )
             )
 
             pill.setColor(
                 Color.parseColor(
-                    "#EEF1F6"
+                    "#E1E8F2"
                 )
             )
         }

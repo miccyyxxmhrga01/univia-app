@@ -1,12 +1,12 @@
 package com.example.kayara
 
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
 
 object AdminNotificationHelper {
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     /**
      * Creates a notification intended for the ADMIN

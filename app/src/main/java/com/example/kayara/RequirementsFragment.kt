@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 
 class RequirementsFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class RequirementsFragment : Fragment() {
     // =========================================================
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
 
     // =========================================================
@@ -682,7 +682,7 @@ class RequirementsFragment : Fragment() {
     private fun loadRenewalFolderCount(
         renewalFolderName: String,
         existingOrganizationDocuments:
-        List<com.google.firebase.firestore.DocumentSnapshot>
+        List<com.example.kayara.data.DocumentSnapshot>
     ) {
 
         val academicYear =
@@ -858,7 +858,7 @@ class RequirementsFragment : Fragment() {
 
     private fun addOtherOrganizationFolders(
         documents:
-        List<com.google.firebase.firestore.DocumentSnapshot>
+        List<com.example.kayara.data.DocumentSnapshot>
     ) {
 
         val existingFolderNames =
@@ -1015,10 +1015,10 @@ class RequirementsFragment : Fragment() {
 
     private fun mergeCreatedFolders(
         folderDocs:
-        List<com.google.firebase.firestore.DocumentSnapshot>,
+        List<com.example.kayara.data.DocumentSnapshot>,
 
         fileDocs:
-        List<com.google.firebase.firestore.DocumentSnapshot>
+        List<com.example.kayara.data.DocumentSnapshot>
     ) {
 
         // Tangtangon una ang karaan aron walay doble

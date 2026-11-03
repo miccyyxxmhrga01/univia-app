@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="0 files"
             android:textColor="@color/text_gray"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <View

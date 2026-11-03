@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 
 class OrganizationsFragment : Fragment() {
 
@@ -29,7 +29,7 @@ class OrganizationsFragment : Fragment() {
     private lateinit var organizationAdapter: OrganizationAdapter
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     // =========================================================
     // DATA LISTS
@@ -125,6 +125,10 @@ class OrganizationsFragment : Fragment() {
             view.findViewById(
                 R.id.chipRenewalDue
             )
+
+        view.findViewById<View>(R.id.btnManageOrganizationAccess).setOnClickListener {
+            startActivity(Intent(requireContext(), ManageAdminsActivity::class.java))
+        }
 
         etSearchOrg =
             view.findViewById(
@@ -485,12 +489,12 @@ class OrganizationsFragment : Fragment() {
                             val colorStart =
                                 document.getString(
                                     "colorStart"
-                                ) ?: "#1E5FD9"
+                                ) ?: "#7C3AED"
 
                             val colorEnd =
                                 document.getString(
                                     "colorEnd"
-                                ) ?: "#3FA9F5"
+                                ) ?: "#7C3AED"
 
                             val recruitmentInfo =
                                 document.getString(
@@ -1051,10 +1055,10 @@ class OrganizationsFragment : Fragment() {
                         "new_request",
 
                     colorStart =
-                        "#1E5FD9",
+                        "#7C3AED",
 
                     colorEnd =
-                        "#3FA9F5",
+                        "#7C3AED",
 
                     recruitmentInfo =
                         it.applicationId,

@@ -17,26 +17,29 @@
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="0dp"
-        android:layout_height="101dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_header_gradient_admin"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="@dimen/ui_nav_min_height">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/ui_nav_min_height"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <FrameLayout
+            <ImageView android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="12dp" android:src="@drawable/bisu_logo" android:contentDescription="@string/bisu_logo_description" />
+<FrameLayout
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_org_badge"
-                android:elevation="2dp">
+                android:elevation="0dp">
 
                 <TextView
                     android:id="@+id/tvOrgInitials"
@@ -45,8 +48,8 @@
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:text="WN"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
             </FrameLayout>
@@ -62,9 +65,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:text="BBCO · BISU Balilihan"
-                    android:textColor="#DDF6F3"
-                    android:textSize="9sp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -76,20 +79,27 @@
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:text="Campus Organization"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_primary"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/btnStudentView" android:layout_width="88dp"
+                android:layout_height="wrap_content" android:minWidth="48dp" android:minHeight="48dp"
+                android:text="@string/student_view" android:textSize="12sp" android:maxLines="2"
+                android:paddingStart="8dp" android:paddingEnd="8dp" />
+
             <FrameLayout
                 android:id="@+id/btnChat"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_header_icon_btn"
                 android:clickable="true"
                 android:focusable="true"
-                android:elevation="2dp">
+                android:elevation="0dp">
 
                 <ImageView
                     android:layout_width="18dp"
@@ -97,7 +107,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_chat_message"
                     android:contentDescription="Group chat"
-                    app:tint="@color/white" />
+                    app:tint="@color/text_primary" />
 
             </FrameLayout>
 
@@ -113,14 +123,14 @@
         android:id="@+id/mainContentSurface"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/bg_header_curve_admin"
         android:clipToOutline="true"
         android:outlineProvider="background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintBottom_toTopOf="@id/customBottomNav">
 
 
         <FrameLayout
@@ -131,7 +141,7 @@
             android:clipChildren="false"
             android:clipToPadding="false"
             android:paddingTop="14dp"
-            android:paddingBottom="88dp"
+            android:paddingBottom="@dimen/ui_space_8"
             tools:layout="@layout/fragment_admin_dashboard" />
 
     </FrameLayout>
@@ -146,18 +156,18 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="@dimen/ui_space_8"
         android:background="@drawable/bg_fab"
         android:padding="15dp"
         android:src="@drawable/ic_add"
-        android:elevation="12dp"
+        android:elevation="0dp"
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true"
         android:contentDescription="@string/add_folder"
         app:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/customBottomNav" />
 
 
     <!-- ===================================================== -->
@@ -167,36 +177,30 @@
     <FrameLayout
         android:id="@+id/customBottomNav"
         android:layout_width="0dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="14dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:elevation="14dp"
+        android:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-
-        <View
-            android:id="@+id/navBarSurface"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_gravity="bottom"
-            android:background="@drawable/bg_glass_bottom_nav"
-            android:elevation="3dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="@dimen/ui_nav_min_height"
+        android:background="@drawable/bg_glass_bottom_nav">
 
 
         <LinearLayout
-            android:id="@+id/navItemsContainer"
+            android:id="@+id/navItemsContainer" android:background="@android:color/transparent"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:elevation="12dp"
-            android:orientation="horizontal">
+            android:elevation="0dp"
+            android:orientation="horizontal"
+            android:minHeight="@dimen/ui_nav_min_height">
 
 
             <!-- HOME -->
@@ -204,13 +208,16 @@
             <LinearLayout
                 android:id="@+id/navHome"
                 android:layout_width="0dp"
-                android:layout_height="66dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="@dimen/ui_nav_min_height"
+                android:paddingTop="@dimen/ui_space_8"
+                android:paddingBottom="@dimen/ui_space_8">
 
                 <ImageView
                     android:id="@+id/iconHome"
@@ -222,13 +229,13 @@
                     app:tint="@color/admin_end" />
 
                 <TextView
-                    android:id="@+id/labelHome"
+                    android:id="@+id/labelHome" android:maxLines="2" android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="2dp"
                     android:text="Home"
-                    android:textColor="@color/admin_end"
-                    android:textSize="8sp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <View
@@ -245,13 +252,16 @@
             <LinearLayout
                 android:id="@+id/navMembers"
                 android:layout_width="0dp"
-                android:layout_height="66dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="@dimen/ui_nav_min_height"
+                android:paddingTop="@dimen/ui_space_8"
+                android:paddingBottom="@dimen/ui_space_8">
 
                 <ImageView
                     android:id="@+id/iconMembers"
@@ -260,16 +270,16 @@
                     android:padding="9dp"
                     android:src="@drawable/ic_nav_members"
                     android:contentDescription="@string/nav_members"
-                    app:tint="#AAB7C8" />
+                    app:tint="@color/text_hint" />
 
                 <TextView
-                    android:id="@+id/labelMembers"
+                    android:id="@+id/labelMembers" android:maxLines="2" android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="2dp"
                     android:text="Members"
-                    android:textColor="#AAB7C8"
-                    android:textSize="8sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
                 <View
                     android:id="@+id/underlineMembers"
@@ -285,13 +295,16 @@
             <LinearLayout
                 android:id="@+id/navNotifications"
                 android:layout_width="0dp"
-                android:layout_height="66dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="@dimen/ui_nav_min_height"
+                android:paddingTop="@dimen/ui_space_8"
+                android:paddingBottom="@dimen/ui_space_8">
 
                 <ImageView
                     android:id="@+id/iconNotifications"
@@ -300,16 +313,16 @@
                     android:padding="9dp"
                     android:src="@drawable/ic_bell"
                     android:contentDescription="@string/nav_notifications"
-                    app:tint="#AAB7C8" />
+                    app:tint="@color/text_hint" />
 
                 <TextView
-                    android:id="@+id/labelNotifications"
+                    android:id="@+id/labelNotifications" android:maxLines="2" android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
-                    android:text="Notifications"
-                    android:textColor="#AAB7C8"
-                    android:textSize="7sp" />
+                    android:layout_marginTop="2dp"
+                    android:text="Alerts"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
                 <View
                     android:id="@+id/underlineNotifications"
@@ -325,13 +338,16 @@
             <LinearLayout
                 android:id="@+id/navRequirements"
                 android:layout_width="0dp"
-                android:layout_height="66dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="@dimen/ui_nav_min_height"
+                android:paddingTop="@dimen/ui_space_8"
+                android:paddingBottom="@dimen/ui_space_8">
 
                 <ImageView
                     android:id="@+id/iconRequirements"
@@ -340,16 +356,16 @@
                     android:padding="9dp"
                     android:src="@drawable/ic_nav_documents"
                     android:contentDescription="@string/nav_requirements"
-                    app:tint="#AAB7C8" />
+                    app:tint="@color/text_hint" />
 
                 <TextView
-                    android:id="@+id/labelRequirements"
+                    android:id="@+id/labelRequirements" android:maxLines="2" android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
-                    android:text="Requirements"
-                    android:textColor="#AAB7C8"
-                    android:textSize="7sp" />
+                    android:layout_marginTop="2dp"
+                    android:text="Files"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
                 <View
                     android:id="@+id/underlineRequirements"
@@ -365,13 +381,16 @@
             <LinearLayout
                 android:id="@+id/navProfile"
                 android:layout_width="0dp"
-                android:layout_height="66dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:clipChildren="false"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:minHeight="@dimen/ui_nav_min_height"
+                android:paddingTop="@dimen/ui_space_8"
+                android:paddingBottom="@dimen/ui_space_8">
 
                 <ImageView
                     android:id="@+id/iconProfile"
@@ -380,16 +399,16 @@
                     android:padding="9dp"
                     android:src="@drawable/ic_profile_person"
                     android:contentDescription="@string/nav_profile"
-                    app:tint="#AAB7C8" />
+                    app:tint="@color/text_hint" />
 
                 <TextView
-                    android:id="@+id/labelProfile"
+                    android:id="@+id/labelProfile" android:maxLines="2" android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="2dp"
                     android:text="Profile"
-                    android:textColor="#AAB7C8"
-                    android:textSize="8sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
                 <View
                     android:id="@+id/underlineProfile"

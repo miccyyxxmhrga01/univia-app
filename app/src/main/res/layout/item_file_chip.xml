@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Document.pdf"
             android:textColor="@color/dark_blue"
-            android:textSize="11.5sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end" />
@@ -42,14 +42,14 @@
             android:layout_height="wrap_content"
             android:text="0 KB"
             android:textColor="@color/text_gray"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/btnRemoveFile"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:padding="4dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="18dp"
         android:background="@drawable/bg_remove_badge"
         android:src="@drawable/ic_close"
         android:contentDescription="@string/remove_file"

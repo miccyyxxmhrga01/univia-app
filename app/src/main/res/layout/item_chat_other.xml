@@ -19,7 +19,7 @@
             android:gravity="center"
             android:text="AB"
             android:textColor="@color/white"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:textColor="@color/dark_blue"
-                android:textSize="11.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -62,9 +62,9 @@
                 android:background="@drawable/bg_role_officer"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="1dp"
-                android:text="ADMIN"
+                android:text="ORG MANAGER"
                 android:textColor="@color/blue_deep"
-                android:textSize="8.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 
@@ -90,7 +90,7 @@
             android:layout_marginStart="4dp"
             android:text="Just now"
             android:textColor="@color/text_gray"
-            android:textSize="9.5sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 

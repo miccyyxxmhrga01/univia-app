@@ -21,9 +21,9 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="9dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="15dp"
             android:background="@drawable/bg_back_circle_light"
             android:src="@drawable/ic_back_arrow"
             android:contentDescription="@string/back"
@@ -91,7 +91,7 @@
                     android:paddingVertical="5dp"
                     android:text="ORGANIZATION ADVISER"
                     android:textColor="@color/blue_deep"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -140,7 +140,7 @@
                             android:layout_height="wrap_content"
                             android:text="EMAIL"
                             android:textColor="@color/text_gray"
-                            android:textSize="9sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -186,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:text="USERNAME"
                             android:textColor="@color/text_gray"
-                            android:textSize="9sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -232,7 +232,7 @@
                             android:layout_height="wrap_content"
                             android:text="ORGANIZATION"
                             android:textColor="@color/text_gray"
-                            android:textSize="9sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -277,8 +277,8 @@
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
                     android:text="Your organization account is approved and active"
-                    android:textColor="#5C3D0C"
-                    android:textSize="11.5sp"
+                    android:textColor="@color/brand_gold_dark"
+                    android:textSize="12sp"
                     android:lineSpacingExtra="2dp" />
             </LinearLayout>
 

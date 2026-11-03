@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="18dp"
+        android:paddingStart="@dimen/ui_space_20"
         android:paddingTop="18dp"
-        android:paddingEnd="18dp"
+        android:paddingEnd="@dimen/ui_space_20"
         android:paddingBottom="24dp">
 
 
@@ -24,15 +24,15 @@
         <!-- HERO / GOOD DAY CARD                               -->
         <!-- ================================================== -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:id="@+id/headerGreetingSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#E61B57B5"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
             app:strokeColor="#40FFFFFF"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -48,8 +48,8 @@
                     Automatically starts when visible.
                 -->
 
-                <com.example.kayara.AnimatedHeroCirclesView
-                    android:id="@+id/heroAnimatedCircles"
+                <View
+android:visibility="gone"                     android:id="@+id/heroAnimatedCircles"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
@@ -63,9 +63,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingStart="18dp"
+                    android:paddingStart="@dimen/ui_space_20"
                     android:paddingTop="17dp"
-                    android:paddingEnd="18dp"
+                    android:paddingEnd="@dimen/ui_space_20"
                     android:paddingBottom="18dp">
 
 
@@ -87,16 +87,16 @@
                             android:layout_height="12dp"
                             android:src="@drawable/ic_crown"
                             android:contentDescription="@null"
-                            app:tint="#FFE7AE" />
+                            app:tint="@color/text_primary" />
 
                         <TextView
                             android:id="@+id/tvRoleLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="6dp"
-                            android:text="SUPER ADMIN"
-                            android:textColor="#FFE7AE"
-                            android:textSize="9.5sp"
+                            android:text="COORDINATOR"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -109,10 +109,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Good day, Super Admin"
-                        android:textColor="@color/white"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
+                        android:text="Good day, Coordinator"
+                        android:textAppearance="@style/TextAppearance.Univia.Title" />
 
 
                     <!-- SUBTITLE -->
@@ -123,29 +121,28 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Campus Organization Overview"
-                        android:textColor="#D1E0FA"
-                        android:textSize="12sp" />
+                        android:textAppearance="@style/TextAppearance.Univia.Body" />
 
                 </LinearLayout>
 
             </FrameLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ================================================== -->
         <!-- COMPOSE CARD                                       -->
         <!-- ================================================== -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#E8FFFFFF"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
             app:strokeColor="#F2FFFFFF"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -165,8 +162,8 @@
                     android:hint="Write something for your organization..."
                     android:inputType="textMultiLine|textCapSentences"
                     android:padding="14dp"
-                    android:textColor="#17345F"
-                    android:textColorHint="#8391A9"
+                    android:textColor="@color/brand_navy"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -195,8 +192,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Attached photos"
-                            android:textColor="#0B2E6B"
-                            android:textSize="11sp"
+                            android:textColor="@color/brand_navy"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -205,8 +202,8 @@
                             android:layout_height="wrap_content"
                             android:padding="4dp"
                             android:text="Remove all"
-                            android:textColor="#D9534F"
-                            android:textSize="10sp"
+                            android:textColor="@color/error"
+                            android:textSize="12sp"
                             android:textStyle="bold"
                             android:clickable="true"
                             android:focusable="true" />
@@ -235,8 +232,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="0 photos selected"
-                        android:textColor="#70829B"
-                        android:textSize="10sp" />
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -258,7 +255,7 @@
                     <LinearLayout
                         android:id="@+id/btnAddPhoto"
                         android:layout_width="wrap_content"
-                        android:layout_height="42dp"
+                        android:layout_height="48dp"
                         android:background="@drawable/bg_composed_action"
                         android:gravity="center"
                         android:orientation="horizontal"
@@ -272,15 +269,15 @@
                             android:layout_height="17dp"
                             android:src="@drawable/ic_photo"
                             android:contentDescription="@null"
-                            app:tint="#1E5FD9" />
+                            app:tint="@color/brand_blue" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="7dp"
                             android:text="Add Photo"
-                            android:textColor="#1E5FD9"
-                            android:textSize="11sp"
+                            android:textColor="@color/brand_blue"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -297,12 +294,12 @@
                     <TextView
                         android:id="@+id/btnSubmitPost"
                         android:layout_width="92dp"
-                        android:layout_height="42dp"
+                        android:layout_height="48dp"
                         android:background="@drawable/bg_post_submit_btn"
                         android:gravity="center"
                         android:text="Post"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
+                        android:textColor="@color/surface_card"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:clickable="true"
                         android:focusable="true" />
@@ -311,7 +308,7 @@
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ================================================== -->
@@ -325,9 +322,7 @@
             android:layout_marginTop="22dp"
             android:layout_marginBottom="12dp"
             android:text="Recent Posts"
-            android:textColor="#17345F"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.Univia.Section" />
 
 
         <androidx.recyclerview.widget.RecyclerView

@@ -86,7 +86,7 @@
                         android:layout_marginTop="2dp"
                         android:text="Details"
                         android:textColor="@color/text_gray"
-                        android:textSize="11.5sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tvApplicantTag"
@@ -96,7 +96,7 @@
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="3dp"
                         android:text="PENDING"
-                        android:textSize="9.5sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -114,7 +114,7 @@
                 android:layout_marginBottom="6dp"
                 android:text="STUDENT INFORMATION"
                 android:textColor="@color/text_gray"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05" />
 
@@ -140,7 +140,7 @@
                 android:layout_marginBottom="6dp"
                 android:text="MESSAGE FROM THE STUDENT"
                 android:textColor="@color/text_gray"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05" />
 
@@ -166,7 +166,7 @@
                 android:layout_marginBottom="6dp"
                 android:text="SUBMITTED DOCUMENTS"
                 android:textColor="@color/text_gray"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05" />
 
@@ -183,7 +183,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="No documents submitted."
                 android:textColor="@color/placeholder_gray"
-                android:textSize="11.5sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -224,7 +224,7 @@
             android:background="@drawable/bg_post_submit_btn"
             android:gravity="center"
             android:text="Approve"
-            android:textColor="@color/white"
+            android:textColor="@color/surface_card"
             android:textSize="12.5sp"
             android:textStyle="bold"
             android:clickable="true"

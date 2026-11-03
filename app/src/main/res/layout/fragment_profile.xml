@@ -33,7 +33,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="ST"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_secondary"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
                     android:padding="2dp"
                     android:scaleType="centerCrop"
                     app:strokeColor="@color/white"
-                    app:strokeWidth="4dp"
+                    app:strokeWidth="0dp"
                     android:contentDescription="Profile picture" />
 
             </FrameLayout>
@@ -54,6 +54,7 @@
                 android:id="@+id/btnChangePhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="48dp"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:clickable="true"
@@ -66,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="Change Photo"
                     android:textColor="@color/blue_deep"
-                    android:textSize="11sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -103,7 +104,7 @@
                 android:paddingVertical="5dp"
                 android:text="Student ID: Not set"
                 android:textColor="@color/teal_deep_text"
-                android:textSize="10.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -114,6 +115,7 @@
             android:id="@+id/btnEditProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@drawable/bg_pill_btn_teal"
@@ -126,8 +128,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit Profile"
-                android:textColor="@color/white"
-                android:textSize="12.5sp"
+                android:textColor="@color/surface_card"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -181,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:text="EMAIL"
                         android:textColor="@color/text_gray"
-                        android:textSize="9sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.05" />
 
@@ -234,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:text="CONTACT NUMBER"
                         android:textColor="@color/text_gray"
-                        android:textSize="9sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.05" />
 
@@ -287,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:text="YEAR LEVEL"
                         android:textColor="@color/text_gray"
-                        android:textSize="9sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.05" />
 
@@ -327,12 +329,24 @@
             android:orientation="vertical"
             android:layout_marginBottom="18dp" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnManageOrganization" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp"
+            android:text="@string/manage_organization" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/btnOrganizationApplication" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp"
+            android:layout_marginBottom="16dp" android:text="@string/organization_application"
+            android:visibility="gone" />
+
         <!-- Logout -->
 
         <LinearLayout
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@drawable/bg_logout_btn"
@@ -352,7 +366,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Log Out"
                 android:textColor="@color/logout_text"
-                android:textSize="12.5sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

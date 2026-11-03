@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -24,7 +24,7 @@ class AdminNotificationsFragment : Fragment() {
     // FIREBASE
     // =========================================================
 
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
     private lateinit var auth: FirebaseAuth
 
     private var notificationListener:
@@ -88,7 +88,7 @@ class AdminNotificationsFragment : Fragment() {
                 ?: ""
 
         db =
-            FirebaseFirestore.getInstance()
+            SupabaseDatabase.getInstance()
 
         auth =
             FirebaseAuth.getInstance()
@@ -237,7 +237,7 @@ class AdminNotificationsFragment : Fragment() {
                 "Delete notification?"
             )
             .setMessage(
-                "This will remove the notification from your Admin account only."
+                "This will remove the notification from your Org Manager account only."
             )
             .setNegativeButton(
                 "Cancel",
@@ -317,7 +317,7 @@ class AdminNotificationsFragment : Fragment() {
                 "Clear all notifications?"
             )
             .setMessage(
-                "This clears the notifications from your Admin account only. Original posts, chats, requests, and files will not be deleted."
+                "This clears the notifications from your Org Manager account only. Original posts, chats, requests, and files will not be deleted."
             )
             .setNegativeButton(
                 "Cancel",

@@ -17,9 +17,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.SetOptions
 import java.util.UUID
 
 /**
@@ -38,7 +38,7 @@ class EditOrgProfileActivity : AppCompatActivity() {
         private const val MAX_REQUIREMENTS = 8
     }
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
 
     // ---------------------------------------------------------
     // VIEWS

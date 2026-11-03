@@ -53,9 +53,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="SUPER ADMIN · ALL ORGANIZATIONS"
-                    android:textColor="#7A4F0B"
-                    android:textSize="9.5sp"
+                    android:text="COORDINATOR · ALL ORGANIZATIONS"
+                    android:textColor="@color/brand_gold_dark"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="General Assembly – September 5, 1:00 PM"
-                android:textColor="#5C3D0C"
+                android:textColor="@color/brand_gold_dark"
                 android:textSize="12.5sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp" />
@@ -72,8 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All members are encouraged to attend the general assembly at the BISU Balilihan Gymnasium."
-                android:textColor="#8C6A2E"
-                android:textSize="11sp"
+                android:textColor="@color/brand_gold_dark"
+                android:textSize="12sp"
                 android:lineSpacingExtra="2dp" />
 
             <TextView
@@ -81,8 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="Posted Aug 22"
-                android:textColor="#B9924E"
-                android:textSize="10sp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -109,7 +109,7 @@
                     android:gravity="center"
                     android:text="RCY"
                     android:textColor="@color/white"
-                    android:textSize="7sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -118,7 +118,7 @@
                     android:layout_marginStart="8dp"
                     android:text="Red Cross Youth"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:text="Final schedule and assignments for the September blood donation activity are now posted."
                 android:textColor="@color/text_gray"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:lineSpacingExtra="2dp"
                 android:layout_marginBottom="8dp" />
 
@@ -144,8 +144,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Posted Aug 25"
-                android:textColor="#9BA9C2"
-                android:textSize="10sp"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -171,7 +171,7 @@
                     android:gravity="center"
                     android:text="ITS"
                     android:textColor="@color/white"
-                    android:textSize="7sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -180,7 +180,7 @@
                     android:layout_marginStart="8dp"
                     android:text="IT Society"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign-ups for the intro-to-web-dev bootcamp are now open. Limited slots available."
                 android:textColor="@color/text_gray"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:lineSpacingExtra="2dp"
                 android:layout_marginBottom="8dp" />
 
@@ -206,8 +206,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Posted Aug 21"
-                android:textColor="#9BA9C2"
-                android:textSize="10sp"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

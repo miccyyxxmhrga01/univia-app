@@ -23,7 +23,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.ai.ai
 import com.google.firebase.ai.type.GenerativeBackend
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.SupabaseDatabase
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import org.json.JSONArray
@@ -37,7 +37,7 @@ class SmartMatchActivity : AppCompatActivity() {
             "selectedOrganizationId"
     }
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
 
     private lateinit var interestContainer: LinearLayout
@@ -47,9 +47,9 @@ class SmartMatchActivity : AppCompatActivity() {
     private lateinit var statusText: TextView
     private lateinit var resultsContainer: LinearLayout
 
-    private val navy = Color.parseColor("#153667")
-    private val teal = Color.parseColor("#0DAEA5")
-    private val muted = Color.parseColor("#64798C")
+    private val navy = Color.parseColor("#3B176A")
+    private val teal = Color.parseColor("#3B176A")
+    private val muted = Color.parseColor("#6B5C7B")
 
     private val interestOptions = listOf(
         "Programming & Technology",
@@ -223,21 +223,21 @@ class SmartMatchActivity : AppCompatActivity() {
     ) {
 
         val backgroundColor = if (selected) {
-            Color.parseColor("#DDF8F4")
+            Color.parseColor("#DAEDE5")
         } else {
-            Color.parseColor("#F7FBFD")
+            Color.parseColor("#F1ECF8")
         }
 
         val borderColor = if (selected) {
             teal
         } else {
-            Color.parseColor("#DCE7ED")
+            Color.parseColor("#E1E8F2")
         }
 
         val textColor = if (selected) {
-            Color.parseColor("#078B83")
+            Color.parseColor("#3B176A")
         } else {
-            Color.parseColor("#527184")
+            Color.parseColor("#6B5C7B")
         }
 
         chip.chipBackgroundColor =
@@ -348,7 +348,7 @@ class SmartMatchActivity : AppCompatActivity() {
                     setLoading(false)
 
                     statusText.text =
-                        "No organizations found in Firestore."
+                    "No organizations are available yet."
 
                     return@addOnSuccessListener
                 }
@@ -476,7 +476,7 @@ class SmartMatchActivity : AppCompatActivity() {
         }
 
         return """
-            You are BBCO SmartMatch for BISU Balilihan Campus.
+            You are Univia App SmartMatch for BISU Balilihan Campus.
 
             Student interests:
             ${interests.joinToString(", ")}
@@ -656,7 +656,7 @@ class SmartMatchActivity : AppCompatActivity() {
 
                 background = roundedBackground(
                     Color.WHITE,
-                    Color.parseColor("#E2EBF3"),
+                    Color.parseColor("#E1E8F2"),
                     15
                 )
 
@@ -702,8 +702,8 @@ class SmartMatchActivity : AppCompatActivity() {
                 )
 
                 background = roundedBackground(
-                    Color.parseColor("#EDF9F8"),
-                    Color.parseColor("#EDF9F8"),
+                    Color.parseColor("#F1ECF8"),
+                    Color.parseColor("#F1ECF8"),
                     12
                 )
             }
@@ -725,7 +725,7 @@ class SmartMatchActivity : AppCompatActivity() {
 
                 text = result.reason
                 textSize = 12f
-                setTextColor(Color.parseColor("#456E80"))
+                setTextColor(Color.parseColor("#3B176A"))
 
                 setPadding(
                     0, dp(5),

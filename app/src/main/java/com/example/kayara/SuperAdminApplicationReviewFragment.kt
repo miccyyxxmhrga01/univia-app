@@ -11,12 +11,12 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
 
 class SuperAdminApplicationReviewFragment : Fragment() {
 
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     private var applicationId: String = ""
 
@@ -83,7 +83,7 @@ class SuperAdminApplicationReviewFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         db =
-            FirebaseFirestore.getInstance()
+            SupabaseDatabase.getInstance()
 
         applicationId =
             arguments?.getString(
@@ -704,182 +704,37 @@ class SuperAdminApplicationReviewFragment : Fragment() {
     // =========================================================
 
     private fun approveApplication() {
-
-        if (applicationId.isBlank()) {
-
-            Toast.makeText(
-                requireContext(),
-                "Application ID not found.",
-                Toast.LENGTH_SHORT
-            ).show()
-
-            return
-        }
-
+        if (applicationId.isBlank()) return
         btnApprove.isEnabled = false
         btnReject.isEnabled = false
-
-        db.collection("adminApplications")
-            .document(applicationId)
-            .get()
-            .addOnSuccessListener { applicationDocument ->
-
-                if (!applicationDocument.exists()) {
-
-                    showActionError(
-                        "Application not found."
-                    )
-
-                    return@addOnSuccessListener
-                }
-
-                val currentStatus =
-                    applicationDocument
-                        .getString("status")
-                        ?: ""
-
-                if (currentStatus != "pending") {
-
-                    showActionError(
-                        "This application has already been processed."
-                    )
-
-                    return@addOnSuccessListener
-                }
-
-                val uid =
-                    applicationDocument
-                        .getString("uid")
-                        ?: ""
-
-                val organizationName =
-                    applicationDocument
-                        .getString("organizationName")
-                        ?: ""
-
-                val applicantName =
-                    applicationDocument
-                        .getString("fullName")
-                        ?: ""
-
-                if (uid.isBlank()) {
-
-                    showActionError(
-                        "Applicant user ID is missing."
-                    )
-
-                    return@addOnSuccessListener
-                }
-
-                val organizationId =
-                    "org_$applicationId"
-
-                val applicationRef =
-                    db.collection(
-                        "adminApplications"
-                    ).document(
-                        applicationId
-                    )
-
-                val userRef =
-                    db.collection(
-                        "users"
-                    ).document(
-                        uid
-                    )
-
-                val organizationRef =
-                    db.collection(
-                        "organizations"
-                    ).document(
-                        organizationId
-                    )
-
-                val batch =
-                    db.batch()
-
-                // =================================================
-                // UPDATE APPLICATION
-                // =================================================
-
-                batch.update(
-                    applicationRef,
-                    mapOf(
-                        "status" to "approved",
-                        "organizationId" to organizationId,
-                        "rejectionReason" to "",
-                        "updatedAt" to FieldValue.serverTimestamp()
-                    )
-                )
-
-                // =================================================
-                // UPDATE USER
-                // =================================================
-
-                batch.update(
-                    userRef,
-                    mapOf(
-                        "status" to "approved",
-                        "organizationId" to organizationId,
-                        "organizationName" to organizationName,
-                        "rejectionReason" to ""
-                    )
-                )
-
-                // =================================================
-                // CREATE ORGANIZATION
-                // =================================================
-
-                batch.set(
-                    organizationRef,
-                    mapOf(
-                        "organizationId" to organizationId,
-                        "orgName" to organizationName,
-                        "shortCode" to getShortCode(
-                            organizationName
-                        ),
-                        "memberCount" to 0,
-                        "adviserName" to applicantName,
-                        "category" to "normal",
-                        "colorStart" to "#1E5FD9",
-                        "colorEnd" to "#3FA9F5",
-                        "recruitmentInfo" to "",
-                        "adminUid" to uid,
-                        "applicationId" to applicationId,
-                        "createdAt" to FieldValue.serverTimestamp(),
-                        "updatedAt" to FieldValue.serverTimestamp()
-                    )
-                )
-
-                batch.commit()
-                    .addOnSuccessListener {
-
-                        if (!isAdded) {
-                            return@addOnSuccessListener
-                        }
-
-                        Toast.makeText(
-                            requireContext(),
-                            "Application approved.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        parentFragmentManager
-                            .popBackStack()
-                    }
-                    .addOnFailureListener { error ->
-
-                        showActionError(
-                            "Failed to approve application: ${error.message}"
-                        )
-                    }
-            }
-            .addOnFailureListener { error ->
-
-                showActionError(
-                    "Failed to check application: ${error.message}"
-                )
-            }
+        val applicationRef = db.collection("adminApplications").document(applicationId)
+        val organizationId = "org_$applicationId"
+        val organizationRef = db.collection("organizations").document(organizationId)
+        db.runTransaction { transaction ->
+            val application = transaction.get(applicationRef)
+            check(application.exists()) { "Application not found." }
+            check(application.getString("status") == "pending") { "This application has already been processed." }
+            check(!application.getString("uid").isNullOrBlank()) { "Applicant user ID is missing." }
+            val organization = transaction.get(organizationRef)
+            check(!organization.exists()) { "An organization already exists for this application. Reload before reviewing." }
+            val name = application.getString("organizationName").orEmpty()
+            transaction.update(applicationRef, mapOf("status" to "approved",
+                "organizationId" to organizationId, "rejectionReason" to "",
+                "updatedAt" to FieldValue.serverTimestamp()))
+            transaction.set(organizationRef, mapOf(
+                "organizationId" to organizationId, "orgName" to name,
+                "shortCode" to getShortCode(name), "memberCount" to 0,
+                "adviserName" to application.getString("fullName").orEmpty(),
+                "category" to "normal", "colorStart" to "#7C3AED", "colorEnd" to "#7C3AED",
+                "recruitmentInfo" to "", "adminUid" to "", "applicationId" to applicationId,
+                "createdAt" to FieldValue.serverTimestamp(), "updatedAt" to FieldValue.serverTimestamp()))
+        }.addOnSuccessListener {
+            if (!isAdded || view == null) return@addOnSuccessListener
+            Toast.makeText(requireContext(),
+                "Organization approved. Assign its manager from Manage organization access.",
+                Toast.LENGTH_LONG).show()
+            parentFragmentManager.popBackStack()
+        }.addOnFailureListener { showActionError(it.message ?: "Unable to approve the application. Try again.") }
     }
 
     // =========================================================
@@ -1014,138 +869,22 @@ class SuperAdminApplicationReviewFragment : Fragment() {
     // REJECT
     // =========================================================
 
-    private fun rejectApplication(
-        rejectionReason: String
-    ) {
-
-        if (applicationId.isBlank()) {
-
-            Toast.makeText(
-                requireContext(),
-                "Application ID not found.",
-                Toast.LENGTH_SHORT
-            ).show()
-
-            return
-        }
-
+    private fun rejectApplication(rejectionReason: String) {
+        if (applicationId.isBlank()) return
         btnApprove.isEnabled = false
         btnReject.isEnabled = false
-
-        db.collection("adminApplications")
-            .document(applicationId)
-            .get()
-            .addOnSuccessListener { applicationDocument ->
-
-                if (!applicationDocument.exists()) {
-
-                    showActionError(
-                        "Application not found."
-                    )
-
-                    return@addOnSuccessListener
-                }
-
-                val currentStatus =
-                    applicationDocument
-                        .getString("status")
-                        ?: ""
-
-                if (currentStatus != "pending") {
-
-                    showActionError(
-                        "This application has already been processed."
-                    )
-
-                    return@addOnSuccessListener
-                }
-
-                val uid =
-                    applicationDocument
-                        .getString("uid")
-                        ?: ""
-
-                if (uid.isBlank()) {
-
-                    showActionError(
-                        "Applicant user ID is missing."
-                    )
-
-                    return@addOnSuccessListener
-                }
-
-                val applicationRef =
-                    db.collection(
-                        "adminApplications"
-                    ).document(
-                        applicationId
-                    )
-
-                val userRef =
-                    db.collection(
-                        "users"
-                    ).document(
-                        uid
-                    )
-
-                val batch =
-                    db.batch()
-
-                // =================================================
-                // UPDATE APPLICATION
-                // =================================================
-
-                batch.update(
-                    applicationRef,
-                    mapOf(
-                        "status" to "rejected",
-                        "rejectionReason" to rejectionReason,
-                        "updatedAt" to FieldValue.serverTimestamp()
-                    )
-                )
-
-                // =================================================
-                // UPDATE USER
-                // =================================================
-
-                batch.update(
-                    userRef,
-                    mapOf(
-                        "status" to "rejected",
-                        "rejectionReason" to rejectionReason,
-                        "updatedAt" to FieldValue.serverTimestamp()
-                    )
-                )
-
-                batch.commit()
-                    .addOnSuccessListener {
-
-                        if (!isAdded) {
-                            return@addOnSuccessListener
-                        }
-
-                        Toast.makeText(
-                            requireContext(),
-                            "Application rejected.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        parentFragmentManager
-                            .popBackStack()
-                    }
-                    .addOnFailureListener { error ->
-
-                        showActionError(
-                            "Failed to reject application: ${error.message}"
-                        )
-                    }
-            }
-            .addOnFailureListener { error ->
-
-                showActionError(
-                    "Failed to check application: ${error.message}"
-                )
-            }
+        val ref = db.collection("adminApplications").document(applicationId)
+        db.runTransaction { transaction ->
+            val application = transaction.get(ref)
+            check(application.exists()) { "Application not found." }
+            check(application.getString("status") == "pending") { "This application has already been processed." }
+            transaction.update(ref, mapOf("status" to "rejected", "rejectionReason" to rejectionReason,
+                "updatedAt" to FieldValue.serverTimestamp()))
+        }.addOnSuccessListener {
+            if (!isAdded || view == null) return@addOnSuccessListener
+            Toast.makeText(requireContext(), "Application rejected.", Toast.LENGTH_SHORT).show()
+            parentFragmentManager.popBackStack()
+        }.addOnFailureListener { showActionError(it.message ?: "Unable to reject the application. Try again.") }
     }
 
     // =========================================================

@@ -32,9 +32,9 @@ data class OrganizationModel(
 
     val category: String = "normal",
 
-    val colorStart: String = "#1E5FD9",
+    val colorStart: String = "#7C3AED",
 
-    val colorEnd: String = "#3FA9F5",
+    val colorEnd: String = "#7C3AED",
 
     val recruitmentInfo: String = "",
 

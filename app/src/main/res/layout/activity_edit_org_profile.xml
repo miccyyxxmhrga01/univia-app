@@ -19,7 +19,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@drawable/bg_header_gradient_admin"
-        android:elevation="4dp"
+        android:elevation="0dp"
         android:paddingHorizontal="18dp"
         android:paddingTop="18dp"
         android:paddingBottom="16dp">
@@ -27,10 +27,10 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_header_icon_btn"
-            android:padding="9dp"
+            android:padding="14dp"
             android:src="@drawable/ic_chat_back"
             android:clickable="true"
             android:focusable="true"
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit Organization Profile"
-                android:textColor="@color/white"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -59,8 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="Update how students see your organization"
-                android:textColor="#CFE6FF"
-                android:textSize="11sp" />
+                android:textColor="@color/text_primary"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -115,7 +115,7 @@
                     android:layout_marginTop="2dp"
                     android:text="This is what students see on your profile."
                     android:textColor="@color/text_gray"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
 
 
                 <!-- ORGANIZATION NAME -->
@@ -127,7 +127,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="ORGANIZATION NAME"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -142,7 +142,7 @@
                     android:paddingHorizontal="14dp"
                     android:singleLine="true"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -155,7 +155,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="CATEGORY"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -170,7 +170,7 @@
                     android:paddingHorizontal="14dp"
                     android:singleLine="true"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -183,7 +183,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="YEAR FOUNDED"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -199,7 +199,7 @@
                     android:paddingHorizontal="14dp"
                     android:singleLine="true"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -213,7 +213,7 @@
                     android:layout_marginTop="16dp"
                     android:text="ORGANIZATION ADVISERS"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -223,8 +223,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="Add the faculty adviser or advisers currently assigned to the organization."
-                    android:textColor="@color/placeholder_gray"
-                    android:textSize="10.5sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
 
 
                 <!-- ADVISER 1 -->
@@ -236,7 +236,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="ADVISER 1"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
 
@@ -250,7 +250,7 @@
                     android:paddingHorizontal="14dp"
                     android:singleLine="true"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -263,7 +263,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="ADVISER 2 (OPTIONAL)"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
 
@@ -277,7 +277,7 @@
                     android:paddingHorizontal="14dp"
                     android:singleLine="true"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -290,7 +290,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="DESCRIPTION"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -305,7 +305,7 @@
                     android:inputType="textMultiLine|textCapSentences"
                     android:padding="14dp"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
             </LinearLayout>
@@ -348,7 +348,7 @@
                         android:paddingVertical="4dp"
                         android:text="SHOWN WHEN JOINING"
                         android:textColor="@color/blue_deep"
-                        android:textSize="8sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -360,7 +360,7 @@
                     android:layout_marginTop="2dp"
                     android:text="Tell students what to do when they apply to join."
                     android:textColor="@color/text_gray"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
 
 
                 <!-- ============================================= -->
@@ -407,7 +407,7 @@
                                 android:layout_marginTop="2dp"
                                 android:text="Students can send join requests."
                                 android:textColor="@color/text_gray"
-                                android:textSize="10.5sp" />
+                                android:textSize="12sp" />
 
                         </LinearLayout>
 
@@ -428,7 +428,7 @@
                         android:layout_marginBottom="6dp"
                         android:text="MEMBER LIMIT (OPTIONAL)"
                         android:textColor="@color/text_gray"
-                        android:textSize="9.5sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.05" />
 
@@ -444,7 +444,7 @@
                         android:paddingHorizontal="14dp"
                         android:singleLine="true"
                         android:textColor="@color/dark_blue"
-                        android:textColorHint="@color/placeholder_gray"
+                        android:textColorHint="@color/text_hint"
                         android:textSize="13sp" />
 
 
@@ -455,7 +455,7 @@
                         android:layout_marginTop="6dp"
                         android:text="Current members: 0"
                         android:textColor="@color/text_gray"
-                        android:textSize="10.5sp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -469,7 +469,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="INSTRUCTIONS FOR APPLICANTS"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -484,7 +484,7 @@
                     android:inputType="textMultiLine|textCapSentences"
                     android:padding="14dp"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
 
@@ -496,7 +496,7 @@
                     android:layout_marginTop="18dp"
                     android:text="FILES FOR APPLICANTS"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -507,8 +507,8 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="8dp"
                     android:text="Forms, flyers, or guidelines students can open and download."
-                    android:textColor="@color/placeholder_gray"
-                    android:textSize="10.5sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
 
 
                 <LinearLayout
@@ -524,8 +524,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="No files attached yet."
-                    android:textColor="@color/placeholder_gray"
-                    android:textSize="11.5sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
 
 
                 <TextView
@@ -535,7 +535,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Uploading..."
                     android:textColor="@color/blue_deep"
-                    android:textSize="11.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
 
@@ -543,7 +543,7 @@
                 <TextView
                     android:id="@+id/btnAddRecruitFile"
                     android:layout_width="match_parent"
-                    android:layout_height="44dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/bg_add_photo_button"
                     android:gravity="center"
                     android:text="+  Attach a file"
@@ -562,7 +562,7 @@
                     android:layout_marginTop="20dp"
                     android:text="WHAT STUDENTS MUST SUBMIT"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -573,8 +573,8 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="8dp"
                     android:text="Each item becomes an upload slot when a student joins."
-                    android:textColor="@color/placeholder_gray"
-                    android:textSize="10.5sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
 
 
                 <LinearLayout
@@ -590,14 +590,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="No requirements yet. Students can join without uploading documents."
-                    android:textColor="@color/placeholder_gray"
-                    android:textSize="11.5sp" />
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
 
 
                 <TextView
                     android:id="@+id/btnAddRequirement"
                     android:layout_width="match_parent"
-                    android:layout_height="44dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/bg_add_photo_button"
                     android:gravity="center"
                     android:text="+  Add requirement"
@@ -622,7 +622,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:elevation="8dp"
+        android:elevation="0dp"
         android:padding="14dp">
 
 
@@ -641,7 +641,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save changes"
-                android:textColor="@color/white"
+                android:textColor="@color/surface_card"
                 android:textSize="13.5sp"
                 android:textStyle="bold" />
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView
+<com.example.kayara.NeoCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,9 +8,9 @@
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:cardBackgroundColor="#FFFFFF"
-    app:strokeColor="#E4EBF5"
-    app:strokeWidth="1dp">
+    app:cardBackgroundColor="@color/surface"
+    app:strokeColor="@color/surface_muted"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Full Name"
-                android:textColor="#0B2E6B"
+                android:textColor="@color/brand_navy"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:maxLines="1"
@@ -78,8 +78,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="Student details"
-                android:textColor="#6B7A90"
-                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
                 android:maxLines="2"
                 android:ellipsize="end" />
 
@@ -89,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="💬 Application note"
-                android:textColor="#2563EB"
-                android:textSize="10.5sp"
+                android:textColor="@color/brand_blue"
+                android:textSize="12sp"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:visibility="gone" />
@@ -106,8 +106,8 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="📎 Documents · View"
-                android:textColor="#2563EB"
-                android:textSize="10.5sp"
+                android:textColor="@color/brand_blue"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:clickable="true"
                 android:focusable="true"
@@ -130,7 +130,7 @@
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:text="MEMBER"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:maxLines="1" />
 
@@ -141,10 +141,10 @@
 
         <ImageView
             android:id="@+id/btnRejectMember"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="6dp"
-            android:padding="7dp"
+            android:padding="16dp"
             android:background="@drawable/bg_reject_btn"
             android:src="@drawable/ic_reject_x"
             app:tint="@color/coral_text"
@@ -160,10 +160,10 @@
 
         <ImageView
             android:id="@+id/btnApproveMember"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="6dp"
-            android:padding="7dp"
+            android:padding="16dp"
             android:background="@drawable/bg_approve_btn"
             android:src="@drawable/ic_check"
             app:tint="@color/white"
@@ -179,13 +179,13 @@
 
         <ImageView
             android:id="@+id/btnMemberMenu"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="4dp"
-            android:padding="8dp"
+            android:padding="14dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_more_vert"
-            app:tint="#6B7A90"
+            app:tint="@color/text_secondary"
             android:visibility="gone"
             android:contentDescription="Member options"
             android:clickable="true"
@@ -193,4 +193,4 @@
 
     </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</com.example.kayara.NeoCardView>

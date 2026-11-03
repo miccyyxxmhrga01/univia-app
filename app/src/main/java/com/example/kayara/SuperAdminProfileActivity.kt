@@ -22,11 +22,11 @@ import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.SetOptions
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.SetOptions
 import java.util.Locale
 
 class SuperAdminProfileActivity : AppCompatActivity() {
@@ -40,7 +40,7 @@ class SuperAdminProfileActivity : AppCompatActivity() {
     }
 
     private val db by lazy {
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
     }
 
 
@@ -74,7 +74,7 @@ class SuperAdminProfileActivity : AppCompatActivity() {
     // =========================================================
 
     private var currentFullName =
-        "Super Admin"
+        "Coordinator"
 
     private var currentUsername =
         "superadmin"
@@ -461,7 +461,7 @@ class SuperAdminProfileActivity : AppCompatActivity() {
                                 ?.takeIf {
                                     it.isNotBlank()
                                 }
-                                    ?: "Super Admin"
+                                    ?: "Coordinator"
 
 
                     // =================================================
@@ -1285,7 +1285,7 @@ class SuperAdminProfileActivity : AppCompatActivity() {
                 document.getString(
                     "posterRole"
                 )
-                    ?: "Super Admin",
+                    ?: "Coordinator",
 
 
             organizationId =
@@ -1299,7 +1299,7 @@ class SuperAdminProfileActivity : AppCompatActivity() {
                 document.getString(
                     "organizationName"
                 )
-                    ?: "Super Admin",
+                    ?: "Coordinator",
 
 
             timeAgo =
@@ -1324,14 +1324,14 @@ class SuperAdminProfileActivity : AppCompatActivity() {
                 document.getString(
                     "avatarColorStart"
                 )
-                    ?: "#0B2E6B",
+                    ?: "#3B176A",
 
 
             avatarColorEnd =
                 document.getString(
                     "avatarColorEnd"
                 )
-                    ?: "#1E5FD9",
+                    ?: "#7C3AED",
 
 
             audience =

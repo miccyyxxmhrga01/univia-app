@@ -125,7 +125,7 @@ class OrganizationAdapter(
                     .background
                     .setTint(
                         Color.parseColor(
-                            "#1E5FD9"
+                            "#7C3AED"
                         )
                     )
             }

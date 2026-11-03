@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Org · Date"
                 android:textColor="@color/text_gray"
-                android:textSize="10.5sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -56,11 +56,11 @@
         android:id="@+id/tvDocPreview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F5F8FC"
+        android:background="@color/surface"
         android:padding="11dp"
         android:text="Preview text"
         android:textColor="@color/text_gray"
-        android:textSize="11sp"
+        android:textSize="12sp"
         android:lineSpacingExtra="2dp"
         android:layout_marginBottom="12dp" />
 

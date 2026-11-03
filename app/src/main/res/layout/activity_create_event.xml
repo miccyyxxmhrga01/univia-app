@@ -61,10 +61,10 @@
                 <FrameLayout
                     android:id="@+id/btnBackCreateEvent"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/bg_admin_header_icon"
                     android:clickable="true"
-                    android:elevation="3dp"
+                    android:elevation="0dp"
                     android:focusable="true">
 
                     <ImageView
@@ -85,7 +85,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Create Event"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Plan a new event"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_primary"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Add the event information below."
-                    android:textColor="#E9F9FF"
+                    android:textColor="@color/text_primary"
                     android:textSize="12.5sp" />
 
             </LinearLayout>
@@ -133,18 +133,18 @@
         <!-- FORM CARD                                             -->
         <!-- ===================================================== -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="-15dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="30dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="5dp"
-            app:strokeColor="#E3EEF5"
-            app:strokeWidth="1dp">
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/surface_muted"
+            app:strokeWidth="0dp">
 
 
             <LinearLayout
@@ -174,7 +174,7 @@
                     android:layout_marginBottom="20dp"
                     android:text="Please complete the required details."
                     android:textColor="@color/text_gray"
-                    android:textSize="11.5sp" />
+                    android:textSize="12sp" />
 
 
                 <!-- ================================================= -->
@@ -188,7 +188,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="EVENT TITLE"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -197,7 +197,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxBackgroundMode="outline"
-                    app:boxBackgroundColor="#FAFDFF"
+                    app:boxBackgroundColor="@color/surface"
                     app:boxCornerRadiusTopStart="14dp"
                     app:boxCornerRadiusTopEnd="14dp"
                     app:boxCornerRadiusBottomStart="14dp"
@@ -234,7 +234,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="DATE &amp; TIME"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -253,7 +253,7 @@
                         android:layout_weight="1"
                         android:layout_marginEnd="6dp"
                         app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#FAFDFF"
+                        app:boxBackgroundColor="@color/surface"
                         app:boxCornerRadiusTopStart="14dp"
                         app:boxCornerRadiusTopEnd="14dp"
                         app:boxCornerRadiusBottomStart="14dp"
@@ -286,7 +286,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="6dp"
                         app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#FAFDFF"
+                        app:boxBackgroundColor="@color/surface"
                         app:boxCornerRadiusTopStart="14dp"
                         app:boxCornerRadiusTopEnd="14dp"
                         app:boxCornerRadiusBottomStart="14dp"
@@ -325,7 +325,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="VENUE"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -334,7 +334,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxBackgroundMode="outline"
-                    app:boxBackgroundColor="#FAFDFF"
+                    app:boxBackgroundColor="@color/surface"
                     app:boxCornerRadiusTopStart="14dp"
                     app:boxCornerRadiusTopEnd="14dp"
                     app:boxCornerRadiusBottomStart="14dp"
@@ -371,7 +371,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="DESCRIPTION"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -380,7 +380,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxBackgroundMode="outline"
-                    app:boxBackgroundColor="#FAFDFF"
+                    app:boxBackgroundColor="@color/surface"
                     app:boxCornerRadiusTopStart="14dp"
                     app:boxCornerRadiusTopEnd="14dp"
                     app:boxCornerRadiusBottomStart="14dp"
@@ -415,7 +415,7 @@
                     android:layout_marginTop="25dp"
                     android:text="Create Event"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:backgroundTint="@color/admin_end"
@@ -424,7 +424,7 @@
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
     </LinearLayout>
 

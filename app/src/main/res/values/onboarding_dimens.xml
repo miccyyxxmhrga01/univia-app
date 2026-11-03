@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="onboarding_header_height">124dp</dimen>
+    <dimen name="onboarding_art_height">144dp</dimen>
+</resources>

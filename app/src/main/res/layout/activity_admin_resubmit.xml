@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#F7F9FC">
+    android:background="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,10 +18,10 @@
         <TextView
             android:id="@+id/btnBack"
             android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:gravity="center"
             android:text="‹"
-            android:textColor="#0B2E6B"
+            android:textColor="@color/brand_navy"
             android:textSize="32sp"
             android:textStyle="bold"
             android:clickable="true"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Edit &amp; Resubmit Application"
-            android:textColor="#0B2E6B"
+            android:textColor="@color/brand_navy"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:text="Replace your verification documents and submit your application again for review."
-            android:textColor="#718096"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp" />
 
         <!-- APPLICATION STATUS -->
@@ -54,13 +54,13 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:padding="16dp"
-            android:background="#EEF5FF">
+            android:background="@color/surface">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Application Status"
-                android:textColor="#0B2E6B"
+                android:textColor="@color/brand_navy"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Your previous application was rejected. You can replace your documents and submit it again."
-                android:textColor="#526581"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
         </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="VERIFICATION DOCUMENTS"
-            android:textColor="#0B2E6B"
+            android:textColor="@color/brand_navy"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -93,13 +93,13 @@
             android:layout_marginTop="12dp"
             android:orientation="vertical"
             android:padding="16dp"
-            android:background="#FFFFFF">
+            android:background="@color/surface_card">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Required Document 1"
-                android:textColor="#17345F"
+                android:textColor="@color/brand_navy"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="No document selected"
-                android:textColor="#718096"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <Button
@@ -119,10 +119,10 @@
                 android:layout_marginTop="12dp"
                 android:text="Replace Document 1"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:backgroundTint="#03A9F4" />
+                android:backgroundTint="@color/brand_blue" />
 
         </LinearLayout>
 
@@ -134,13 +134,13 @@
             android:layout_marginTop="12dp"
             android:orientation="vertical"
             android:padding="16dp"
-            android:background="#FFFFFF">
+            android:background="@color/surface_card">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Required Document 2"
-                android:textColor="#17345F"
+                android:textColor="@color/brand_navy"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="No document selected"
-                android:textColor="#718096"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <Button
@@ -160,10 +160,10 @@
                 android:layout_marginTop="12dp"
                 android:text="Replace Document 2"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:backgroundTint="#03A9F4" />
+                android:backgroundTint="@color/brand_blue" />
 
         </LinearLayout>
 
@@ -175,13 +175,13 @@
             android:layout_marginTop="12dp"
             android:orientation="vertical"
             android:padding="16dp"
-            android:background="#FFFFFF">
+            android:background="@color/surface_card">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Required Document 3"
-                android:textColor="#17345F"
+                android:textColor="@color/brand_navy"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="No document selected"
-                android:textColor="#718096"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
 
             <Button
@@ -201,10 +201,10 @@
                 android:layout_marginTop="12dp"
                 android:text="Replace Document 3"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_secondary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:backgroundTint="#03A9F4" />
+                android:backgroundTint="@color/brand_blue" />
 
         </LinearLayout>
 
@@ -218,10 +218,10 @@
             android:layout_marginBottom="25dp"
             android:text="Submit Application Again"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_secondary"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:backgroundTint="#2196F3" />
+            android:backgroundTint="@color/brand_blue" />
 
     </LinearLayout>
 

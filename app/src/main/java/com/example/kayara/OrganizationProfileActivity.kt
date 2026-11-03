@@ -6,12 +6,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.SupabaseDatabase
 
 class OrganizationProfileActivity : AppCompatActivity() {
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
 
     private lateinit var tvOrgName: TextView
     private lateinit var tvOrgCode: TextView

@@ -21,9 +21,9 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="9dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="15dp"
             android:background="@drawable/bg_back_circle_light"
             android:src="@drawable/ic_back_arrow"
             android:contentDescription="@string/back"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="FULL NAME"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="7dp" />
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:text="CONTACT NUMBER"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="7dp" />
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:text="YEAR LEVEL"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="7dp" />
@@ -183,7 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SAVE CHANGES"
-                    android:textColor="@color/white"
+                    android:textColor="@color/surface_card"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.04" />

@@ -17,7 +17,7 @@ class AdminNotificationsActivity : AppCompatActivity() {
         val notifications = listOf(
             NotificationModel(
                 "Application Approved",
-                "Your organization Red Cross Youth has been approved by the Super Admin",
+                "Your organization Red Cross Youth has been approved by the Coordinator",
                 "2 hours ago", "signup"
             ),
             NotificationModel(
@@ -27,7 +27,7 @@ class AdminNotificationsActivity : AppCompatActivity() {
             ),
             NotificationModel(
                 "New Announcement",
-                "Super Admin posted: General Assembly – September 5, 1:00 PM",
+                "Coordinator posted: General Assembly – September 5, 1:00 PM",
                 "2 days ago", "info", isRead = true
             ),
             NotificationModel(

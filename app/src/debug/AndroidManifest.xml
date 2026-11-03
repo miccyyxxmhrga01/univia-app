@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application>
+        <!-- Preview the tour from Android Studio/adb without clearing first-run preferences. -->
+        <activity android:name=".OnboardingActivity" android:exported="true"
+            tools:replace="android:exported" />
+    </application>
+</manifest>

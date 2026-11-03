@@ -10,17 +10,20 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.example.kayara.data.SupabaseDatabase
 
 class StudentSignUpActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     private var isPasswordVisible = false
     private var isConfirmPasswordVisible = false
     private var isRegistering = false
+    private lateinit var registrationFlow: RegistrationFlow
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,7 @@ class StudentSignUpActivity : AppCompatActivity() {
         setContentView(
             R.layout.activity_student_sign_up
         )
+        UniviaInsets.apply(this)
 
 
         // =====================================================
@@ -40,7 +44,7 @@ class StudentSignUpActivity : AppCompatActivity() {
             FirebaseAuth.getInstance()
 
         db =
-            FirebaseFirestore.getInstance()
+            SupabaseDatabase.getInstance()
 
 
         // =====================================================
@@ -316,68 +320,16 @@ class StudentSignUpActivity : AppCompatActivity() {
             }
 
 
-            // =================================================
-            // STUDENT BISU EMAIL FORMAT
-            //
-            // REQUIRED:
-            // bal_schoolID@bisu.edu.ph
-            //
-            // Example:
-            // bal_203892@bisu.edu.ph
-            // =================================================
-
-            val studentEmailPattern =
-                Regex(
-                    "^bal_\\d+@bisu\\.edu\\.ph$",
-                    RegexOption.IGNORE_CASE
-                )
-
-
-            if (
-                !studentEmailPattern.matches(
-                    email
-                )
-            ) {
-
-                showError(
-                    tvError,
-                    "Invalid student email. Use this format: bal_schoolID@bisu.edu.ph (Example: bal_203892@bisu.edu.ph)."
-                )
-
+            if (!RegistrationEmailPolicy.isCampusEmail(email)) {
+                showError(tvError, getString(R.string.registration_bisu_only))
                 etEmail.requestFocus()
-
                 return@setOnClickListener
             }
-
-
-            // =================================================
-            // EMAIL MUST MATCH SCHOOL ID
-            //
-            // If ID = 203892
-            // email MUST = bal_203892@bisu.edu.ph
-            // =================================================
-
-            val expectedEmail =
-                "bal_${studentId.lowercase()}@bisu.edu.ph"
-
-
-            if (
-                !email.equals(
-                    expectedEmail,
-                    ignoreCase = true
-                )
-            ) {
-
-                showError(
-                    tvError,
-                    "Your BISU email does not match your School ID. For School ID $studentId, use $expectedEmail."
-                )
-
+            if (!RegistrationEmailPolicy.matchesStudentId(email, studentId)) {
+                showError(tvError, getString(R.string.registration_matching_email, "bal_${studentId}@bisu.edu.ph"))
                 etEmail.requestFocus()
-
                 return@setOnClickListener
             }
-
 
             // =================================================
             // PASSWORD LENGTH
@@ -424,6 +376,7 @@ class StudentSignUpActivity : AppCompatActivity() {
 
             isRegistering =
                 true
+            registrationFlow.setBusy(true)
 
             btnSignUp.isEnabled =
                 false
@@ -439,190 +392,78 @@ class StudentSignUpActivity : AppCompatActivity() {
             // FIREBASE AUTH
             // =================================================
 
-            auth.createUserWithEmailAndPassword(
-                email,
-                password
-            )
-                .addOnCompleteListener {
-                        task ->
-
-
-                    if (
-                        task.isSuccessful
-                    ) {
-
-                        val firebaseUser =
-                            auth.currentUser
-
-
-                        if (
-                            firebaseUser ==
-                            null
-                        ) {
-
-                            resetSignUpButton(
-                                btnSignUp
-                            )
-
-                            showError(
-                                tvError,
-                                "Account creation failed. Please try again."
-                            )
-
-                            return@addOnCompleteListener
+            val studentData = hashMapOf<String, Any?>(
+                "fullName" to fullName, "studentId" to studentId, "course" to course,
+                "yearLevel" to yearLevel, "email" to email, "username" to username,
+                "interest" to interest, "role" to "student", "createdAt" to System.currentTimeMillis())
+            createOrSignInForRegistration(email, password).addOnCompleteListener(this) { task ->
+                val user = auth.currentUser
+                if (!task.isSuccessful || user == null) {
+                    resetSignUpButton(btnSignUp)
+                    showError(tvError, "Unable to create the account. Check your details, password, and connection, then try again.")
+                    return@addOnCompleteListener
+                }
+                studentData["uid"] = user.uid
+                val ref = db.collection("users").document(user.uid)
+                ref.get().addOnSuccessListener(this) { existing ->
+                    if (existing.exists()) {
+                        resetSignUpButton(btnSignUp)
+                        if (!user.isEmailVerified) openVerification(false)
+                        else {
+                            auth.signOut()
+                            Toast.makeText(this, "This account already exists. Please sign in.", Toast.LENGTH_LONG).show()
+                            finish()
                         }
-
-
-                        val uid =
-                            firebaseUser.uid
-
-
-                        // =====================================
-                        // STUDENT FIRESTORE DATA
-                        // =====================================
-
-                        val studentData =
-                            hashMapOf(
-
-                                "uid" to uid,
-
-                                "fullName" to
-                                        fullName,
-
-                                "studentId" to
-                                        studentId,
-
-                                "course" to
-                                        course,
-
-                                "yearLevel" to
-                                        yearLevel,
-
-                                "email" to
-                                        email,
-
-                                "username" to
-                                        username,
-
-                                "interest" to
-                                        interest,
-
-                                "role" to
-                                        "student",
-
-                                "createdAt" to
-                                        System.currentTimeMillis()
-                            )
-
-
-                        // =====================================
-                        // SAVE USER
-                        // =====================================
-
-                        db.collection(
-                            "users"
-                        )
-                            .document(
-                                uid
-                            )
-                            .set(
-                                studentData
-                            )
-                            .addOnSuccessListener {
-
-                                resetSignUpButton(
-                                    btnSignUp
-                                )
-
-                                Toast.makeText(
-                                    this,
-                                    "Account created successfully!",
-                                    Toast.LENGTH_LONG
-                                ).show()
-
+                    } else {
+                        ref.create(studentData).addOnSuccessListener(this) {
+                            resetSignUpButton(btnSignUp)
+                            if (!user.isEmailVerified) openVerification(true)
+                            else {
+                                auth.signOut()
+                                Toast.makeText(this, "Account created. Please sign in.", Toast.LENGTH_LONG).show()
                                 finish()
                             }
-                            .addOnFailureListener {
-                                    error ->
-
-
-                                resetSignUpButton(
-                                    btnSignUp
-                                )
-
-                                showError(
-                                    tvError,
-                                    "Account created, but student information could not be saved. Please try again."
-                                )
-
-                                Toast.makeText(
-                                    this,
-                                    "Database error: ${error.message}",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-
-
-                    } else {
-
-
-                        resetSignUpButton(
-                            btnSignUp
-                        )
-
-
-                        val message =
-                            when {
-
-                                task.exception
-                                    ?.message
-                                    ?.contains(
-                                        "already in use",
-                                        ignoreCase = true
-                                    ) == true -> {
-
-                                    "This student email is already registered."
-                                }
-
-
-                                task.exception
-                                    ?.message
-                                    ?.contains(
-                                        "badly formatted",
-                                        ignoreCase = true
-                                    ) == true -> {
-
-                                    "Invalid student email address."
-                                }
-
-
-                                task.exception
-                                    ?.message
-                                    ?.contains(
-                                        "network",
-                                        ignoreCase = true
-                                    ) == true -> {
-
-                                    "Network error. Please check your internet connection."
-                                }
-
-
-                                else -> {
-
-                                    "Unable to create account. Please try again."
-                                }
-                            }
-
-
-                        showError(
-                            tvError,
-                            message
-                        )
+                        }.addOnFailureListener(this) {
+                            resetSignUpButton(btnSignUp)
+                            val message = if (it.message?.contains("username", ignoreCase = true) == true)
+                                "That username is already taken. Go back to Account and choose another username."
+                            else "Your sign-in was created, but the profile could not be saved. Check your connection and retry with the same email and password."
+                            showError(tvError, message)
+                        }
                     }
+                }.addOnFailureListener(this) {
+                    resetSignUpButton(btnSignUp)
+                    showError(tvError, "Unable to check your account profile. Check your connection and retry.")
                 }
+            }
         }
+        registrationFlow = RegistrationFlow(this, savedInstanceState)
     }
 
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        registrationFlow.saveState(outState)
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun openVerification(send: Boolean) {
+        startActivity(android.content.Intent(this, VerifyEmailActivity::class.java)
+            .putExtra(VerifyEmailActivity.SEND_ON_OPEN, send)
+            .putExtra(VerifyEmailActivity.FROM_REGISTRATION, true))
+        finish()
+    }
+
+    // Existing Firebase users can create a profile in the fresh Supabase database
+    // only after proving ownership with their current Firebase password.
+    private fun createOrSignInForRegistration(email: String, password: String) =
+        auth.createUserWithEmailAndPassword(email, password).continueWithTask { task ->
+            when {
+                task.isSuccessful -> Tasks.forResult(task.result)
+                task.exception is FirebaseAuthUserCollisionException ->
+                    auth.signInWithEmailAndPassword(email, password)
+                else -> Tasks.forException(task.exception ?: IllegalStateException("Unable to authenticate this account."))
+            }
+        }
 
     // =========================================================
     // PASSWORD VISIBILITY
@@ -691,6 +532,7 @@ class StudentSignUpActivity : AppCompatActivity() {
 
         isRegistering =
             false
+        registrationFlow.setBusy(false)
 
         btnSignUp.isEnabled =
             true

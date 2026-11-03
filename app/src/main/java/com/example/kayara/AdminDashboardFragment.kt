@@ -23,10 +23,10 @@ import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.Query
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.Executors
@@ -100,10 +100,11 @@ class AdminDashboardFragment : Fragment() {
         FirebaseAuth.getInstance()
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     // Organization profile pictures (organizationId -> avatarUrl)
     private var orgAvatarListener: ListenerRegistration? = null
+    private var postsListener: ListenerRegistration? = null
 
     // ============================================================
     // ORGANIZATION
@@ -434,12 +435,13 @@ class AdminDashboardFragment : Fragment() {
 
     private fun listenToPosts() {
 
-        db.collection("posts")
+        postsListener?.remove()
+        postsListener = db.collection("posts")
             .orderBy(
                 "createdAt",
                 Query.Direction.DESCENDING
             )
-            .addSnapshotListener { snapshot, error ->
+            .addSnapshotListener(useCache = true) { snapshot, error ->
 
                 if (!isAdded) {
                     return@addSnapshotListener
@@ -496,10 +498,10 @@ class AdminDashboardFragment : Fragment() {
                                 document.getString("avatarInitials") ?: "",
 
                             avatarColorStart =
-                                document.getString("avatarColorStart") ?: "#0B2E6B",
+                                document.getString("avatarColorStart") ?: "#3B176A",
 
                             avatarColorEnd =
-                                document.getString("avatarColorEnd") ?: "#1E5FD9",
+                                document.getString("avatarColorEnd") ?: "#7C3AED",
 
                             audience =
                                 document.getString("audience") ?: "everyone",
@@ -612,13 +614,13 @@ class AdminDashboardFragment : Fragment() {
                     document.getString("fullName") ?: "Admin"
 
                 val userOrganizationId =
-                    document.getString("organizationId") ?: organizationId
+                    organizationId
 
                 val userOrganizationName =
-                    document.getString("organizationName") ?: organizationName
+                    organizationName
 
                 val role =
-                    document.getString("role") ?: "Admin"
+                    "admin"
 
                 val postId =
                     db.collection("posts")
@@ -776,8 +778,8 @@ class AdminDashboardFragment : Fragment() {
                 "organizationId" to organizationId,
                 "organizationName" to organizationName,
                 "avatarInitials" to initials,
-                "avatarColorStart" to "#0B2E6B",
-                "avatarColorEnd" to "#1E5FD9",
+                "avatarColorStart" to "#3B176A",
+                "avatarColorEnd" to "#7C3AED",
                 "audience" to "everyone",
                 "textContent" to text,
                 "caption" to "",
@@ -1321,8 +1323,8 @@ class AdminDashboardFragment : Fragment() {
                 "organizationId" to organizationId,
                 "organizationName" to organizationName,
                 "avatarInitials" to initials,
-                "avatarColorStart" to "#0B2E6B",
-                "avatarColorEnd" to "#1E5FD9",
+                "avatarColorStart" to "#3B176A",
+                "avatarColorEnd" to "#7C3AED",
                 "audience" to "everyone",
                 "textContent" to "",
                 "caption" to caption,
@@ -1816,6 +1818,8 @@ class AdminDashboardFragment : Fragment() {
 
     override fun onDestroyView() {
 
+        postsListener?.remove()
+        postsListener = null
         orgAvatarListener?.remove()
         orgAvatarListener = null
 

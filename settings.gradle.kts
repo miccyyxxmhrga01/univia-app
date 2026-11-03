@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KAYARA"
+rootProject.name = "Univia App"
 include(":app")
  

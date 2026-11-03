@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
 
 class MembersFragment : Fragment() {
 
@@ -27,7 +27,7 @@ class MembersFragment : Fragment() {
     private lateinit var chipPending: TextView
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private val auth =
         FirebaseAuth.getInstance()
@@ -732,11 +732,11 @@ class MembersFragment : Fragment() {
                                             role == "pending"
                                         ) {
 
-                                            "#F5A524"
+                                            "#A38ACB"
 
                                         } else {
 
-                                            "#0B2E6B"
+                                            "#3B176A"
                                         },
 
                                     avatarColorEnd =
@@ -744,11 +744,11 @@ class MembersFragment : Fragment() {
                                             role == "pending"
                                         ) {
 
-                                            "#E08A0F"
+                                            "#69508D"
 
                                         } else {
 
-                                            "#2A4E92"
+                                            "#3B176A"
                                         },
 
                                     applicationNote =
@@ -2069,7 +2069,7 @@ class MembersFragment : Fragment() {
 
                 Toast.makeText(
                     requireContext(),
-                    "Admin notification could not be created: ${error.message}",
+                    "Org Manager notification could not be created: ${error.message}",
                     Toast.LENGTH_LONG
                 ).show()
             }

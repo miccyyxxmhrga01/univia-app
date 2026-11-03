@@ -35,9 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Synced with the Super Admin's Documents"
+            android:text="Synced with the Coordinator's Documents"
             android:textColor="@color/text_gray"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:text="Name"
             android:textColor="@color/text_gray"
-            android:textSize="11sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -135,7 +135,7 @@
         android:background="@drawable/bg_fab"
         android:padding="16dp"
         android:src="@drawable/ic_add"
-        android:elevation="8dp"
+        android:elevation="0dp"
         android:clickable="true"
         android:focusable="true"
         android:contentDescription="@string/add_folder"

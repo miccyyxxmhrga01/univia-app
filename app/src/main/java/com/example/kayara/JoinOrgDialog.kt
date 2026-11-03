@@ -15,8 +15,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.SupabaseDatabase
 
 /**
  * "Join organization" sheet.
@@ -48,7 +48,7 @@ class JoinOrgDialog(
     ) -> Unit
 ) {
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
 
     private var requirements: List<RecruitmentRequirement> = emptyList()

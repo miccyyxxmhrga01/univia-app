@@ -5,7 +5,7 @@ data class FolderModel(
     val fileCount: Int = 0,
     val status: String = "clear",
     val pendingCount: Int = 0,
-    val folderColor: String = "#1E5FD9",
+    val folderColor: String = "#7C3AED",
 
     // Firestore references
     val organizationId: String = "",

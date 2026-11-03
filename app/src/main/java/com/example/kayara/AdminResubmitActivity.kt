@@ -11,8 +11,8 @@ import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
 
 class AdminResubmitActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class AdminResubmitActivity : AppCompatActivity() {
     private lateinit var btnBack: TextView
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private val auth =
         FirebaseAuth.getInstance()
@@ -496,7 +496,7 @@ class AdminResubmitActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Application resubmitted successfully. Please wait for Super Admin approval.",
+                    "Application resubmitted successfully. Please wait for Coordinator approval.",
                     Toast.LENGTH_LONG
                 ).show()
 

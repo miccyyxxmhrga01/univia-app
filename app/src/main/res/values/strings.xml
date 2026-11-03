@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">BBCO</string>
+    <string name="univia_welcome">Welcome to Univia</string>
+    <string name="app_name">Univia App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Back</string>
     <string name="welcome_back">Welcome Back</string>
-    <string name="login_as_super_admin">Login as Super Admin</string>
-    <string name="login_as_admin">Login as Admin</string>
+    <string name="login_as_super_admin">Login as Coordinator</string>
+    <string name="login_as_admin">Login as Org Manager</string>
     <string name="login_as_student">Login as Student</string>
-    <string name="super_admin_icon">Super Admin icon</string>
-    <string name="admin_icon">Admin icon</string>
+    <string name="super_admin_icon">Coordinator icon</string>
+    <string name="admin_icon">Org Manager icon</string>
     <string name="student_icon">Student icon</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -70,4 +71,27 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <string name="bisu_logo_description">Bohol Island State University seal</string>
+    <string name="univia_logo_description">Univia app logo</string>
+    <string name="role_coordinator">Coordinator</string>
+    <string name="role_org_manager">Org Manager</string>
+
+    <string name="intro_tagline">Your organization journey starts here.</string>
+    <string name="campus_name">BISU Balilihan</string>
+    <string name="onboard_skip">Skip</string>
+    <string name="onboard_next">Next</string>
+    <string name="onboard_back">Back</string>
+    <string name="onboard_get_started">Get started</string>
+    <string name="onboard_progress">%1$d of %2$d</string>
+    <string name="onboard_discover_title">Find your people.</string>
+    <string name="onboard_discover_body">Explore campus organizations and discover a community that shares your interests.</string>
+    <string name="onboard_join_title">Make your next move.</string>
+    <string name="onboard_join_body">Apply to an organization, submit your requirements, and follow your membership application.</string>
+    <string name="onboard_connect_title">Be part of what’s next.</string>
+    <string name="onboard_connect_body">Keep up with organization announcements, events, and conversations in one place.</string>
+    <string name="replay_onboarding">Explore how Univia App works</string>
+    <string name="signin_heading">Welcome back.</string>
+    <string name="signin_body">Your campus community is waiting.</string>
+    <string name="campus_login_name">Univia</string>
+    <string name="campus_university_name">BOHOL ISLAND STATE UNIVERSITY</string>
 </resources>

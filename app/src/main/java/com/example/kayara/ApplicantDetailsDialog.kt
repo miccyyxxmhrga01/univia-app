@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.SupabaseDatabase
 
 /**
  * Detalye sa usa ka member / applicant (gi-abli kung i-click ang row sa Members tab).
@@ -31,7 +31,7 @@ class ApplicantDetailsDialog(
     private val onReject: () -> Unit
 ) {
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = SupabaseDatabase.getInstance()
 
     fun show() {
 

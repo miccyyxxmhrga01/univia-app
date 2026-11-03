@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="Uploaded date · size"
             android:textColor="@color/text_gray"
-            android:textSize="10.5sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <TextView
@@ -52,7 +52,7 @@
         android:paddingHorizontal="7dp"
         android:paddingVertical="3dp"
         android:text="APPROVED"
-        android:textSize="9sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
 </LinearLayout>

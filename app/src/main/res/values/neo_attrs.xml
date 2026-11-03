@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="NeumorphicDrawable">
+        <attr name="neoStyle" format="enum"><enum name="raised" value="0" /><enum name="inset" value="1" /><enum name="primary" value="2" /></attr>
+        <attr name="neoRadius" format="dimension" />
+    </declare-styleable>
+</resources>

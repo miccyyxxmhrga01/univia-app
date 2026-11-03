@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:clipToPadding="false" android:scrollbars="none">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center"
+        android:paddingHorizontal="26dp" android:paddingTop="16dp" android:paddingBottom="12dp">
+        <com.example.kayara.OnboardingArtView android:id="@+id/onboardingArt"
+            android:layout_width="match_parent" android:layout_height="@dimen/onboarding_art_height" />
+        <TextView android:id="@+id/onboardingTitle" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="12dp"
+            android:gravity="center" android:includeFontPadding="false"
+            android:textSize="28sp" android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/text_primary" />
+        <View android:layout_width="48dp" android:layout_height="3dp"
+            android:layout_marginTop="12dp" android:layout_marginBottom="12dp"
+            android:background="@drawable/campus_accent_rule" />
+        <TextView android:id="@+id/onboardingBody" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:gravity="center"
+            android:includeFontPadding="false" android:textSize="14sp"
+            android:lineSpacingExtra="3dp" android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/login_secondary" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

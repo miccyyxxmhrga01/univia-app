@@ -1,6 +1,2 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="10dp" />
-    <solid android:color="#F0F3F8" />
-</shape>
+<drawable xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="com.example.kayara.NeumorphicDrawable" app:neoStyle="inset" app:neoRadius="18dp" />

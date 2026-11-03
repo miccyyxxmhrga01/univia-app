@@ -1,193 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EFF5FF">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/loginScene" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/campus_login_background">
+ <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false" android:scrollbars="none">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal" android:paddingHorizontal="18dp" android:paddingTop="0dp" android:paddingBottom="10dp">
+   <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/login_brand_height" android:orientation="vertical" android:gravity="top|center_horizontal">
+    <LinearLayout android:id="@+id/loginLogos" android:layout_marginTop="@dimen/login_brand_offset" android:layout_width="wrap_content" android:layout_height="90dp" android:gravity="center" android:orientation="horizontal">
+     <FrameLayout android:layout_width="90dp" android:layout_height="90dp" android:background="@drawable/neo_circle">
+      <ImageView android:id="@+id/loginBisuLogo" android:layout_width="74dp" android:layout_height="74dp" android:layout_gravity="center" android:src="@drawable/bisu_logo" android:contentDescription="@string/bisu_logo_description" />
+     </FrameLayout>
+     <FrameLayout android:layout_width="90dp" android:layout_height="90dp" android:layout_marginStart="1dp" android:background="@drawable/neo_circle">
+      <ImageView android:id="@+id/loginAppLogo" android:layout_width="74dp" android:layout_height="74dp" android:layout_gravity="center" android:src="@drawable/univia_logo" android:contentDescription="@string/univia_logo_description" />
+     </FrameLayout>
+    </LinearLayout>
+    <TextView android:includeFontPadding="false" android:id="@+id/loginCampusTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/login_campus_name_gap" android:gravity="center" android:text="@string/campus_login_name" android:textSize="24sp" android:textColor="@color/on_primary" android:shadowColor="#665B466F" android:shadowRadius="3" android:shadowDy="1" android:fontFamily="@font/poppins_semibold" />
+    <ImageView android:layout_width="104dp" android:layout_height="10dp" android:layout_marginTop="-5dp" android:src="@drawable/campus_gold_swoosh" android:contentDescription="@null" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="20dp" android:layout_marginTop="@dimen/login_university_gap" android:orientation="horizontal" android:gravity="center">
+     <View android:layout_width="18dp" android:layout_height="1dp" android:background="#CCFFFFFF" />
+     <TextView android:includeFontPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginHorizontal="6dp" android:text="@string/campus_university_name" android:textSize="8sp" android:letterSpacing="0.20" android:textColor="@color/on_primary" android:shadowColor="#995B466F" android:shadowRadius="2" />
+     <View android:layout_width="18dp" android:layout_height="1dp" android:background="#CCFFFFFF" />
+    </LinearLayout>
+   </LinearLayout>
+   <com.example.kayara.CampusLoginCard android:id="@+id/loginCard" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/loginForm" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="26dp" android:paddingTop="@dimen/login_card_top" android:paddingBottom="@dimen/login_card_bottom">
+     <TextView android:includeFontPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Welcome back." android:fontFamily="@font/poppins_bold" android:textSize="28sp" app:lineHeight="34sp" android:textColor="@color/text_primary" />
+     <TextView android:includeFontPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Keep campus organizations moving forward." android:textSize="13sp" android:textColor="@color/login_secondary" />
+     <View android:layout_width="48dp" android:layout_height="3dp" android:layout_gravity="center" android:layout_marginTop="@dimen/login_label_gap" android:layout_marginBottom="@dimen/login_accent_bottom" android:background="@drawable/campus_accent_rule" />
+     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+      <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/glass_mail_outline" app:tint="@color/text_primary" android:contentDescription="@null" />
+      <TextView android:includeFontPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="7dp" android:text="Username" android:labelFor="@id/etUsername" android:fontFamily="@font/poppins_semibold" android:textSize="14sp" android:textColor="@color/text_primary" />
+     </LinearLayout>
+     <EditText android:id="@+id/etUsername" android:layout_width="match_parent" android:layout_height="@dimen/login_field_height" android:layout_marginTop="1dp" android:paddingHorizontal="23dp" android:background="@drawable/neo_inset" android:hint="Enter your coordinator username" android:inputType="text" android:autofillHints="username" android:singleLine="true" android:imeOptions="actionNext" android:fontFamily="@font/poppins_regular" android:textSize="14sp" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" />
+     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/login_label_gap" android:orientation="horizontal" android:gravity="center_vertical">
+      <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/glass_lock_outline" app:tint="@color/text_primary" android:contentDescription="@null" />
+      <TextView android:includeFontPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="7dp" android:text="Password" android:labelFor="@id/etPassword" android:fontFamily="@font/poppins_semibold" android:textSize="14sp" android:textColor="@color/text_primary" />
+     </LinearLayout>
+     <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/login_field_height" android:layout_marginTop="1dp" android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/neo_inset" android:addStatesFromChildren="true">
+      <EditText android:id="@+id/etPassword" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:paddingStart="23dp" android:paddingEnd="0dp" android:background="@android:color/transparent" android:hint="Enter your password" android:inputType="textPassword" android:autofillHints="password" android:singleLine="true" android:fontFamily="@font/poppins_regular" android:textSize="14sp" android:textColor="@color/text_primary" android:textColorHint="@color/text_hint" />
+      <ImageView android:id="@+id/btnTogglePassword" android:layout_width="48dp" android:layout_height="48dp" android:padding="14dp" android:layout_marginEnd="5dp" android:src="@drawable/ic_eye" app:tint="@color/text_secondary" android:contentDescription="@string/toggle_password" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" />
+     </LinearLayout>
+     <TextView android:includeFontPadding="false" android:id="@+id/tvError" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/login_action_gap" android:padding="10dp" android:background="@drawable/bg_reject_btn" android:textColor="@color/error" android:textSize="12sp" android:accessibilityLiveRegion="polite" android:visibility="gone" />
+     <LinearLayout android:id="@+id/btnLogin" android:layout_width="match_parent" android:layout_height="@dimen/login_action_height" android:layout_marginTop="@dimen/login_action_gap" android:gravity="center" android:orientation="horizontal" android:background="@drawable/neo_primary" android:clickable="true" android:focusable="true">
+      <TextView android:includeFontPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign in" android:fontFamily="@font/poppins_semibold" android:textSize="17sp" android:textColor="@color/on_primary" />
+      <ImageView android:layout_width="23dp" android:layout_height="23dp" android:layout_marginStart="12dp" android:src="@drawable/glass_arrow_forward" app:tint="@color/on_primary" android:contentDescription="@null" />
+     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    </LinearLayout>
+   </com.example.kayara.CampusLoginCard>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- HEADER -->
-            <FrameLayout
-                android:id="@+id/headerCurve"
-                android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:background="@drawable/bg_v2_header_superadmin"
-                android:clipChildren="true">
-
-                <View android:layout_width="190dp" android:layout_height="190dp"
-                    android:layout_gravity="end|top" android:layout_marginTop="-60dp" android:layout_marginEnd="-50dp"
-                    android:background="@drawable/bg_v2_deco_circle" />
-                <View android:layout_width="110dp" android:layout_height="110dp"
-                    android:layout_gravity="start|bottom" android:layout_marginStart="-40dp" android:layout_marginBottom="50dp"
-                    android:background="@drawable/bg_v2_deco_circle" />
-
-                <ImageView
-                    android:id="@+id/btnBack"
-                    android:layout_width="42dp" android:layout_height="42dp"
-                    android:layout_marginStart="20dp" android:layout_marginTop="24dp"
-                    android:background="@drawable/bg_header_icon_btn"
-                    android:clickable="true" android:focusable="true" android:elevation="3dp"
-                    android:contentDescription="@string/back" android:padding="11dp"
-                    android:src="@drawable/ic_back_arrow" app:tint="#2563EB" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:layout_gravity="top|center_horizontal" android:layout_marginTop="64dp"
-                    android:gravity="center_horizontal" android:orientation="vertical">
-
-                    <FrameLayout
-                        android:layout_width="82dp" android:layout_height="82dp"
-                        android:background="@drawable/bg_auth_deco_circle" android:elevation="6dp">
-                        <ImageView
-                            android:layout_width="38dp" android:layout_height="38dp"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/admin_icon"
-                            android:src="@drawable/ic_crown" app:tint="#2563EB" />
-                    </FrameLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp" android:letterSpacing="0.2" android:text="BBCO"
-                        android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" />
-                </LinearLayout>
-            </FrameLayout>
-
-            <!-- LOGIN CARD -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginStart="20dp" android:layout_marginTop="-64dp" android:layout_marginEnd="20dp"
-                app:cardBackgroundColor="#FFFFFF" app:cardCornerRadius="28dp" app:cardElevation="8dp">
-
-                <LinearLayout
-                    android:id="@+id/contentLayout"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="22dp" android:paddingTop="26dp"
-                    android:paddingEnd="22dp" android:paddingBottom="28dp">
-
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="@string/welcome_back" android:textColor="#0B2E6B"
-                        android:textSize="25sp" android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp" android:text="@string/login_as_super_admin"
-                        android:textColor="#6B7A90" android:textSize="13sp" />
-
-                    <!-- Username -->
-                    <LinearLayout
-                        android:layout_width="match_parent" android:layout_height="58dp"
-                        android:layout_marginTop="26dp" android:background="@drawable/bg_v2_input_blue"
-                        android:gravity="center_vertical" android:orientation="horizontal"
-                        android:paddingStart="11dp" android:paddingEnd="14dp">
-                        <FrameLayout android:layout_width="36dp" android:layout_height="36dp"
-                            android:background="@drawable/bg_v2_icon_blue">
-                            <ImageView android:layout_width="18dp" android:layout_height="18dp"
-                                android:layout_gravity="center" android:contentDescription="@null"
-                                android:src="@drawable/ic_person" app:tint="#2563EB" />
-                        </FrameLayout>
-                        <EditText
-                            android:id="@+id/etUsername"
-                            android:layout_width="0dp" android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp" android:layout_weight="1"
-                            android:autofillHints="username" android:background="@null"
-                            android:hint="@string/username" android:inputType="text"
-                            android:textColor="#0B2E6B" android:textColorHint="#8D9BB0" android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <!-- Password -->
-                    <LinearLayout
-                        android:layout_width="match_parent" android:layout_height="58dp"
-                        android:layout_marginTop="12dp" android:background="@drawable/bg_v2_input_blue"
-                        android:gravity="center_vertical" android:orientation="horizontal"
-                        android:paddingStart="11dp" android:paddingEnd="6dp">
-                        <FrameLayout android:layout_width="36dp" android:layout_height="36dp"
-                            android:background="@drawable/bg_v2_icon_blue">
-                            <ImageView android:layout_width="18dp" android:layout_height="18dp"
-                                android:layout_gravity="center" android:contentDescription="@null"
-                                android:src="@drawable/ic_lock" app:tint="#2563EB" />
-                        </FrameLayout>
-                        <EditText
-                            android:id="@+id/etPassword"
-                            android:layout_width="0dp" android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp" android:layout_weight="1"
-                            android:autofillHints="password" android:background="@null"
-                            android:hint="@string/password" android:inputType="textPassword"
-                            android:textColor="#0B2E6B" android:textColorHint="#8D9BB0" android:textSize="14sp" />
-                        <ImageView
-                            android:id="@+id/btnTogglePassword"
-                            android:layout_width="42dp" android:layout_height="42dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:clickable="true" android:focusable="true" android:padding="10dp"
-                            android:contentDescription="@string/toggle_password"
-                            android:src="@drawable/ic_eye" app:tint="#2563EB" />
-                    </LinearLayout>
-
-                    <!-- Remember me / Forgot password -->
-                    <LinearLayout
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp" android:gravity="center_vertical"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="18dp" android:layout_height="18dp"
-                            android:contentDescription="@string/remember_me"
-                            android:src="@drawable/ic_check_circle_filled" app:tint="#3B82F6" />
-                        <TextView
-                            android:layout_width="0dp" android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp" android:layout_weight="1"
-                            android:text="@string/remember_me" android:textColor="#6B7A90"
-                            android:textSize="12.5sp" />
-                        <TextView
-                            android:id="@+id/tvForgotPassword"
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:background="?attr/selectableItemBackground"
-                            android:clickable="true" android:focusable="true" android:padding="4dp"
-                            android:text="@string/forgot_password" android:textColor="#2563EB"
-                            android:textSize="12.5sp" android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <!-- Error -->
-                    <TextView
-                        android:id="@+id/tvError"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp" android:background="@drawable/bg_reject_btn"
-                        android:padding="11dp" android:text="" android:textColor="#C62828"
-                        android:textSize="12.5sp" android:visibility="gone" />
-
-                    <!-- Login button -->
-                    <LinearLayout
-                        android:id="@+id/btnLogin"
-                        android:layout_width="match_parent" android:layout_height="56dp"
-                        android:layout_marginTop="24dp" android:background="@drawable/bg_v2_btn_blue"
-                        android:clickable="true" android:focusable="true" android:elevation="4dp"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center" android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:letterSpacing="0.08" android:text="@string/login"
-                            android:textColor="#FFFFFF" android:textSize="15sp" android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:layout_marginStart="9dp" android:text="→"
-                            android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <View android:layout_width="match_parent" android:layout_height="28dp" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </LinearLayout>
+ </androidx.core.widget.NestedScrollView>
+</FrameLayout>

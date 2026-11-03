@@ -1,7 +1,7 @@
 package com.example.kayara
 
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 
 /**
  * Nagabantay sa tanang organizations ug nagahatag ug map:
@@ -14,9 +14,9 @@ fun listenToOrgAvatars(
     onChange: (Map<String, String>) -> Unit
 ): ListenerRegistration {
 
-    return FirebaseFirestore.getInstance()
+    return SupabaseDatabase.getInstance()
         .collection("organizations")
-        .addSnapshotListener { snapshot, error ->
+        .addSnapshotListener(useCache = true) { snapshot, error ->
 
             if (error != null || snapshot == null) {
                 return@addSnapshotListener

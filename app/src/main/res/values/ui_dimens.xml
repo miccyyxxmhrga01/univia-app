@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- A 4dp rhythm shared by operational screens; auth retains its reference composition. -->
+    <dimen name="ui_space_4">4dp</dimen>
+    <dimen name="ui_space_8">8dp</dimen>
+    <dimen name="ui_space_12">12dp</dimen>
+    <dimen name="ui_space_16">16dp</dimen>
+    <dimen name="ui_space_20">20dp</dimen>
+    <dimen name="ui_space_24">24dp</dimen>
+    <dimen name="ui_space_32">32dp</dimen>
+    <dimen name="ui_radius_card">16dp</dimen>
+    <dimen name="ui_radius_compact">12dp</dimen>
+    <dimen name="ui_radius_control">22dp</dimen>
+    <dimen name="ui_touch_target">48dp</dimen>
+    <dimen name="ui_nav_min_height">80dp</dimen>
+    <dimen name="ui_text_title">22sp</dimen>
+    <dimen name="ui_text_section">18sp</dimen>
+    <dimen name="ui_text_body">14sp</dimen>
+    <dimen name="ui_text_metadata">12sp</dimen>
+</resources>

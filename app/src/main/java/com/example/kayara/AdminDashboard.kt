@@ -89,6 +89,7 @@ class AdminDashboardActivity :
         setContentView(
             R.layout.activity_admin_dashboard
         )
+        UniviaInsets.apply(this)
 
         // =====================================================
         // GET ORGANIZATION FROM LOGIN
@@ -133,6 +134,13 @@ class AdminDashboardActivity :
              * returning to the Welcome screen.
              */
         }
+
+        findViewById<View>(R.id.btnStudentView).setOnClickListener {
+            startActivity(android.content.Intent(this, StudentDashboardActivity::class.java)
+                .addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            finish()
+        }
+        AccountAccessGuard.attach(this) { access -> access.organizations.any { it.id == organizationId } }
 
         // =====================================================
         // HEADER
@@ -506,173 +514,9 @@ class AdminDashboardActivity :
     // BOTTOM NAV
     // =========================================================
 
-    private fun updateBottomNav(
-        selectedPosition: Int
-    ) {
-
-        this.selectedPosition =
-            selectedPosition
-
-        val icons =
-            listOf(
-                iconHome,
-                iconMembers,
-                iconNotifications,
-                iconRequirements,
-                iconProfile
-            )
-
-        val labels =
-            listOf(
-                labelHome,
-                labelMembers,
-                labelNotifications,
-                labelRequirements,
-                labelProfile
-            )
-
-        val activeColor =
-            getColor(
-                R.color.admin_end
-            )
-
-        val inactiveColor =
-            Color.parseColor(
-                "#AAB7C8"
-            )
-
-        val density =
-            resources
-                .displayMetrics
-                .density
-
-        icons.forEachIndexed {
-                index,
-                icon ->
-
-            val selected =
-                index ==
-                        selectedPosition
-
-            icon.animate().cancel()
-
-            labels[index]
-                .animate()
-                .cancel()
-
-            icon.setColorFilter(
-                if (selected)
-                    activeColor
-                else
-                    inactiveColor
-            )
-
-            labels[index]
-                .setTextColor(
-                    if (selected)
-                        activeColor
-                    else
-                        inactiveColor
-                )
-
-            if (
-                selected
-            ) {
-
-                icon.background =
-                    GradientDrawable()
-                        .apply {
-
-                            shape =
-                                GradientDrawable.OVAL
-
-                            setColor(
-                                Color.WHITE
-                            )
-
-                            setStroke(
-                                (1f * density)
-                                    .toInt(),
-                                Color.parseColor(
-                                    "#DDEBE8"
-                                )
-                            )
-                        }
-
-                icon.elevation =
-                    10f *
-                            density
-
-                icon.alpha =
-                    0.82f
-
-                icon.scaleX =
-                    0.92f
-
-                icon.scaleY =
-                    0.92f
-
-                icon.animate()
-                    .translationY(
-                        -18f *
-                                density
-                    )
-                    .scaleX(1.15f)
-                    .scaleY(1.15f)
-                    .alpha(1f)
-                    .setDuration(300L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .start()
-
-                labels[index]
-                    .animate()
-                    .translationY(
-                        -6f *
-                                density
-                    )
-                    .alpha(1f)
-                    .setDuration(300L)
-                    .start()
-
-            } else {
-
-                icon.animate()
-                    .translationY(0f)
-                    .scaleX(1f)
-                    .scaleY(1f)
-                    .alpha(0.68f)
-                    .setDuration(250L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .withEndAction {
-
-                        if (
-                            index !=
-                            this.selectedPosition
-                        ) {
-
-                            icon.background =
-                                ColorDrawable(
-                                    Color.TRANSPARENT
-                                )
-
-                            icon.elevation =
-                                0f
-                        }
-                    }
-                    .start()
-
-                labels[index]
-                    .animate()
-                    .translationY(0f)
-                    .alpha(0.72f)
-                    .setDuration(250L)
-                    .start()
-            }
-        }
+    private fun updateBottomNav(selectedPosition: Int) {
+        this.selectedPosition = selectedPosition
+        UniviaNavigation.update(listOf(iconHome, iconMembers, iconNotifications, iconRequirements, iconProfile), listOf(labelHome, labelMembers, labelNotifications, labelRequirements, labelProfile), selectedPosition)
     }
 
     // =========================================================

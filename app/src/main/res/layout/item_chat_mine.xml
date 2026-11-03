@@ -28,6 +28,6 @@
         android:layout_marginEnd="4dp"
         android:text="Just now"
         android:textColor="@color/text_gray"
-        android:textSize="9.5sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>

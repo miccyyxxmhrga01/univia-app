@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Academic Year"
-                android:textColor="#173F7A"
+                android:textColor="@color/brand_navy"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Set the active academic year for all organizations."
-                android:textColor="#7A8797"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
             <!-- CURRENT ACADEMIC YEAR CARD -->
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_white_card"
-                android:elevation="2dp"
+                android:elevation="0dp"
                 android:orientation="vertical"
                 android:padding="18dp">
 
@@ -59,8 +59,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CURRENT ACADEMIC YEAR"
-                    android:textColor="#7A8797"
-                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:text="Not set"
-                    android:textColor="#173F7A"
+                    android:textColor="@color/brand_navy"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -80,8 +80,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="No active academic year"
-                    android:textColor="#7A8797"
-                    android:textSize="11sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_white_card"
-                android:elevation="2dp"
+                android:elevation="0dp"
                 android:orientation="vertical"
                 android:padding="18dp">
 
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SET ACADEMIC YEAR"
-                    android:textColor="#173F7A"
+                    android:textColor="@color/brand_navy"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -109,8 +109,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Enter the academic year that should become active."
-                    android:textColor="#7A8797"
-                    android:textSize="11sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
                 <!-- ACADEMIC YEAR -->
 
@@ -119,8 +119,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:text="Academic Year"
-                    android:textColor="#455468"
-                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -133,8 +133,8 @@
                     android:inputType="text"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
-                    android:textColor="#173F7A"
-                    android:textColorHint="#AAB7C8"
+                    android:textColor="@color/brand_navy"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
                 <!-- START DATE -->
@@ -144,8 +144,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="Start Date"
-                    android:textColor="#455468"
-                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -158,8 +158,8 @@
                     android:inputType="text"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
-                    android:textColor="#173F7A"
-                    android:textColorHint="#AAB7C8"
+                    android:textColor="@color/brand_navy"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
                 <!-- END DATE -->
@@ -169,8 +169,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="End Date"
-                    android:textColor="#455468"
-                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -183,8 +183,8 @@
                     android:inputType="text"
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp"
-                    android:textColor="#173F7A"
-                    android:textColorHint="#AAB7C8"
+                    android:textColor="@color/brand_navy"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="13sp" />
 
                 <!-- SAVE -->
@@ -218,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="How renewal works"
-                    android:textColor="#173F7A"
+                    android:textColor="@color/brand_navy"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -228,8 +228,8 @@
                     android:layout_marginTop="8dp"
                     android:lineSpacingExtra="3dp"
                     android:text="When a new academic year is activated, all existing approved organizations will be marked as requiring renewal."
-                    android:textColor="#68778A"
-                    android:textSize="11sp" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

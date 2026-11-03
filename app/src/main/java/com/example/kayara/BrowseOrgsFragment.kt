@@ -16,9 +16,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 import android.app.Activity
 import android.content.Intent
 
@@ -32,7 +32,7 @@ class BrowseOrgsFragment : Fragment() {
     private lateinit var chipPending: TextView
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     // Maximum number of organizations a student can join
     private val MAX_ORGANIZATIONS = 3
@@ -97,7 +97,7 @@ class BrowseOrgsFragment : Fragment() {
 
 
         auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        db = SupabaseDatabase.getInstance()
 
         val rvBrowseOrgs =
             view.findViewById<RecyclerView>(R.id.rvBrowseOrgs)
@@ -108,6 +108,7 @@ class BrowseOrgsFragment : Fragment() {
         chipAll = view.findViewById(R.id.chipAllStudentOrgs)
         chipJoined = view.findViewById(R.id.chipJoined)
         chipPending = view.findViewById(R.id.chipPendingOrgs)
+        setActiveChip(chipAll)
 
         rvBrowseOrgs.layoutManager =
             LinearLayoutManager(requireContext())
@@ -317,11 +318,11 @@ class BrowseOrgsFragment : Fragment() {
 
                                 colorStart =
                                     document.getString("colorStart")
-                                        ?: "#1E5FD9",
+                                        ?: "#7C3AED",
 
                                 colorEnd =
                                     document.getString("colorEnd")
-                                        ?: "#3FA9F5",
+                                        ?: "#7C3AED",
 
                                 recruitmentInfo =
                                     document.getString("recruitmentInfo")
@@ -529,23 +530,13 @@ class BrowseOrgsFragment : Fragment() {
             listOf(chipAll, chipJoined, chipPending)
 
         allChips.forEach { chip ->
-
-            if (chip == activeChip) {
-
-                chip.setBackgroundResource(R.drawable.bg_chip_active)
-
-                chip.setTextColor(
-                    resources.getColor(R.color.white, null)
-                )
-
-            } else {
-
-                chip.setBackgroundResource(R.drawable.bg_chip)
-
-                chip.setTextColor(
-                    resources.getColor(R.color.text_gray, null)
-                )
-            }
+            val selected = chip == activeChip
+            chip.isSelected = selected
+            chip.setBackgroundResource(if (selected) R.drawable.bg_chip_active else R.drawable.bg_chip)
+            // Both chip surfaces are pale recesses; keep their labels in readable semantic ink.
+            chip.setTextColor(resources.getColor(if (selected) R.color.brand_navy else R.color.text_secondary, null))
+            chip.typeface = androidx.core.content.res.ResourcesCompat.getFont(requireContext(),
+                if (selected) R.font.poppins_semibold else R.font.poppins_regular)
         }
     }
 

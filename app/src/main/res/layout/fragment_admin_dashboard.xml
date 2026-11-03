@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="18dp"
+        android:paddingStart="@dimen/ui_space_20"
         android:paddingTop="4dp"
-        android:paddingEnd="18dp"
+        android:paddingEnd="@dimen/ui_space_20"
         android:paddingBottom="24dp">
 
 
@@ -24,15 +24,15 @@
         <!-- ADMIN HERO                                       -->
         <!-- ================================================= -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:id="@+id/headerGreetingSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/admin_end"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
             app:strokeColor="#35FFFFFF"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -43,8 +43,8 @@
 
                 <!-- MOVING ADMIN CIRCLES -->
 
-                <com.example.kayara.AnimatedAdminHeroCirclesView
-                    android:layout_width="match_parent"
+                <View
+android:visibility="gone"                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:clickable="false"
@@ -57,9 +57,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingStart="18dp"
+                    android:paddingStart="@dimen/ui_space_20"
                     android:paddingTop="17dp"
-                    android:paddingEnd="18dp"
+                    android:paddingEnd="@dimen/ui_space_20"
                     android:paddingBottom="18dp">
 
 
@@ -81,15 +81,15 @@
                             android:layout_height="12dp"
                             android:src="@drawable/ic_crown"
                             android:contentDescription="@null"
-                            app:tint="#FFE7AE" />
+                            app:tint="@color/text_primary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="6dp"
-                            android:text="ORGANIZATION ADMIN"
-                            android:textColor="#FFE7AE"
-                            android:textSize="9sp"
+                            android:text="ORG MANAGER"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -100,10 +100,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Good day, Organization Admin"
-                        android:textColor="@color/white"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
+                        android:text="Good day, Org Manager"
+                        android:textAppearance="@style/TextAppearance.Univia.Title" />
 
 
                     <TextView
@@ -112,14 +110,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Organization Overview"
-                        android:textColor="#D8F3EE"
-                        android:textSize="12sp" />
+                        android:textAppearance="@style/TextAppearance.Univia.Body" />
 
                 </LinearLayout>
 
             </FrameLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ================================================= -->
@@ -146,7 +143,7 @@
                 android:background="@drawable/bg_renewal_icon"
                 android:gravity="center"
                 android:text="!"
-                android:textColor="@color/white"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -172,14 +169,14 @@
                     android:layout_marginTop="3dp"
                     android:text="Renewal required for the current academic year."
                     android:textColor="@color/text_gray"
-                    android:textSize="10.5sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <TextView
                 android:id="@+id/btnRenewNow"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_renew_now_button"
                 android:clickable="true"
                 android:focusable="true"
@@ -188,8 +185,8 @@
                 android:paddingStart="11dp"
                 android:paddingEnd="11dp"
                 android:text="RENEW NOW"
-                android:textColor="@color/white"
-                android:textSize="9.5sp"
+                android:textColor="@color/surface_card"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -199,15 +196,15 @@
         <!-- COMPOSE GLASS CARD                               -->
         <!-- ================================================= -->
 
-        <com.google.android.material.card.MaterialCardView
+        <com.example.kayara.NeoCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#E8FFFFFF"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
             app:strokeColor="#F2FFFFFF"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -242,9 +239,9 @@
                         android:paddingTop="4dp"
                         android:paddingEnd="8dp"
                         android:paddingBottom="4dp"
-                        android:text="ADMIN"
+                        android:text="ORG MANAGER"
                         android:textColor="@color/blue_deep"
-                        android:textSize="8.5sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -261,7 +258,7 @@
                     android:inputType="textMultiLine|textCapSentences"
                     android:padding="12dp"
                     android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textSize="12sp" />
 
 
@@ -298,7 +295,7 @@
                             android:layout_marginStart="6dp"
                             android:text="Attached photos"
                             android:textColor="@color/dark_blue"
-                            android:textSize="10.5sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -310,7 +307,7 @@
                             android:padding="4dp"
                             android:text="Remove all"
                             android:textColor="@color/coral_text"
-                            android:textSize="9.5sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -338,7 +335,7 @@
                         android:layout_marginTop="7dp"
                         android:text="Photos attached"
                         android:textColor="@color/text_gray"
-                        android:textSize="9.5sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -356,7 +353,7 @@
                     <LinearLayout
                         android:id="@+id/btnAddPhoto"
                         android:layout_width="wrap_content"
-                        android:layout_height="38dp"
+                        android:layout_height="48dp"
                         android:background="@drawable/bg_add_photo_button"
                         android:clickable="true"
                         android:focusable="true"
@@ -378,7 +375,7 @@
                             android:layout_marginStart="5dp"
                             android:text="Add Photo"
                             android:textColor="@color/blue_deep"
-                            android:textSize="10.5sp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -393,21 +390,21 @@
                     <TextView
                         android:id="@+id/btnSubmitPost"
                         android:layout_width="78dp"
-                        android:layout_height="38dp"
+                        android:layout_height="48dp"
                         android:background="@drawable/bg_pill_btn_admin"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
                         android:text="Post"
-                        android:textColor="@color/white"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/surface_card"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.example.kayara.NeoCardView>
 
 
         <!-- ================================================= -->
@@ -429,16 +426,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Recent Posts"
-                android:textColor="@color/dark_blue"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textAppearance="@style/TextAppearance.Univia.Section" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Latest updates"
                 android:textColor="@color/text_gray"
-                android:textSize="9sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

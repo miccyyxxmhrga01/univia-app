@@ -44,7 +44,7 @@
                 android:layout_marginTop="3dp"
                 android:text="Send your request. The organization admin will review it."
                 android:textColor="@color/text_gray"
-                android:textSize="11.5sp" />
+                android:textSize="12sp" />
 
             <!-- ============================================= -->
             <!-- CLOSED / FULL NOTICE -->
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Recruitment is closed"
-                        android:textColor="#7A4F0B"
+                        android:textColor="@color/brand_gold_dark"
                         android:textSize="13.5sp"
                         android:textStyle="bold" />
 
@@ -90,8 +90,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:text="This organization is not accepting new members right now."
-                        android:textColor="#7A4F0B"
-                        android:textSize="11.5sp"
+                        android:textColor="@color/brand_gold_dark"
+                        android:textSize="12sp"
                         android:lineSpacingExtra="2dp" />
 
                 </LinearLayout>
@@ -129,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="What this organization needs"
-                        android:textColor="@color/blue_deep"
+                        android:textColor="@color/text_primary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:text="YOUR DOCUMENTS"
                     android:textColor="@color/text_gray"
-                    android:textSize="9.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.05" />
 
@@ -182,7 +182,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Upload the files this organization asks for."
                     android:textColor="@color/placeholder_gray"
-                    android:textSize="10.5sp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:id="@+id/requirementUploadContainer"
@@ -204,7 +204,7 @@
                 android:id="@+id/tvMessageLabel"
                 android:text="MESSAGE (OPTIONAL)"
                 android:textColor="@color/text_gray"
-                android:textSize="9.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05" />
 
@@ -218,7 +218,7 @@
                 android:inputType="textMultiLine|textCapSentences"
                 android:padding="14dp"
                 android:textColor="@color/dark_blue"
-                android:textColorHint="@color/placeholder_gray"
+                android:textColorHint="@color/text_hint"
                 android:textSize="12.5sp" />
 
         </LinearLayout>
@@ -258,7 +258,7 @@
             android:background="@drawable/bg_post_submit_btn"
             android:gravity="center"
             android:text="Send Request"
-            android:textColor="@color/white"
+            android:textColor="@color/surface_card"
             android:textSize="12.5sp"
             android:textStyle="bold"
             android:clickable="true"

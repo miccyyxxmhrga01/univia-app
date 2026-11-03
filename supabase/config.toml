@@ -1,0 +1,5 @@
+project_id = "Univia"
+
+[functions.bbco-data]
+# The handler verifies Firebase RS256 signatures, issuer, audience and expiry itself.
+verify_jwt = false

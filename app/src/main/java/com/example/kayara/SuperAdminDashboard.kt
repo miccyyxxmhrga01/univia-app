@@ -53,10 +53,10 @@ class SuperAdminDashboardActivity : AppCompatActivity() {
         // =====================================================
 
         window.statusBarColor =
-            Color.parseColor("#1E5FD9")
+            Color.parseColor("#7C3AED")
 
         window.navigationBarColor =
-            Color.parseColor("#EEF5FC")
+            Color.parseColor("#F1ECF8")
 
         WindowCompat
             .getInsetsController(
@@ -69,17 +69,15 @@ class SuperAdminDashboardActivity : AppCompatActivity() {
             }
 
         setupSystemBars(
-            Color.parseColor("#1E5FD9"),
-            Color.parseColor("#EEF5FC")
+            Color.parseColor("#7C3AED"),
+            Color.parseColor("#F1ECF8")
         )
 
         setContentView(
             R.layout.activity_super_admin_dashboard
         )
-
-        setContentView(
-            R.layout.activity_super_admin_dashboard
-        )
+        UniviaInsets.apply(this)
+        AccountAccessGuard.attach(this) { it.coordinator }
 
         // =====================================================
         // NAVIGATION
@@ -125,7 +123,7 @@ class SuperAdminDashboardActivity : AppCompatActivity() {
         // BACKGROUND
         // =====================================================
 
-        startAnimatedBackground()
+        // The brand app bar stays still while the user works.
 
         // =====================================================
         // NAV CLICKS
@@ -328,162 +326,9 @@ class SuperAdminDashboardActivity : AppCompatActivity() {
     // BOTTOM NAV TRANSITION
     // =========================================================
 
-    private fun updateBottomNav(
-        selectedPosition: Int
-    ) {
-
-        this.selectedPosition =
-            selectedPosition
-
-        val icons =
-            listOf(
-                iconHome,
-                iconOrganizations,
-                iconNotifications,
-                iconDocuments
-            )
-
-        val labels =
-            listOf(
-                labelHome,
-                labelOrganizations,
-                labelNotifications,
-                labelDocuments
-            )
-
-        val activeColor =
-            Color.parseColor(
-                "#1E5FD9"
-            )
-
-        val inactiveColor =
-            Color.parseColor(
-                "#AAB7C8"
-            )
-
-        val density =
-            resources
-                .displayMetrics
-                .density
-
-        icons.forEachIndexed {
-                index,
-                icon ->
-
-            val selected =
-                index == selectedPosition
-
-            icon.animate().cancel()
-            labels[index].animate().cancel()
-
-            icon.setColorFilter(
-                if (selected) {
-                    activeColor
-                } else {
-                    inactiveColor
-                }
-            )
-
-            labels[index].setTextColor(
-                if (selected) {
-                    activeColor
-                } else {
-                    inactiveColor
-                }
-            )
-
-            if (selected) {
-
-                val bubble =
-                    GradientDrawable().apply {
-
-                        shape =
-                            GradientDrawable.OVAL
-
-                        setColor(
-                            Color.WHITE
-                        )
-
-                        setStroke(
-                            (1f * density).toInt(),
-                            Color.parseColor(
-                                "#DCE8FF"
-                            )
-                        )
-                    }
-
-                icon.background =
-                    bubble
-
-                icon.elevation =
-                    10f * density
-
-                icon.alpha = 0.80f
-                icon.scaleX = 0.92f
-                icon.scaleY = 0.92f
-
-                icon.animate()
-                    .translationY(
-                        -18f * density
-                    )
-                    .scaleX(1.15f)
-                    .scaleY(1.15f)
-                    .alpha(1f)
-                    .setDuration(300L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .start()
-
-                labels[index]
-                    .animate()
-                    .translationY(
-                        -6f * density
-                    )
-                    .alpha(1f)
-                    .setDuration(300L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .start()
-
-            } else {
-
-                icon.animate()
-                    .translationY(0f)
-                    .scaleX(1f)
-                    .scaleY(1f)
-                    .alpha(0.68f)
-                    .setDuration(250L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .withEndAction {
-
-                        if (
-                            index !=
-                            this.selectedPosition
-                        ) {
-
-                            icon.background =
-                                ColorDrawable(
-                                    Color.TRANSPARENT
-                                )
-
-                            icon.elevation =
-                                0f
-                        }
-                    }
-                    .start()
-
-                labels[index]
-                    .animate()
-                    .translationY(0f)
-                    .alpha(0.72f)
-                    .setDuration(250L)
-                    .start()
-            }
-        }
+    private fun updateBottomNav(selectedPosition: Int) {
+        this.selectedPosition = selectedPosition
+        UniviaNavigation.update(listOf(iconHome, iconOrganizations, iconNotifications, iconDocuments), listOf(labelHome, labelOrganizations, labelNotifications, labelDocuments), selectedPosition)
     }
 
     // =========================================================
@@ -680,9 +525,9 @@ class SuperAdminDashboardActivity : AppCompatActivity() {
                     width + shift,
                     height,
                     intArrayOf(
-                        Color.parseColor("#0B2E6B"),
-                        Color.parseColor("#1E5FD9"),
-                        Color.parseColor("#2D7CF7")
+                        Color.parseColor("#3B176A"),
+                        Color.parseColor("#7C3AED"),
+                        Color.parseColor("#7C3AED")
                     ),
                     floatArrayOf(
                         0f,

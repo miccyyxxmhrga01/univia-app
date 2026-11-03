@@ -40,13 +40,13 @@ class ReviewDocumentsActivity : AppCompatActivity() {
                 documents[position].status = "approved"
                 adapter.notifyItemChanged(position)
                 // TODO: i-update ang status sa database, unya i-notify ang Admin
-                Toast.makeText(this, "Document approved. Admin notified.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Document approved. Org Manager notified.", Toast.LENGTH_SHORT).show()
             },
             onReject = { position ->
                 documents[position].status = "rejected"
                 adapter.notifyItemChanged(position)
                 // TODO: i-update ang status sa database, unya i-notify ang Admin
-                Toast.makeText(this, "Document rejected. Admin notified.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Document rejected. Org Manager notified.", Toast.LENGTH_SHORT).show()
             }
         )
         rvDocuments.adapter = adapter

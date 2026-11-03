@@ -28,7 +28,7 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="3dp"
         android:text="REQUIRED"
-        android:textSize="9sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         android:clickable="true"
         android:focusable="true" />
@@ -36,7 +36,7 @@
     <TextView
         android:id="@+id/btnRemoveReq"
         android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_height="48dp"
         android:layout_marginStart="4dp"
         android:gravity="center"
         android:text="✕"

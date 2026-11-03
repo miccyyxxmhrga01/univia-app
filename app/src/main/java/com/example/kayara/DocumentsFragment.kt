@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 
 class DocumentsFragment : Fragment() {
 
@@ -22,7 +22,7 @@ class DocumentsFragment : Fragment() {
     private lateinit var btnAcademicYear: View
 
     private val db =
-        FirebaseFirestore.getInstance()
+        SupabaseDatabase.getInstance()
 
     private val folders =
         mutableListOf<FolderModel>()
@@ -252,7 +252,7 @@ class DocumentsFragment : Fragment() {
                             document.getString(
                                 "colorStart"
                             )
-                                ?: "#1E5FD9"
+                                ?: "#7C3AED"
 
 
                         // =================================================

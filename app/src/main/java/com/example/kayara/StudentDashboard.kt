@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
 import android.view.WindowManager
 import androidx.core.view.WindowInsetsControllerCompat
 
@@ -72,7 +72,7 @@ class StudentDashboardActivity :
             FirebaseAuth
 
     private lateinit var db:
-            FirebaseFirestore
+            SupabaseDatabase
 
     private var userListener:
             ListenerRegistration? =
@@ -125,10 +125,8 @@ class StudentDashboardActivity :
         setContentView(
             R.layout.activity_student_dashboard
         )
-
-        setContentView(
-            R.layout.activity_student_dashboard
-        )
+        UniviaInsets.apply(this)
+        AccountAccessGuard.attach(this) { it.hasProfile }
 
         // =====================================================
         // FIREBASE
@@ -139,7 +137,7 @@ class StudentDashboardActivity :
                 .getInstance()
 
         db =
-            FirebaseFirestore
+            SupabaseDatabase
                 .getInstance()
 
         // =====================================================
@@ -331,7 +329,7 @@ class StudentDashboardActivity :
                 .document(
                     currentUser.uid
                 )
-                .addSnapshotListener {
+                .addSnapshotListener(useCache = true) {
                         document,
                         error ->
 
@@ -344,7 +342,7 @@ class StudentDashboardActivity :
                             "Hi, Student!"
 
                         tvSubGreeting.text =
-                            "Welcome to BBCO"
+                            getString(R.string.univia_welcome)
 
                         tvUserInitials.text =
                             "ST"
@@ -397,7 +395,7 @@ class StudentDashboardActivity :
 
                             } else {
 
-                                "Welcome to BBCO"
+                                getString(R.string.univia_welcome)
                             }
 
                         tvUserInitials.text =
@@ -411,7 +409,7 @@ class StudentDashboardActivity :
                             "Hi, Student!"
 
                         tvSubGreeting.text =
-                            "Welcome to BBCO"
+                            getString(R.string.univia_welcome)
 
                         tvUserInitials.text =
                             "ST"
@@ -648,7 +646,7 @@ class StudentDashboardActivity :
         greetingSection.visibility =
             if (
                 tab ==
-                "home"
+                "home" && resources.getInteger(R.integer.dashboard_greeting_visibility) == View.VISIBLE
             ) {
 
                 View.VISIBLE
@@ -685,175 +683,8 @@ class StudentDashboardActivity :
     // SMOOTH NAV
     // =========================================================
 
-    private fun updateBottomNav(
-        selectedPosition:
-        Int
-    ) {
-
-        val icons =
-            listOf(
-                iconHome,
-                iconOrgs,
-                iconNotifications,
-                iconProfile
-            )
-
-        val labels =
-            listOf(
-                labelHome,
-                labelOrgs,
-                labelNotifications,
-                labelProfile
-            )
-
-        val activeColor =
-            getColor(
-                R.color.teal_deep_text
-            )
-
-        val inactiveColor =
-            Color.parseColor(
-                "#AAB7C8"
-            )
-
-        val density =
-            resources
-                .displayMetrics
-                .density
-
-        icons.forEachIndexed {
-                index,
-                icon ->
-
-            val selected =
-                index ==
-                        selectedPosition
-
-            icon.animate()
-                .cancel()
-
-            labels[index]
-                .animate()
-                .cancel()
-
-            icon.setColorFilter(
-                if (
-                    selected
-                )
-                    activeColor
-                else
-                    inactiveColor
-            )
-
-            labels[index]
-                .setTextColor(
-                    if (
-                        selected
-                    )
-                        activeColor
-                    else
-                        inactiveColor
-                )
-
-            if (
-                selected
-            ) {
-
-                icon.background =
-                    GradientDrawable()
-                        .apply {
-
-                            shape =
-                                GradientDrawable.OVAL
-
-                            setColor(
-                                Color.WHITE
-                            )
-
-                            setStroke(
-                                (1f * density)
-                                    .toInt(),
-
-                                Color.parseColor(
-                                    "#D9EFEB"
-                                )
-                            )
-                        }
-
-                icon.elevation =
-                    10f *
-                            density
-
-                icon.alpha =
-                    0.82f
-
-                icon.scaleX =
-                    0.92f
-
-                icon.scaleY =
-                    0.92f
-
-                icon.animate()
-                    .translationY(
-                        -18f *
-                                density
-                    )
-                    .scaleX(1.15f)
-                    .scaleY(1.15f)
-                    .alpha(1f)
-                    .setDuration(300L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .start()
-
-                labels[index]
-                    .animate()
-                    .translationY(
-                        -6f *
-                                density
-                    )
-                    .alpha(1f)
-                    .setDuration(300L)
-                    .start()
-
-            } else {
-
-                icon.animate()
-                    .translationY(0f)
-                    .scaleX(1f)
-                    .scaleY(1f)
-                    .alpha(0.68f)
-                    .setDuration(250L)
-                    .setInterpolator(
-                        AccelerateDecelerateInterpolator()
-                    )
-                    .withEndAction {
-
-                        if (
-                            index !=
-                            selectedPosition
-                        ) {
-
-                            icon.background =
-                                ColorDrawable(
-                                    Color.TRANSPARENT
-                                )
-
-                            icon.elevation =
-                                0f
-                        }
-                    }
-                    .start()
-
-                labels[index]
-                    .animate()
-                    .translationY(0f)
-                    .alpha(0.72f)
-                    .setDuration(250L)
-                    .start()
-            }
-        }
+    private fun updateBottomNav(selectedPosition: Int) {
+        UniviaNavigation.update(listOf(iconHome, iconOrgs, iconNotifications, iconProfile), listOf(labelHome, labelOrgs, labelNotifications, labelProfile), selectedPosition)
     }
 
     override fun onDestroy() {

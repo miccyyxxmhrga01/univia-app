@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboardingScene"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/campus_login_background">
+
+    <FrameLayout android:id="@+id/onboardingHeader"
+        android:layout_width="0dp" android:layout_height="@dimen/onboarding_header_height"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal" android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="72dp"
+                android:orientation="horizontal" android:gravity="center">
+                <FrameLayout android:layout_width="72dp" android:layout_height="72dp"
+                    android:background="@drawable/neo_circle">
+                    <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                        android:layout_gravity="center" android:src="@drawable/bisu_logo"
+                        android:contentDescription="@string/bisu_logo_description" />
+                </FrameLayout>
+                <FrameLayout android:layout_width="72dp" android:layout_height="72dp"
+                    android:layout_marginStart="8dp" android:background="@drawable/neo_circle">
+                    <ImageView android:layout_width="56dp" android:layout_height="56dp"
+                        android:layout_gravity="center" android:src="@drawable/univia_logo"
+                        android:contentDescription="@string/univia_logo_description" />
+                </FrameLayout>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" android:includeFontPadding="false"
+                android:text="@string/campus_login_name" android:textSize="16sp"
+                android:fontFamily="@font/poppins_semibold" android:textColor="@color/on_primary"
+                android:shadowColor="#B34F355F" android:shadowRadius="3" android:shadowDy="1" />
+            <ImageView android:layout_width="104dp" android:layout_height="10dp"
+                android:layout_marginTop="-3dp" android:src="@drawable/campus_gold_swoosh"
+                android:contentDescription="@null" />
+        </LinearLayout>
+        <TextView android:id="@+id/onboardingSkip"
+            android:layout_width="64dp" android:layout_height="48dp"
+            android:layout_gravity="top|end" android:layout_marginEnd="10dp"
+            android:gravity="center" android:includeFontPadding="false"
+            android:text="@string/onboard_skip" android:textSize="13sp"
+            android:fontFamily="@font/poppins_semibold" android:textColor="@color/brand_navy"
+            android:background="@drawable/neo_raised" android:clickable="true" android:focusable="true" />
+    </FrameLayout>
+
+    <com.example.kayara.CampusGlassCard android:id="@+id/onboardingCard"
+        android:layout_width="0dp" android:layout_height="0dp"
+        android:layout_marginHorizontal="18dp" android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/onboardingHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.viewpager2.widget.ViewPager2 android:id="@+id/onboardingPager"
+                android:layout_width="0dp" android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/onboardingFooter"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+            <LinearLayout android:id="@+id/onboardingFooter"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp" android:paddingTop="4dp" android:paddingBottom="20dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="32dp"
+                    android:gravity="center_vertical" android:orientation="horizontal"
+                    android:paddingHorizontal="7dp">
+                    <ImageView android:id="@+id/onboardingDot1" android:layout_width="20dp"
+                        android:layout_height="8dp" android:src="@drawable/neo_dot_active" android:contentDescription="@null" />
+                    <ImageView android:id="@+id/onboardingDot2" android:layout_width="8dp"
+                        android:layout_height="8dp" android:layout_marginStart="8dp"
+                        android:src="@drawable/neo_dot_inactive" android:contentDescription="@null" />
+                    <ImageView android:id="@+id/onboardingDot3" android:layout_width="8dp"
+                        android:layout_height="8dp" android:layout_marginStart="8dp"
+                        android:src="@drawable/neo_dot_inactive" android:contentDescription="@null" />
+                    <TextView android:id="@+id/onboardingProgress" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:gravity="end" android:includeFontPadding="false" android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold" android:textColor="@color/login_secondary"
+                        android:accessibilityLiveRegion="polite" />
+                </LinearLayout>
+                <TextView android:id="@+id/onboardingNext"
+                    android:layout_width="match_parent" android:layout_height="60dp"
+                    android:layout_marginTop="4dp" android:paddingHorizontal="24dp"
+                    android:gravity="center" android:includeFontPadding="false"
+                    android:background="@drawable/neo_primary" android:text="@string/onboard_next"
+                    android:textColor="@color/on_primary" android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:drawableEnd="@drawable/glass_arrow_forward" android:drawablePadding="12dp"
+                    android:clickable="true" android:focusable="true" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.example.kayara.CampusGlassCard>
+</androidx.constraintlayout.widget.ConstraintLayout>

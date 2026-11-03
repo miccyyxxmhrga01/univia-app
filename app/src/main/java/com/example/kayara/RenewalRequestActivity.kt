@@ -14,7 +14,7 @@ import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.SupabaseDatabase
 
 class RenewalRequestActivity : AppCompatActivity() {
 
@@ -49,7 +49,7 @@ class RenewalRequestActivity : AppCompatActivity() {
             "Financial Statement"
     }
 
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
     private lateinit var auth: FirebaseAuth
 
     private var organizationId = ""
@@ -132,7 +132,7 @@ class RenewalRequestActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_renewal_request)
 
-        db = FirebaseFirestore.getInstance()
+        db = SupabaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
 
         /*
@@ -425,7 +425,7 @@ class RenewalRequestActivity : AppCompatActivity() {
 
             Toast.makeText(
                 this,
-                "Admin account information is missing.",
+                "Org Manager account information is missing.",
                 Toast.LENGTH_LONG
             ).show()
 
@@ -765,7 +765,7 @@ class RenewalRequestActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this,
-                        "File uploaded to Cloudinary, but Firestore save failed: ${error.message}",
+                        "File uploaded, but saving its details failed: ${error.message}",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -1256,7 +1256,7 @@ class RenewalRequestActivity : AppCompatActivity() {
 
             Toast.makeText(
                 this,
-                "Admin account information is missing.",
+                "Org Manager account information is missing.",
                 Toast.LENGTH_LONG
             ).show()
 

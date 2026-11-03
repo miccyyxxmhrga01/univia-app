@@ -24,11 +24,11 @@ import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.FieldValue
+import com.example.kayara.data.SupabaseDatabase
+import com.example.kayara.data.ListenerRegistration
+import com.example.kayara.data.Query
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.Executors
@@ -42,9 +42,10 @@ class DashboardFragment : Fragment() {
     private lateinit var rvFeed: RecyclerView
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     private var postsListener: ListenerRegistration? = null
+    private var feedRequestId = 0
 
     // Organization profile pictures (organizationId -> avatarUrl)
     private var orgAvatarListener: ListenerRegistration? = null
@@ -96,7 +97,7 @@ class DashboardFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        db = SupabaseDatabase.getInstance()
     }
 
     override fun onCreateView(
@@ -280,7 +281,7 @@ class DashboardFragment : Fragment() {
                 val fullName =
                     document.getString("fullName")
                         ?: currentUser.displayName
-                        ?: "Super Admin"
+                        ?: "Coordinator"
 
                 val postId =
                     db.collection("posts")
@@ -340,17 +341,17 @@ class DashboardFragment : Fragment() {
 
                 "posterName" to fullName,
 
-                "posterRole" to "Super Admin",
+                "posterRole" to "Coordinator",
 
                 "organizationId" to "SUPER_ADMIN",
 
-                "organizationName" to "Super Admin",
+                "organizationName" to "Coordinator",
 
                 "avatarInitials" to getInitials(fullName),
 
-                "avatarColorStart" to "#0B2E6B",
+                "avatarColorStart" to "#3B176A",
 
-                "avatarColorEnd" to "#1E5FD9",
+                "avatarColorEnd" to "#7C3AED",
 
                 "audience" to "everyone",
 
@@ -814,17 +815,17 @@ class DashboardFragment : Fragment() {
 
                 "posterName" to fullName,
 
-                "posterRole" to "Super Admin",
+                "posterRole" to "Coordinator",
 
                 "organizationId" to "SUPER_ADMIN",
 
-                "organizationName" to "Super Admin",
+                "organizationName" to "Coordinator",
 
                 "avatarInitials" to getInitials(fullName),
 
-                "avatarColorStart" to "#0B2E6B",
+                "avatarColorStart" to "#3B176A",
 
-                "avatarColorEnd" to "#1E5FD9",
+                "avatarColorEnd" to "#7C3AED",
 
                 "audience" to "everyone",
 
@@ -1071,7 +1072,7 @@ class DashboardFragment : Fragment() {
                     "createdAt",
                     Query.Direction.DESCENDING
                 )
-                .addSnapshotListener { snapshot, error ->
+                .addSnapshotListener(useCache = true) { snapshot, error ->
 
                     if (error != null) {
 
@@ -1090,6 +1091,8 @@ class DashboardFragment : Fragment() {
                     if (snapshot == null) {
                         return@addSnapshotListener
                     }
+
+                    feedRequestId++
 
                     val documents =
                         snapshot.documents
@@ -1120,6 +1123,14 @@ class DashboardFragment : Fragment() {
 
         val uid =
             currentUser?.uid
+
+        val requestId = feedRequestId
+        // Show cached posts immediately; the like lookups can finish afterwards.
+        val previousLikes = feedPosts.filter { it.likedByCurrentUser }.map { it.postId }.toSet()
+        val initialPosts = documents.map { documentToFeedPost(it, it.id in previousLikes) }
+        feedPosts.clear()
+        feedPosts.addAll(initialPosts)
+        feedAdapter.updatePosts(initialPosts)
 
         val loadedPosts =
             mutableListOf<FeedPostModel>()
@@ -1188,6 +1199,10 @@ class DashboardFragment : Fragment() {
                 }
                 .addOnCompleteListener {
 
+                    if (requestId != feedRequestId || view == null || auth.currentUser?.uid != uid) {
+                        return@addOnCompleteListener
+                    }
+
                     completed++
 
                     if (completed == documents.size) {
@@ -1246,10 +1261,10 @@ class DashboardFragment : Fragment() {
                 document.getString("avatarInitials") ?: "",
 
             avatarColorStart =
-                document.getString("avatarColorStart") ?: "#0B2E6B",
+                document.getString("avatarColorStart") ?: "#3B176A",
 
             avatarColorEnd =
-                document.getString("avatarColorEnd") ?: "#1E5FD9",
+                document.getString("avatarColorEnd") ?: "#7C3AED",
 
             audience =
                 document.getString("audience") ?: "everyone",
@@ -1510,13 +1525,13 @@ class DashboardFragment : Fragment() {
 
                         organizationName = orgName,
 
-                        title = "New Super Admin Announcement",
+                        title = "New Coordinator Announcement",
 
                         message =
                             if (preview.isBlank()) {
-                                "The Super Admin posted a new announcement."
+                                "The Coordinator posted a new announcement."
                             } else {
-                                "Super Admin posted: $preview"
+                                "Coordinator posted: $preview"
                             },
 
                         type = "announcement",
@@ -1666,6 +1681,8 @@ class DashboardFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+
+        feedRequestId++
 
         super.onDestroyView()
 

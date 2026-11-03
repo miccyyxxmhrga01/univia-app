@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/backButton"
             android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:gravity="center"
             android:text="‹"
             android:textColor="@color/dark_blue"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="Adviser"
                 android:textColor="@color/text_gray"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvAdviser"
@@ -101,7 +101,7 @@
                 android:layout_marginTop="15dp"
                 android:text="Recruitment Information"
                 android:textColor="@color/text_gray"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvRecruitmentInfo"
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:text="Approved Members"
                     android:textColor="@color/text_gray"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:text="Pending Requests"
                     android:textColor="@color/text_gray"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

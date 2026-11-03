@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/bg_light">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp" android:gravity="center_vertical"
+        android:focusableInTouchMode="true">
+        <TextView android:id="@+id/verificationRegistrationProgress" style="@style/RegistrationBody"
+            android:layout_marginBottom="16dp" android:visibility="gone" />
+        <ImageView android:layout_width="56dp" android:layout_height="56dp"
+            android:src="@drawable/glass_mail_outline" android:contentDescription="@null"
+            android:layout_marginBottom="20dp" app:tint="@color/text_primary" />
+        <TextView android:id="@+id/verificationTitle" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/verification_title" android:textSize="26sp"
+            android:fontFamily="@font/poppins_semibold" android:textColor="@color/text_primary" />
+        <TextView android:id="@+id/verificationEmail" style="@style/RegistrationBody"
+            android:layout_marginTop="12dp" android:textSize="16sp" android:textIsSelectable="true" />
+        <TextView android:id="@+id/verificationInstruction" style="@style/RegistrationBody" android:layout_marginTop="16dp"
+            android:text="@string/verification_link_instruction" />
+        <TextView android:id="@+id/verificationCodeLabel" style="@style/RegistrationLabel" android:text="@string/verification_code_label"
+            android:labelFor="@id/verificationCode" android:visibility="gone" />
+        <EditText android:id="@+id/verificationCode" style="@style/RegistrationInput"
+            android:hint="000000" android:inputType="number" android:digits="0123456789"
+            android:maxLength="6" android:imeOptions="actionDone" android:gravity="center"
+            android:textSize="24sp" android:letterSpacing="0.28" android:saveEnabled="false" android:visibility="gone" />
+        <TextView android:id="@+id/verificationStatus" style="@style/RegistrationBody"
+            android:layout_marginTop="20dp" android:accessibilityLiveRegion="polite"
+            android:text="@string/verification_link_pending" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/checkVerification"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:minHeight="54dp"
+            android:text="@string/verification_link_check" />
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/openVerificationEmail" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/verification_open_email" />
+        <com.google.android.material.button.MaterialButton style="?attr/materialButtonOutlinedStyle"
+            android:id="@+id/resendVerification" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/verification_link_resend" />
+        <com.google.android.material.button.MaterialButton style="?attr/borderlessButtonStyle"
+            android:id="@+id/verificationSignOut" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/verification_sign_out" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

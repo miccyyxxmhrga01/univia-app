@@ -25,8 +25,8 @@ import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kayara.data.DocumentSnapshot
+import com.example.kayara.data.SupabaseDatabase
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -38,7 +38,7 @@ class FolderDocumentsActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var db: FirebaseFirestore
+    private lateinit var db: SupabaseDatabase
 
     private lateinit var requirementAdapter:
             RequirementAdapter
@@ -195,7 +195,7 @@ class FolderDocumentsActivity : AppCompatActivity() {
 
 
         db =
-            FirebaseFirestore.getInstance()
+            SupabaseDatabase.getInstance()
 
 
         // =====================================================

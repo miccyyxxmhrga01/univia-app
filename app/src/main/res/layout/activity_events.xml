@@ -79,7 +79,7 @@
         android:src="@drawable/ic_add"
         android:visibility="gone"
         app:backgroundTint="@color/blue_deep"
-        app:tint="@color/white"
+        app:tint="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 

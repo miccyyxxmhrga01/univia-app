@@ -39,9 +39,9 @@
                 android:background="@drawable/bg_toggle_active"
                 android:gravity="center"
                 android:padding="9dp"
-                android:text="From Super Admin"
-                android:textColor="@color/white"
-                android:textSize="11.5sp"
+                android:text="From Coordinator"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:clickable="true"
                 android:focusable="true" />
@@ -55,7 +55,7 @@
                 android:padding="9dp"
                 android:text="My Org Posts"
                 android:textColor="@color/text_gray"
-                android:textSize="11.5sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:clickable="true"
                 android:focusable="true" />
@@ -95,8 +95,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ALL ORGANIZATIONS"
-                        android:textColor="#7A4F0B"
-                        android:textSize="10sp"
+                        android:textColor="@color/brand_gold_dark"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="7dp" />
 
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="General Assembly – September 5, 1:00 PM"
-                        android:textColor="#5C3D0C"
+                        android:textColor="@color/brand_gold_dark"
                         android:textSize="12.5sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="4dp" />
@@ -113,8 +113,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="All org presidents and officers are required to attend the general assembly at the BISU Balilihan Gymnasium."
-                        android:textColor="#8C6A2E"
-                        android:textSize="11sp"
+                        android:textColor="@color/brand_gold_dark"
+                        android:textSize="12sp"
                         android:lineSpacingExtra="2dp" />
 
                     <TextView
@@ -122,8 +122,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="Posted Aug 22"
-                        android:textColor="#B9924E"
-                        android:textSize="10sp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -138,8 +138,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="DEADLINE NOTICE"
-                        android:textColor="#7A4F0B"
-                        android:textSize="10sp"
+                        android:textColor="@color/brand_gold_dark"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="7dp" />
 
@@ -147,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Deadline: Org Requirements for AY 2026–2027"
-                        android:textColor="#5C3D0C"
+                        android:textColor="@color/brand_gold_dark"
                         android:textSize="12.5sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="4dp" />
@@ -156,8 +156,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Submit accomplishment reports and updated officer roster on or before September 15."
-                        android:textColor="#8C6A2E"
-                        android:textSize="11sp"
+                        android:textColor="@color/brand_gold_dark"
+                        android:textSize="12sp"
                         android:lineSpacingExtra="2dp" />
 
                     <TextView
@@ -165,8 +165,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="Posted Aug 27"
-                        android:textColor="#B9924E"
-                        android:textSize="10sp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -197,7 +197,7 @@
                         android:padding="10dp"
                         android:background="@drawable/bg_org_badge"
                         android:src="@drawable/ic_add"
-                        app:tint="@color/white" />
+                        app:tint="@color/text_primary" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -210,7 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Post to Red Cross Youth"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_secondary"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -218,8 +218,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Notify all your org members instantly"
-                            android:textColor="#CADAFA"
-                            android:textSize="11sp" />
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -238,8 +238,8 @@
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="3dp"
                         android:text="RCY MEMBERS"
-                        android:textColor="@color/blue_deep"
-                        android:textSize="9sp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp" />
 
@@ -257,7 +257,7 @@
                         android:layout_height="wrap_content"
                         android:text="Final schedule and assignments for the September blood donation activity are now posted."
                         android:textColor="@color/text_gray"
-                        android:textSize="11.5sp"
+                        android:textSize="12sp"
                         android:lineSpacingExtra="2dp"
                         android:layout_marginBottom="10dp" />
 
@@ -265,8 +265,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Posted Aug 25"
-                        android:textColor="#9BA9C2"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -284,8 +284,8 @@
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="3dp"
                         android:text="RCY MEMBERS"
-                        android:textColor="@color/blue_deep"
-                        android:textSize="9sp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp" />
 
@@ -303,7 +303,7 @@
                         android:layout_height="wrap_content"
                         android:text="Due to a room conflict, this week's general meeting is moved to Friday, 4:00 PM at Room 202."
                         android:textColor="@color/text_gray"
-                        android:textSize="11.5sp"
+                        android:textSize="12sp"
                         android:lineSpacingExtra="2dp"
                         android:layout_marginBottom="10dp" />
 
@@ -311,8 +311,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Posted Aug 20"
-                        android:textColor="#9BA9C2"
-                        android:textSize="10.5sp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>

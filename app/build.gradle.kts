@@ -7,6 +7,10 @@ plugins {
 android {
     namespace = "com.example.kayara"
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileSdk {
         version = release(37)
     }
@@ -17,6 +21,10 @@ android {
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
+
+        // Publishable client configuration only. The service key stays in the Edge Function.
+        buildConfigField("String", "SUPABASE_URL", "\"https://cwruxuwcoxldpyseavbb.supabase.co\"")
+        buildConfigField("String", "SUPABASE_PUBLISHABLE_KEY", "\"sb_publishable_k4-uk1rV5wALk2RBQmSYkg_XzDoLSol\"")
 
         testInstrumentationRunner =
             "androidx.test.runner.AndroidJUnitRunner"
@@ -49,6 +57,7 @@ dependencies {
     implementation(libs.material)
 
     testImplementation(libs.junit)
+    testImplementation("org.json:json:20250517")
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 
@@ -71,11 +80,8 @@ dependencies {
     // Firebase Authentication
     implementation("com.google.firebase:firebase-auth")
 
-    // Cloud Firestore Database
-    implementation("com.google.firebase:firebase-firestore")
-
-    // Firebase Storage
-    implementation("com.google.firebase:firebase-storage")
+    // Application data is stored in Supabase Postgres through the bbco-data API.
+    // Firebase Auth remains responsible for sign-in; Cloudinary stores uploaded files.
 
     // ==============================
     // NEW: FIREBASE GEMINI AI

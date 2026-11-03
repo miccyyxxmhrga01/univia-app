@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="login_brand_height">228dp</dimen>
+    <dimen name="login_campus_name_gap">4dp</dimen>
+    <dimen name="login_card_top">28dp</dimen>
+    <dimen name="login_card_bottom">24dp</dimen>
+    <dimen name="login_field_height">54dp</dimen>
+    <dimen name="login_action_height">60dp</dimen>
+    <dimen name="login_registration_height">56dp</dimen>
+    <dimen name="login_action_gap">12dp</dimen>
+    <dimen name="login_label_gap">11dp</dimen>
+    <dimen name="login_accent_bottom">12dp</dimen>
+    <dimen name="login_team_gap">7dp</dimen>
+</resources>

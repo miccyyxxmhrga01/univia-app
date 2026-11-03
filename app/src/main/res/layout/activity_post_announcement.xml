@@ -22,9 +22,9 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="9dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="15dp"
             android:background="@drawable/bg_back_circle_light"
             android:src="@drawable/ic_back_arrow"
             android:contentDescription="@string/back"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="Broadcast a message to organizations"
                 android:textColor="@color/text_gray"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="TITLE"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="7dp" />
@@ -102,7 +102,7 @@
                     android:layout_marginStart="10dp"
                     android:background="@null"
                     android:hint="e.g. General Assembly – September 5"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textColor="@color/dark_blue"
                     android:textSize="13sp"
                     android:inputType="text" />
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:text="MESSAGE"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="7dp" />
@@ -142,7 +142,7 @@
                     android:layout_marginStart="10dp"
                     android:background="@null"
                     android:hint="Write your announcement details here..."
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textColor="@color/dark_blue"
                     android:textSize="13sp"
                     android:inputType="textMultiLine|textCapSentences"
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:text="SEND TO"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="8dp" />
@@ -174,7 +174,7 @@
                     android:paddingVertical="9dp"
                     android:text="All Organizations"
                     android:textColor="@color/white"
-                    android:textSize="11.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:layout_marginEnd="8dp"
                     android:clickable="true"
@@ -189,7 +189,7 @@
                     android:paddingVertical="9dp"
                     android:text="Specific Organization"
                     android:textColor="@color/text_gray"
-                    android:textSize="11.5sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:clickable="true"
                     android:focusable="true" />
@@ -200,7 +200,7 @@
                 android:layout_height="wrap_content"
                 android:text="ATTACHMENTS (OPTIONAL)"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="8dp" />
@@ -237,7 +237,7 @@
                         android:layout_marginTop="6dp"
                         android:text="Add Photo"
                         android:textColor="@color/text_gray"
-                        android:textSize="10.5sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -267,7 +267,7 @@
                         android:layout_marginTop="6dp"
                         android:text="Add Document"
                         android:textColor="@color/text_gray"
-                        android:textSize="10.5sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -297,7 +297,7 @@
                 android:layout_marginTop="10dp"
                 android:text="SCHEDULE (OPTIONAL)"
                 android:textColor="@color/dark_blue"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginBottom="7dp" />
@@ -326,7 +326,7 @@
                     android:layout_marginStart="10dp"
                     android:background="@null"
                     android:hint="Post immediately"
-                    android:textColorHint="@color/placeholder_gray"
+                    android:textColorHint="@color/text_hint"
                     android:textColor="@color/dark_blue"
                     android:textSize="13sp"
                     android:focusable="false"
@@ -339,7 +339,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:text=""
-                android:textColor="#E53935"
+                android:textColor="@color/error"
                 android:textSize="12.5sp"
                 android:visibility="gone" />
 
